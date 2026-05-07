@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback (BrowserRouter の /about などを直接叩かれた場合の対策)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# キャッシュ最適化（画像とアセット）
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
