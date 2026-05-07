@@ -1,0 +1,48 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+          VITE_GOOGLE_MAPS_MAP_ID: ${{ secrets.VITE_GOOGLE_MAPS_MAP_ID }}
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+          VITE_SITE_URL: ${{ secrets.VITE_SITE_URL }}
+          VITE_LINE_URL: ${{ secrets.VITE_LINE_URL }}
+          VITE_INSTAGRAM_URL: ${{ secrets.VITE_INSTAGRAM_URL }}
+          VITE_X_URL: ${{ secrets.VITE_X_URL }}
+          VITE_MICROCMS_SERVICE_DOMAIN: ${{ secrets.VITE_MICROCMS_SERVICE_DOMAIN }}
+          VITE_MICROCMS_API_KEY: ${{ secrets.VITE_MICROCMS_API_KEY }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=miyakosoba --branch=${{ github.head_ref || github.ref_name }}

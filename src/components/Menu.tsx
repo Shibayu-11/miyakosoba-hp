@@ -1,55 +1,58 @@
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useT } from '../i18n/LanguageContext';
+import { getPopular } from '../data/menu';
 
-interface MenuItem {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image_url: string;
-  available_time?: string;
-}
+export default function Menu() {
+  const { t, lang } = useT();
+  const items = getPopular();
 
-interface MenuProps {
-  items: MenuItem[];
-}
-
-export default function Menu({ items }: MenuProps) {
   return (
-    <section id="menu" className="py-20 bg-white">
+    <section id="menu" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-amber-700 text-sm font-semibold tracking-wider mb-2">人気メニュー</p>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            定番の一杯をどうぞ。
+        <div className="text-center mb-14">
+          <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.menu.label}</p>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
+            {t.menu.heading}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
           {items.map((item) => (
-            <div key={item.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            <article
+              key={item.id}
+              className="bg-cream-50 rounded-md overflow-hidden border border-cream-200 hover:shadow-md transition-shadow"
+            >
               <div
-                className="h-40 bg-cover bg-center"
-                style={{ backgroundImage: `url(${item.image_url})` }}
+                className="aspect-[4/3] bg-cover bg-center"
+                style={{ backgroundImage: `url(${item.image})` }}
               />
-              <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.name}</h3>
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-gray-900">{item.price}円(税込)</span>
-                  {item.available_time && (
-                    <span className="text-xs text-red-600 font-semibold">{item.available_time}</span>
-                  )}
+              <div className="p-5">
+                <div className="flex items-baseline justify-between mb-2 gap-2">
+                  <h3 className="font-serif text-lg font-bold text-soba-ink">{item.name[lang]}</h3>
+                  <p className="text-base font-bold text-soba-ink whitespace-nowrap">
+                    {item.price}<span className="text-xs font-medium ml-0.5">{t.menu.yen}</span>
+                  </p>
                 </div>
+                {item.badge && (
+                  <span className="inline-block bg-soba-red text-white text-[10px] font-bold px-2 py-0.5 rounded-sm mb-2 tracking-wider">
+                    {item.badge[lang]}
+                  </span>
+                )}
+                <p className="text-xs text-soba-ink/70 leading-relaxed">{item.description[lang]}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         <div className="text-center">
-          <button className="inline-flex items-center gap-2 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 font-medium transition-colors">
-            <span>お品書きを見る</span>
+          <Link
+            to="/menu"
+            className="inline-flex items-center gap-2 border border-soba-ink text-soba-ink hover:bg-soba-ink hover:text-white px-10 py-3 font-bold transition-colors"
+          >
+            <span>{t.menu.cta}</span>
             <ChevronRight size={18} />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
