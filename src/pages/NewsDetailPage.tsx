@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import NewsCard from '../components/NewsCard';
 import { news, type NewsCategory } from '../data/news';
 import { useT } from '../i18n/LanguageContext';
+import type { Lang } from '../i18n/translations';
 
 const CATEGORY_COLOR: Record<NewsCategory, string> = {
   newMenu: 'bg-soba-red text-white',
@@ -12,6 +13,9 @@ const CATEGORY_COLOR: Record<NewsCategory, string> = {
   store: 'bg-emerald-800 text-white',
   notice: 'bg-soba-ink text-white',
 };
+
+const DATE_LOCALES: Record<Lang, string> = { ja: 'ja-JP', en: 'en-US', zh: 'zh-CN', ko: 'ko-KR' };
+const OTHER_NEWS_HEADING: Record<Lang, string> = { ja: 'その他のお知らせ', en: 'Other News', zh: '其他消息', ko: '다른 공지사항' };
 
 export default function NewsDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -28,10 +32,10 @@ export default function NewsDetailPage() {
   const dateStr =
     lang === 'ja'
       ? item.date.replace(/-/g, '.')
-      : new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      : new Date(item.date).toLocaleDateString(DATE_LOCALES[lang], { year: 'numeric', month: 'short', day: 'numeric' });
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 md:ml-56">
       <Header />
 
       <article className="max-w-3xl mx-auto px-6 py-14 md:py-20">
@@ -69,7 +73,7 @@ export default function NewsDetailPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-end justify-between mb-8">
             <h2 className="font-serif text-xl md:text-2xl font-bold text-soba-ink">
-              {lang === 'ja' ? 'その他のお知らせ' : 'Other News'}
+              {OTHER_NEWS_HEADING[lang]}
             </h2>
             <Link to="/news" className="inline-flex items-center gap-1 text-sm font-bold text-soba-ink hover:text-soba-red">
               {t.news.cta}

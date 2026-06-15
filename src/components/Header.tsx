@@ -9,98 +9,113 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  // ルート遷移時にメニュー閉じる
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  // 背景固定
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  const navLinks: { label: string; to: string; route: boolean }[] = [
-    { label: t.nav.kodawari, to: '/about', route: true },
-    { label: t.nav.menu, to: '/menu', route: true },
-    { label: t.nav.locations, to: '/locations', route: true },
-    { label: t.nav.news, to: '/news', route: true },
+  const navLinks = [
+    { label: t.nav.menu, to: '/menu' },
+    { label: t.nav.kodawari, to: '/about' },
+    { label: t.nav.news, to: '/news' },
+    { label: t.nav.locations, to: '/locations' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-cream-50/95 backdrop-blur border-b border-cream-200">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
-        <Link to="/" className="flex items-end gap-1.5">
-          <span className="font-serif text-3xl font-black text-soba-ink leading-none">{t.brand.name}</span>
-          <span className="bg-soba-red text-white text-[10px] font-bold px-1.5 py-0.5 leading-none mb-1 rounded-sm tracking-widest whitespace-pre-line">
-            {t.brand.tag === 'STAND-UP' ? 'STAND\nUP' : '立ち\n食い'}
-          </span>
+    <>
+      {/* ── デスクトップ：左サイドバー ── */}
+      <aside className="hidden md:flex fixed left-0 top-0 h-screen w-56 bg-cream-50 border-r border-cream-200 z-40 flex-col items-center py-10">
+        {/* ロゴ */}
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex flex-col items-center gap-3 mb-10 px-8"
+        >
+          <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="w-full h-auto" />
         </Link>
 
-        <div className="ml-auto flex items-center gap-4 md:gap-8">
-          <nav className="hidden md:flex items-center gap-9">
-            {navLinks.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="text-sm font-medium text-soba-ink hover:text-soba-red transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-
-          <LanguageToggle />
-
-          <Link
-            to="/locations"
-            className="hidden md:inline-flex items-center gap-2 bg-soba-red hover:bg-soba-red-dark text-white px-5 py-2.5 rounded transition-colors shadow-sm"
-          >
-            <MapPin size={16} />
-            <span className="text-sm font-bold">{t.header.findStore}</span>
-          </Link>
-
-          {/* ハンバーガー */}
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            className="md:hidden w-10 h-10 flex items-center justify-center text-soba-ink"
-          >
-            {open ? <X size={24} /> : <MenuIcon size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* モバイルドロワー */}
-      {open && (
-        <div
-          className="md:hidden fixed inset-x-0 top-[65px] bottom-0 bg-cream-50 z-30 overflow-y-auto animate-fade-in"
-          role="dialog"
-          aria-modal="true"
-        >
-          <nav className="flex flex-col px-6 py-8 gap-1">
-            {navLinks.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
+        {/* ナビ：2×2 横並び */}
+        <nav className="flex flex-col gap-y-5 px-6 flex-1 items-center">
+          {navLinks.map((l) => (
             <Link
-              to="/locations"
-              className="mt-6 flex items-center justify-center gap-2 bg-soba-red text-white py-4 rounded font-bold"
+              key={l.to}
+              to={l.to}
+              className="text-sm font-medium text-soba-ink hover:text-soba-red transition-colors text-center"
             >
-              <MapPin size={18} />
-              {t.header.findStore}
+              {l.label}
             </Link>
-          </nav>
+          ))}
+        </nav>
+
+        {/* 店舗リンク */}
+        <Link
+          to="/locations"
+          className="flex items-center gap-2 text-soba-ink hover:text-soba-red transition-colors mb-6"
+        >
+          <MapPin size={15} />
+          <span className="text-xs font-bold">{t.header.findStore}</span>
+        </Link>
+
+        {/* 言語切替 */}
+        <LanguageToggle />
+      </aside>
+
+      {/* ── モバイル：トップバー ── */}
+      <header className="md:hidden sticky top-0 z-40 bg-cream-50/95 backdrop-blur border-b border-cream-200">
+        <div className="px-5 py-3 flex items-center">
+          <Link to="/" className="flex items-center gap-1.5">
+            <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-8 w-auto" />
+          </Link>
+          <div className="ml-auto flex items-center gap-3">
+            <LanguageToggle />
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              className="w-10 h-10 flex items-center justify-center text-soba-ink"
+            >
+              {open ? <X size={22} /> : <MenuIcon size={22} />}
+            </button>
+          </div>
         </div>
-      )}
-    </header>
+
+        {/* モバイルドロワー */}
+        {open && (
+          <div
+            className="fixed inset-x-0 top-[57px] bottom-0 bg-cream-50 z-30 overflow-y-auto animate-fade-in"
+            role="dialog"
+            aria-modal="true"
+          >
+            <nav className="flex flex-col px-6 py-8 gap-1">
+              {navLinks.map((l) => (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <Link
+                to="/locations"
+                className="mt-6 flex items-center justify-center gap-2 bg-soba-red text-white py-4 rounded font-bold"
+              >
+                <MapPin size={18} />
+                {t.header.findStore}
+              </Link>
+            </nav>
+          </div>
+        )}
+      </header>
+    </>
   );
 }

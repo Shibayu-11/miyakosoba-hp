@@ -14,7 +14,7 @@ export default function About() {
   const { t } = useT();
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 md:ml-56">
       <Header />
 
       {/* ページヘッダー */}

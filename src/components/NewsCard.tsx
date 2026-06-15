@@ -1,6 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
+import type { Lang } from '../i18n/translations';
 import type { NewsItem, NewsCategory } from '../data/news';
 
 const CATEGORY_COLOR: Record<NewsCategory, string> = {
@@ -10,17 +11,19 @@ const CATEGORY_COLOR: Record<NewsCategory, string> = {
   notice: 'bg-soba-ink text-white',
 };
 
+const DATE_LOCALES: Record<Lang, string> = { ja: 'ja-JP', en: 'en-US', zh: 'zh-CN', ko: 'ko-KR' };
+
 export default function NewsCard({ item }: { item: NewsItem }) {
   const { lang, t } = useT();
   const dateStr =
     lang === 'ja'
       ? item.date.replace(/-/g, '.')
-      : new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      : new Date(item.date).toLocaleDateString(DATE_LOCALES[lang], { year: 'numeric', month: 'short', day: 'numeric' });
 
   return (
     <Link
       to={`/news/${item.id}`}
-      className="group flex flex-col bg-white border border-cream-200 rounded-sm overflow-hidden hover:border-soba-red transition-colors"
+      className="group flex flex-col bg-white border border-cream-200 rounded-sm overflow-hidden hover:border-soba-red transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-lg hover:z-10"
     >
       <div
         className="aspect-[4/3] bg-cover bg-center bg-cream-100"

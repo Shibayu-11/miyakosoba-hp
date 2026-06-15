@@ -1,18 +1,69 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ChevronLeft, MapPin, ExternalLink, Clock, Phone, Train } from 'lucide-react';
+import { ChevronLeft, MapPin, ExternalLink, Clock, CalendarX, Phone, Train } from 'lucide-react';
 import {
   APIProvider,
   Map,
-  AdvancedMarker,
-  Pin,
+  Marker,
 } from '@vis.gl/react-google-maps';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { stores } from '../data/stores';
 import { useT } from '../i18n/LanguageContext';
+import type { Lang } from '../i18n/translations';
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
-const mapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID as string | undefined;
+
+const STORE_DETAIL_TEXT: Record<Lang, {
+  address: string;
+  access: string;
+  accessBody: string;
+  hours: string;
+  closed: string;
+  phone: string;
+  phoneBody: string;
+  sameArea: (prefecture: string) => string;
+}> = {
+  ja: {
+    address: '住所',
+    access: 'アクセス',
+    accessBody: '最寄駅から徒歩圏内（詳細は本部に確認のうえ追記）',
+    hours: '営業時間',
+    closed: '定休日',
+    phone: '電話番号',
+    phoneBody: '本部に確認のうえ追記',
+    sameArea: (prefecture) => `同じエリアの店舗 (${prefecture})`,
+  },
+  en: {
+    address: 'Address',
+    access: 'Access',
+    accessBody: 'Walking distance from the nearest station (TBD).',
+    hours: 'Hours',
+    closed: 'Closed',
+    phone: 'Phone',
+    phoneBody: 'TBD',
+    sameArea: (prefecture) => `Other stores in ${prefecture}`,
+  },
+  zh: {
+    address: '地址',
+    access: '交通方式',
+    accessBody: '步行可达最近车站（详情请向总部确认后补充）',
+    hours: '营业时间',
+    closed: '休息日',
+    phone: '电话号码',
+    phoneBody: '请向总部确认后补充',
+    sameArea: (prefecture) => `同地区门店 (${prefecture})`,
+  },
+  ko: {
+    address: '주소',
+    access: '교통편',
+    accessBody: '가까운 역에서 도보 거리 (자세한 내용은 본사 확인 후 추가)',
+    hours: '영업시간',
+    closed: '정기 휴일',
+    phone: '전화번호',
+    phoneBody: '본사 확인 후 추가',
+    sameArea: (prefecture) => `같은 지역의 매장 (${prefecture})`,
+  },
+};
 
 export default function StoreDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -21,11 +72,12 @@ export default function StoreDetailPage() {
   const store = stores.find((s) => s.id === id);
   if (!store) return <Navigate to="/locations" replace />;
 
+  const dt = STORE_DETAIL_TEXT[lang];
   const sameArea = stores.filter((s) => s.prefecture === store.prefecture && s.id !== store.id).slice(0, 6);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.prefecture + store.address)}`;
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 md:ml-56">
       <Header />
 
       <article className="max-w-5xl mx-auto px-6 py-14 md:py-20">
@@ -47,7 +99,7 @@ export default function StoreDetailPage() {
             <div className="flex items-start gap-3">
               <MapPin size={18} className="text-soba-red mt-0.5 shrink-0" />
               <div>
-                <p className="text-xs text-soba-ink/60 mb-1">{lang === 'ja' ? '住所' : 'Address'}</p>
+                <p className="text-xs text-soba-ink/60 mb-1">{dt.address}</p>
                 <p className="text-soba-ink leading-relaxed">{store.prefecture}{store.address}</p>
               </div>
             </div>
@@ -55,9 +107,9 @@ export default function StoreDetailPage() {
             <div className="flex items-start gap-3">
               <Train size={18} className="text-soba-red mt-0.5 shrink-0" />
               <div>
-                <p className="text-xs text-soba-ink/60 mb-1">{lang === 'ja' ? 'アクセス' : 'Access'}</p>
+                <p className="text-xs text-soba-ink/60 mb-1">{dt.access}</p>
                 <p className="text-soba-ink leading-relaxed">
-                  {lang === 'ja' ? '最寄駅から徒歩圏内（詳細は本部に確認のうえ追記）' : 'Walking distance from the nearest station (TBD).'}
+                  {dt.accessBody}
                 </p>
               </div>
             </div>
@@ -65,9 +117,26 @@ export default function StoreDetailPage() {
             <div className="flex items-start gap-3">
               <Clock size={18} className="text-soba-red mt-0.5 shrink-0" />
               <div>
-                <p className="text-xs text-soba-ink/60 mb-1">{lang === 'ja' ? '営業時間' : 'Hours'}</p>
+                <p className="text-xs text-soba-ink/60 mb-1">{dt.hours}</p>
+                {store.hoursWeekendHoliday ? (
+                  <p className="text-soba-ink leading-relaxed">
+                    {t.locations.weekday} {store.hours}
+                    <br />
+                    {t.locations.weekendHoliday} {store.hoursWeekendHoliday}
+                  </p>
+                ) : (
+                  <p className="text-soba-ink leading-relaxed">{store.hours}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <CalendarX size={18} className="text-soba-red mt-0.5 shrink-0" />
+              <div>
+                <p className="text-xs text-soba-ink/60 mb-1">{dt.closed}</p>
                 <p className="text-soba-ink leading-relaxed">
-                  {lang === 'ja' ? '7:00 〜 22:00（店舗により異なる場合あり）' : '7:00 – 22:00 (may vary by store)'}
+                  {store.closed}
+                  {store.closedNote && <><br />{t.locations.closedNote}</>}
                 </p>
               </div>
             </div>
@@ -75,9 +144,9 @@ export default function StoreDetailPage() {
             <div className="flex items-start gap-3">
               <Phone size={18} className="text-soba-red mt-0.5 shrink-0" />
               <div>
-                <p className="text-xs text-soba-ink/60 mb-1">{lang === 'ja' ? '電話番号' : 'Phone'}</p>
+                <p className="text-xs text-soba-ink/60 mb-1">{dt.phone}</p>
                 <p className="text-soba-ink leading-relaxed">
-                  {lang === 'ja' ? '本部に確認のうえ追記' : 'TBD'}
+                  {dt.phoneBody}
                 </p>
               </div>
             </div>
@@ -99,13 +168,10 @@ export default function StoreDetailPage() {
                 <Map
                   defaultCenter={store.position}
                   defaultZoom={15}
-                  mapId={mapId ?? 'DEMO_MAP_ID'}
                   gestureHandling="greedy"
                   clickableIcons={false}
                 >
-                  <AdvancedMarker position={store.position}>
-                    <Pin background="#a4231f" borderColor="#822018" glyphColor="#ffffff" />
-                  </AdvancedMarker>
+                  <Marker position={store.position} />
                 </Map>
               </APIProvider>
             ) : (
@@ -121,7 +187,7 @@ export default function StoreDetailPage() {
         <section className="bg-cream-100 py-14">
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="font-serif text-xl md:text-2xl font-bold text-soba-ink mb-6">
-              {lang === 'ja' ? `同じエリアの店舗 (${store.prefecture})` : `Other stores in ${store.prefecture}`}
+              {dt.sameArea(store.prefecture)}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {sameArea.map((s) => (

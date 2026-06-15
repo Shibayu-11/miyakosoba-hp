@@ -10,6 +10,7 @@ import NewsDetailPage from './pages/NewsDetailPage.tsx';
 import MenuPage from './pages/MenuPage.tsx';
 import Privacy from './pages/Privacy.tsx';
 import Tokutei from './pages/Tokutei.tsx';
+import Contact from './pages/Contact.tsx';
 import NotFound from './pages/NotFound.tsx';
 import { LanguageProvider } from './i18n/LanguageContext';
 import StructuredData from './components/StructuredData';
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/news/:id" element={<NewsDetailPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/tokutei" element={<Tokutei />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -16,7 +16,7 @@ export default function LanguageToggle() {
           >
             {l}
           </button>
-          {i === 0 && <span className="text-soba-ink/30">/</span>}
+          {i < LANGS.length - 1 && <span className="text-soba-ink/30">/</span>}
         </span>
       ))}
     </div>

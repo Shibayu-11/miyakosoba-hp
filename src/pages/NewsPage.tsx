@@ -31,7 +31,7 @@ export default function NewsPage() {
   const labelFor = (k: Filter) => (k === 'all' ? t.news.filterAll : t.news.categories[k]);
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 md:ml-56">
       <Header />
 
       <section className="bg-soba-ink text-white py-20 md:py-24">

@@ -22,7 +22,7 @@ export default function Tokutei() {
   const isJa = lang === 'ja';
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 md:ml-56">
       <Header />
       <article className="max-w-3xl mx-auto px-6 py-16 md:py-24">
         <h1 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink mb-10">

@@ -6,19 +6,24 @@ export default function Hero() {
   const { t } = useT();
   return (
     <section className="relative bg-soba-ink text-white overflow-hidden">
+      <img
+        src="/images/logo-miyakosoba-white.png"
+        alt={t.brand.name}
+        className="absolute top-6 left-6 md:top-8 md:left-8 z-20 h-10 md:h-12 w-auto"
+      />
       <div className="grid md:grid-cols-12 min-h-[640px]">
         <div className="md:col-span-5 relative flex items-center px-6 md:px-14 py-16 md:py-24 z-10 bg-soba-ink">
           <div className="max-w-md">
-            <h1 className="font-serif text-5xl md:text-6xl font-black leading-[1.15] mb-6 tracking-wider">
-              {t.hero.title1}<br />
-              {t.hero.title2}
+            <h1 className="font-serif text-4xl md:text-5xl font-black leading-[1.25] mb-6 tracking-wider animate-hero-text">
+              <span className="whitespace-nowrap">{t.hero.title1}</span><br />
+              <span className="whitespace-nowrap">{t.hero.title2}</span>
             </h1>
-            <p className="text-base md:text-lg leading-loose text-cream-100/90 mb-10">
+            <p className="text-base md:text-lg leading-loose text-cream-100/90 mb-10 animate-hero-text [animation-delay:350ms]">
               {t.hero.sub1}<br />
               {t.hero.sub2}
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 animate-hero-text [animation-delay:700ms]">
               <a href="#menu" className="inline-flex items-center gap-2 bg-soba-red hover:bg-soba-red-dark text-white px-7 py-3.5 transition-colors shadow-md">
                 <span className="font-bold tracking-wide">{t.hero.viewMenu}</span>
                 <ChevronRight size={18} />
@@ -31,9 +36,9 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="md:col-span-7 relative">
+        <div className="md:col-span-7 relative overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center animate-hero-image"
             style={{ backgroundImage: 'url(/images/hero-soba.jpg)' }}
           />
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-soba-ink to-transparent hidden md:block" />

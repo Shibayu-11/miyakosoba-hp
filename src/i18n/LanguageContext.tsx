@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { translations, type Lang } from './translations';
+import { translations, LANGS, type Lang } from './translations';
 
 type Ctx = {
   lang: Lang;
@@ -14,9 +14,12 @@ const STORAGE_KEY = 'miyakosoba.lang';
 function detectInitial(): Lang {
   if (typeof window === 'undefined') return 'ja';
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === 'ja' || stored === 'en') return stored;
+  if ((LANGS as readonly string[]).includes(stored ?? '')) return stored as Lang;
   const nav = window.navigator.language?.toLowerCase() ?? '';
-  return nav.startsWith('en') ? 'en' : 'ja';
+  if (nav.startsWith('en')) return 'en';
+  if (nav.startsWith('zh')) return 'zh';
+  if (nav.startsWith('ko')) return 'ko';
+  return 'ja';
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

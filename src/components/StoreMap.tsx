@@ -3,15 +3,13 @@ import { MapPin, ExternalLink } from 'lucide-react';
 import {
   APIProvider,
   Map,
-  AdvancedMarker,
+  Marker,
   InfoWindow,
-  Pin,
 } from '@vis.gl/react-google-maps';
 import { KANSAI_CENTER, type Store } from '../data/stores';
 import { useT } from '../i18n/LanguageContext';
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
-const mapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID as string | undefined;
 
 type Props = {
   visible: Store[];
@@ -36,14 +34,11 @@ export default function StoreMap({ visible, zoom = 9 }: Props) {
         <Map
           defaultCenter={KANSAI_CENTER}
           defaultZoom={zoom}
-          mapId={mapId ?? 'DEMO_MAP_ID'}
           gestureHandling="greedy"
           clickableIcons={false}
         >
           {visible.map((s) => (
-            <AdvancedMarker key={s.id} position={s.position} onClick={() => setActive(s)}>
-              <Pin background="#a4231f" borderColor="#822018" glyphColor="#ffffff" />
-            </AdvancedMarker>
+            <Marker key={s.id} position={s.position} onClick={() => setActive(s)} />
           ))}
 
           {active && (

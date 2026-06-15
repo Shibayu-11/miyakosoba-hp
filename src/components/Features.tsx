@@ -77,7 +77,7 @@ export default function Features() {
         <div className="text-center mt-14">
           <Link
             to="/about"
-            className="inline-flex items-center gap-2 border border-soba-ink text-soba-ink hover:bg-soba-ink hover:text-white px-10 py-3 font-bold transition-colors"
+            className="inline-flex items-center gap-2 border border-soba-ink text-soba-ink hover:bg-soba-ink hover:text-white px-10 py-3 font-bold transition-all duration-300 hover:scale-105"
           >
             <span>{t.features.cta}</span>
             <ChevronRight size={18} />

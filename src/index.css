@@ -10,6 +10,39 @@
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  .animate-hero-text {
+    animation: heroTextIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes heroTextIn {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-hero-image {
+    animation: heroImageIn 2.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes heroImageIn {
+    from { opacity: 0; transform: scale(1.08); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-noren-sway {
+    animation: norenSway 5s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  @keyframes norenSway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(0.6deg); }
+  }
 }
 
 @layer base {
