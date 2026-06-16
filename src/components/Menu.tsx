@@ -97,14 +97,14 @@ export default function Menu() {
         {/* 上段: 大きいカード2枚 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           {TOP_CARDS.map((card) => (
-            <CategoryCard key={card.to} card={card} lang={lang} large />
+            <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} large />
           ))}
         </div>
 
         {/* 下段: 小さいカード3枚 */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           {BOTTOM_CARDS.map((card) => (
-            <CategoryCard key={card.to} card={card} lang={lang} />
+            <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} />
           ))}
         </div>
 

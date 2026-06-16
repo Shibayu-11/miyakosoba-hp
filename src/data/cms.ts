@@ -67,9 +67,9 @@ export async function fetchNews(): Promise<NewsItem[]> {
     id: row.id,
     category: row.category,
     date: row.publishedAt.slice(0, 10),
-    title: { ja: row.title_ja, en: row.title_en },
-    excerpt: { ja: row.excerpt_ja, en: row.excerpt_en },
-    body: row.body_ja || row.body_en ? { ja: row.body_ja ?? '', en: row.body_en ?? '' } : undefined,
+    title: { ja: row.title_ja, en: row.title_en, zh: row.title_ja, ko: row.title_ja },
+    excerpt: { ja: row.excerpt_ja, en: row.excerpt_en, zh: row.excerpt_ja, ko: row.excerpt_ja },
+    body: row.body_ja || row.body_en ? { ja: row.body_ja ?? '', en: row.body_en ?? '', zh: row.body_ja ?? '', ko: row.body_ja ?? '' } : undefined,
     image: row.image?.url ?? '/images/news-placeholder.jpg',
   }));
 }

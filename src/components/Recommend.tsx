@@ -175,7 +175,7 @@ export default function Recommend() {
                   <div className="aspect-[4/5] rounded-sm overflow-hidden border border-cream-50/15">
                     <img
                       src={item.image}
-                      alt={item.title[lang]}
+                      alt={item.title[lang as 'ja' | 'en'] ?? item.title.ja}
                       className="w-full h-full object-cover pointer-events-none"
                       draggable={false}
                     />
@@ -187,7 +187,7 @@ export default function Recommend() {
                   </div>
                 </div>
                 <p className="mt-3 text-sm text-soba-ink/80 leading-relaxed">
-                  {item.title[lang]}
+                  {item.title[lang as 'ja' | 'en'] ?? item.title.ja}
                 </p>
               </div>
             ))}
