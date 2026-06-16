@@ -28,7 +28,7 @@ export const news: NewsItem[] = [
       zh: '荞麦面・乌冬面全品适用（拉面除外），「荞麦面・乌冬面」部分半价！到店顾客还可获赠6月9日〜6月30日可用的荞麦面・乌冬面50日元优惠券。',
       ko: '소바・우동 전 메뉴 대상（라멘 제외）, "소바・우동" 부분이 반값! 방문 고객에게는 6월 9일~6월 30일에 사용 가능한 소바・우동 50엔 할인권도 증정합니다.',
     },
-    image: '/images/news-miyakosoba-no-hi-202606.jpg',
+    image: '/images/campaign-miyakosoba-day.jpg',
     body: {
       ja: '毎月8日は「都そばの日」！\nということで、そば・うどんが200円引きで食べられちゃいます。\n\n今回はざるそば・ざるうどんも対象ですので、暑い日にもピッタリです。\n\n■ 対象：そば・うどん全品（※ラーメンは対象外です）\n■ 内容：「そば・うどん」の部分が半額に\n\n【一例】\n・かけ　通常400円 → 200円\n・かき揚げ　通常560円 → 360円\n・スタミナ　通常640円 → 440円\n・大人気のかつ丼セット　通常1,050円 → 850円\n・ざるそば・ざるうどん　通常490円 → 290円\n・温玉かき揚げぶっかけ（冷たい麺も対象！）　通常670円 → 470円\n\n―――\n\nさらに、ご来店いただいたお客様には、令和8年6月9日〜令和8年6月30日の間にお使いいただけるそば・うどん50円引き券を配布いたします。\n\n都そばの日に都そばを食べると2度美味しい。\n皆様のご来店を心よりお待ちしております！\n\n※その他の注意事項は店頭のポスターに記載しております。詳しくはポスターをご確認ください。',
       en: 'The 8th of every month is "Miyako Soba Day"!\nOn this day, soba and udon are 200 yen off.\n\nThis time, zaru soba and zaru udon are included too, so it\'s perfect for a hot day.\n\n■ Eligible: All soba & udon items (ramen is excluded)\n■ Offer: The soba/udon portion of your order is half price\n\n[Examples]\n・Kake: regularly 400 yen → 200 yen\n・Kakiage: regularly 560 yen → 360 yen\n・Stamina: regularly 640 yen → 440 yen\n・Popular Katsudon Set: regularly 1,050 yen → 850 yen\n・Zaru Soba / Zaru Udon: regularly 490 yen → 290 yen\n・Onsen-egg Kakiage Bukkake (cold noodles included!): regularly 670 yen → 470 yen\n\n―――\n\nAdditionally, all visitors will receive a 50-yen discount coupon for soba/udon, valid from June 9 to June 30, 2026.\n\nEating Miyako Soba on Miyako Soba Day is doubly delicious.\nWe look forward to your visit!\n\n* For other terms and conditions, please see the poster displayed in-store.',
@@ -76,7 +76,7 @@ export const news: NewsItem[] = [
       zh: '2026年1月7日〜1月20日，大份加价￥200免费。新年享受超值美味。',
       ko: '2026년 1월 7일~1월 20일, 곱빼기 추가요금 ￥200이 무료. 새해부터 알뜰하게 즐기세요.',
     },
-    image: '/images/news-soba-udon-zoryo.jpg',
+    image: '/images/campaign-zoryo.jpg',
     body: {
       ja: '本日より、お好きなそば・うどんの増量無料キャンペーンを開催いたします。\n\n新年食べ過ぎてしまったけど、ご飯はちゃんと食べないと元気が出ない——そんなあなたへ。\nたくさん食べてもなんだか罪悪感低めの、おそばの大盛りはいかがでしょうか。\n\n■ 対象期間：令和8年（2026年）1月7日（水）〜1月20日（火）\n■ 内容：大盛り分の￥200が無料\n\n※大盛りの麺は通常の麺の量の1.5倍です。\n※店舗限定の販売ですのでご注意ください。',
       en: 'Starting today, enjoy a free size upgrade on your soba or udon.\n\nFor those who indulged a little over the new year but still need a real meal — a heartier bowl that feels (somehow) less guilty might be just the thing.\n\n■ Period: January 7 (Wed) – January 20 (Tue), 2026\n■ Offer: The +200 yen large-size charge is waived\n\n* Large size = 1.5× the regular noodle portion.\n* Available at participating stores only.',

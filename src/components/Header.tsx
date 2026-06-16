@@ -18,10 +18,11 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  const navLinks = [
+  const navLinks: { label: string; to?: string; href?: string }[] = [
+    { label: t.nav.news, to: '/news' },
     { label: t.nav.menu, to: '/menu' },
     { label: t.nav.kodawari, to: '/about' },
-    { label: t.nav.news, to: '/news' },
+    { label: t.nav.campaign, href: '/#news' },
     { label: t.nav.locations, to: '/locations' },
   ];
 
@@ -45,15 +46,17 @@ export default function Header() {
 
         {/* ナビ：2×2 横並び */}
         <nav className="flex flex-col gap-y-5 px-6 flex-1 items-center">
-          {navLinks.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="text-sm font-medium text-soba-ink hover:text-soba-red transition-colors text-center"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {navLinks.map((l) =>
+            l.to ? (
+              <Link key={l.label} to={l.to} className="font-serif text-sm font-bold text-soba-ink hover:text-soba-red transition-colors text-center">
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.href} className="font-serif text-sm font-bold text-soba-ink hover:text-soba-red transition-colors text-center">
+                {l.label}
+              </a>
+            )
+          )}
         </nav>
 
         {/* 店舗リンク */}
@@ -96,15 +99,17 @@ export default function Header() {
             aria-modal="true"
           >
             <nav className="flex flex-col px-6 py-8 gap-1">
-              {navLinks.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {navLinks.map((l) =>
+                l.to ? (
+                  <Link key={l.label} to={l.to} className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors">
+                    {l.label}
+                  </Link>
+                ) : (
+                  <a key={l.label} href={l.href} className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors">
+                    {l.label}
+                  </a>
+                )
+              )}
               <Link
                 to="/locations"
                 className="mt-6 flex items-center justify-center gap-2 bg-soba-red text-white py-4 rounded font-bold"

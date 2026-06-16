@@ -3,7 +3,7 @@ export type Lang = (typeof LANGS)[number];
 
 export type Dict = {
   brand: { name: string };
-  nav: { kodawari: string; menu: string; locations: string; news: string };
+  nav: { kodawari: string; menu: string; locations: string; news: string; campaign: string };
   header: { findStore: string };
   hero: {
     title1: string;
@@ -154,7 +154,7 @@ export type Dict = {
 export const translations: Record<Lang, Dict> = {
   ja: {
     brand: { name: '都そば' },
-    nav: { kodawari: 'こだわり', menu: 'お品書き', locations: '店舗案内', news: 'お知らせ' },
+    nav: { kodawari: 'こだわり', menu: 'お品書き', locations: '店舗案内', news: 'お知らせ', campaign: 'キャンペーン情報' },
     header: { findStore: '店舗を探す' },
     hero: {
       title1: '1962年創業の日本初',
@@ -173,7 +173,7 @@ export const translations: Record<Lang, Dict> = {
       cta: '都そばのこだわり・歴史を見る',
     },
     recommend: {
-      label: 'おすすめ・限定メニュー',
+      label: 'お知らせ',
     },
     menu: {
       label: '人気メニュー',
@@ -265,7 +265,7 @@ export const translations: Record<Lang, Dict> = {
     },
     news: {
       label: 'お知らせ',
-      headingHome: '新メニュー・キャンペーン情報',
+      headingHome: 'キャンペーン情報',
       headingPage: 'お知らせ一覧',
       pageIntro: '新メニューやキャンペーン、店舗情報など、都そばからの最新のお知らせ。',
       cta: 'お知らせを全て見る',
@@ -277,7 +277,7 @@ export const translations: Record<Lang, Dict> = {
     recruit: {
       label: 'パート、アルバイト募集',
       heading: '都そばで、働きませんか。',
-      body: 'アルバイト・社員ともに、関西の各店舗で募集中。立ち食いの粋を、一緒に。',
+      body: '関西の各店舗で募集中。立ち食いの粋を、一緒に。',
       cta: '採用情報を見る',
     },
     footer: {
@@ -327,7 +327,7 @@ export const translations: Record<Lang, Dict> = {
   },
   en: {
     brand: { name: 'Miyako Soba' },
-    nav: { kodawari: 'Our Craft', menu: 'Menu', locations: 'Stores', news: 'News' },
+    nav: { kodawari: 'Our Craft', menu: 'Menu', locations: 'Stores', news: 'News', campaign: 'Campaigns' },
     header: { findStore: 'Find a Store' },
     hero: {
       title1: "Japan's First Stand-Up",
@@ -346,7 +346,7 @@ export const translations: Record<Lang, Dict> = {
       cta: 'Read our story & history',
     },
     recommend: {
-      label: 'Recommended & Limited',
+      label: 'NEWS',
     },
     menu: {
       label: 'POPULAR ITEMS',
@@ -438,7 +438,7 @@ export const translations: Record<Lang, Dict> = {
     },
     news: {
       label: 'NEWS',
-      headingHome: 'New menus & campaigns',
+      headingHome: 'Campaigns',
       headingPage: 'All News',
       pageIntro: 'New menus, campaigns and store updates from Miyako Soba.',
       cta: 'See all news',
@@ -500,7 +500,7 @@ export const translations: Record<Lang, Dict> = {
   },
   zh: {
     brand: { name: '都荞麦' },
-    nav: { kodawari: '匠心', menu: '菜单', locations: '门店信息', news: '最新消息' },
+    nav: { kodawari: '匠心', menu: '菜单', locations: '门店信息', news: '最新消息', campaign: '活动信息' },
     header: { findStore: '查找门店' },
     hero: {
       title1: '1962年创立的日本首家',
@@ -519,7 +519,7 @@ export const translations: Record<Lang, Dict> = {
       cta: '了解都荞麦的匠心与历史',
     },
     recommend: {
-      label: '推荐・限定菜单',
+      label: '最新消息',
     },
     menu: {
       label: '人气菜单',
@@ -611,7 +611,7 @@ export const translations: Record<Lang, Dict> = {
     },
     news: {
       label: '最新消息',
-      headingHome: '新菜单与活动信息',
+      headingHome: '活动信息',
       headingPage: '消息一览',
       pageIntro: '来自都荞麦的新菜单、活动及门店信息等最新消息。',
       cta: '查看全部消息',
@@ -673,7 +673,7 @@ export const translations: Record<Lang, Dict> = {
   },
   ko: {
     brand: { name: '미야코소바' },
-    nav: { kodawari: '고집', menu: '메뉴', locations: '매장 안내', news: '공지사항' },
+    nav: { kodawari: '고집', menu: '메뉴', locations: '매장 안내', news: '공지사항', campaign: '이벤트 정보' },
     header: { findStore: '매장 찾기' },
     hero: {
       title1: '1962년 창업, 일본 최초',
@@ -692,7 +692,7 @@ export const translations: Record<Lang, Dict> = {
       cta: '미야코소바의 고집과 역사 보기',
     },
     recommend: {
-      label: '추천・한정 메뉴',
+      label: '공지사항',
     },
     menu: {
       label: '인기 메뉴',
@@ -784,7 +784,7 @@ export const translations: Record<Lang, Dict> = {
     },
     news: {
       label: '공지사항',
-      headingHome: '신메뉴・이벤트 정보',
+      headingHome: '이벤트 정보',
       headingPage: '공지사항 목록',
       pageIntro: '신메뉴, 이벤트, 매장 정보 등 미야코소바의 최신 소식.',
       cta: '모든 공지 보기',

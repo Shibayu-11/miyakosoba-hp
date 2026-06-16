@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Noto Sans JP"', 'sans-serif'],
-        serif: ['"Noto Serif JP"', 'serif'],
+        serif: ['"Shippori Mincho B1"', 'serif'],
       },
       colors: {
         cream: {

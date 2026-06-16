@@ -22,10 +22,11 @@ const XIcon = (
 export default function Footer() {
   const { t } = useT();
   const navItems = [
-    { label: t.nav.kodawari, href: '/about', isRoute: true },
-    { label: t.nav.menu, href: '/#menu', isRoute: false },
-    { label: t.nav.locations, href: '/locations', isRoute: true },
     { label: t.nav.news, href: '/news', isRoute: true },
+    { label: t.nav.menu, href: '/#menu', isRoute: false },
+    { label: t.nav.kodawari, href: '/about', isRoute: true },
+    { label: t.nav.campaign, href: '/#news', isRoute: false },
+    { label: t.nav.locations, href: '/locations', isRoute: true },
     { label: t.recruit.label, href: '/#recruit', isRoute: false },
   ];
 

@@ -1,47 +1,45 @@
-import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 import { news } from '../data/news';
-import NewsCard from './NewsCard';
 
 export default function News() {
-  const { t } = useT();
-  const latest = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const { t, lang } = useT();
+  const CAMPAIGN_IDS = ['miyakosoba-no-hi-202606', 'soba-udon-zoryo'];
+  const latest = CAMPAIGN_IDS.map(id => news.find(n => n.id === id)).filter(Boolean) as typeof news;
 
   return (
     <section id="news" className="py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
-          <div>
-            <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.news.label}</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
-              {t.news.headingHome}
-            </h2>
+        <div className="mb-10">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
+            {t.news.headingHome}
+          </h2>
+        </div>
+
+        {/* キャンペーンカードコンテナ */}
+        <div className="rounded-2xl bg-[#d4b06a]/20 border border-[#c4a060]/30 p-6 md:p-10">
+          <h3 className="font-serif text-2xl md:text-3xl font-black text-soba-ink text-center mb-8">
+            {t.news.categories.campaign}
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
+            {latest.map((item) => (
+              <Link
+                key={item.id}
+                to={`/news/${item.id}`}
+                className="block overflow-hidden rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+              >
+                <div className="aspect-[3/2] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title[lang]}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
-          <Link
-            to="/news"
-            className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-soba-ink hover:text-soba-red transition-colors"
-          >
-            <span>{t.news.cta}</span>
-            <ChevronRight size={16} />
-          </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latest.map((item) => (
-            <NewsCard key={item.id} item={item} />
-          ))}
-        </div>
-
-        <div className="text-center mt-10 sm:hidden">
-          <Link
-            to="/news"
-            className="inline-flex items-center gap-2 border border-soba-ink text-soba-ink px-8 py-3 font-bold transition-colors hover:bg-soba-ink hover:text-white"
-          >
-            <span>{t.news.cta}</span>
-            <ChevronRight size={16} />
-          </Link>
-        </div>
       </div>
     </section>
   );

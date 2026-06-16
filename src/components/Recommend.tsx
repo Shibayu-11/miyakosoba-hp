@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
 type RecommendItem = {
@@ -190,6 +192,16 @@ export default function Recommend() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="flex justify-end mt-4">
+          <Link
+            to="/news"
+            className="inline-flex items-center gap-1 text-sm font-bold text-soba-ink hover:text-soba-red transition-colors"
+          >
+            <span>{t.news.headingPage}</span>
+            <ChevronRight size={15} />
+          </Link>
         </div>
       </div>
     </section>
