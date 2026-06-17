@@ -2,20 +2,11 @@ import { useState, useEffect } from 'react';
 import { MapPin, Menu as MenuIcon, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
-import type { Lang } from '../i18n/translations';
 import LanguageToggle from './LanguageToggle';
 import MobileTabBar from './MobileTabBar';
 
-// モバイルヘッダー用のタグライン（丸亀製麺の「ここのうどんは、生きている。」を参考）
-const TAGLINE: Record<Lang, string> = {
-  ja: '創業1962年・日本初の立ち食いそば',
-  en: "Japan's first stand-up soba, est. 1962",
-  zh: '1962年创业·日本首家站立式荞麦面',
-  ko: '1962년 창업·일본 최초 스탠딩 소바',
-};
-
 export default function Header() {
-  const { t, lang } = useT();
+  const { t } = useT();
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -85,10 +76,14 @@ export default function Header() {
       {/* ── モバイル：トップバー ── */}
       <header className="md:hidden sticky top-0 z-40 bg-cream-50/95 backdrop-blur border-b border-cream-200">
         <div className="px-5 py-2.5 flex items-center">
-          <Link to="/" className="flex flex-col gap-0.5 min-w-0">
-            <span className="hidden min-[360px]:block text-[9px] font-bold text-soba-ink/55 tracking-wide leading-none truncate">
-              {TAGLINE[lang]}
-            </span>
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (location.pathname === '/') e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex flex-col gap-0.5 min-w-0"
+          >
             <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-7 w-auto" />
           </Link>
           <div className="ml-auto flex items-center gap-3">
@@ -103,37 +98,63 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* モバイルドロワー */}
-        {open && (
-          <div
-            className="fixed inset-x-0 top-[57px] bottom-0 bg-cream-50 z-30 overflow-y-auto animate-fade-in"
-            role="dialog"
-            aria-modal="true"
-          >
-            <nav className="flex flex-col px-6 pt-8 pb-28 gap-1">
-              {navLinks.map((l) =>
-                l.to ? (
-                  <Link key={l.label} to={l.to} className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors">
-                    {l.label}
-                  </Link>
-                ) : (
-                  <a key={l.label} href={l.href} className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors">
-                    {l.label}
-                  </a>
-                )
-              )}
-              <Link
-                to="/locations"
-                className="mt-6 flex items-center justify-center gap-2 bg-soba-red text-white py-4 rounded font-bold"
-              >
-                <MapPin size={18} />
-                {t.header.findStore}
-              </Link>
-            </nav>
-          </div>
-        )}
       </header>
+
+      {/* モバイルドロワー（header の外で fixed レンダリング） */}
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 z-[60] bg-cream-50 overflow-y-auto animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* 閉じるボタン */}
+          <div className="flex justify-end px-5 py-3">
+            <button
+              onClick={() => setOpen(false)}
+              className="w-10 h-10 flex items-center justify-center text-soba-ink"
+              aria-label="Close menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* ロゴ */}
+          <div className="flex flex-col items-center pt-8 pb-8">
+            <Link to="/" onClick={() => setOpen(false)}>
+              <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-16 w-auto" />
+            </Link>
+          </div>
+
+          {/* 縦書きナビ */}
+          <nav className="flex justify-center pb-24">
+            {navLinks.map((l) => (
+              l.to ? (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className="flex justify-center pt-10 pb-6 px-5 hover:bg-cream-100 transition-colors"
+                >
+                  <span className="font-serif font-bold text-soba-ink" style={{ writingMode: 'vertical-rl', fontSize: '1.3rem', letterSpacing: '0.15em' }}>
+                    {l.label}
+                  </span>
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="flex justify-center pt-10 pb-6 px-5 hover:bg-cream-100 transition-colors"
+                >
+                  <span className="font-serif font-bold text-soba-ink" style={{ writingMode: 'vertical-rl', fontSize: '1.3rem', letterSpacing: '0.15em' }}>
+                    {l.label}
+                  </span>
+                </a>
+              )
+            ))}
+          </nav>
+        </div>
+      )}
 
       {/* ── モバイル：下部固定タブバー ── */}
       <MobileTabBar />

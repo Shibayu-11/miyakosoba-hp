@@ -43,22 +43,24 @@ export default function Footer() {
               <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
               <img src="/images/logo-text-white.png" alt={t.brand.name} className="h-9 w-auto" />
             </div>
-            <div className="flex gap-3">
-              <a href={lineUrl} target={lineUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
-                {LineIcon}
-              </a>
-              <a href={instagramUrl} target={instagramUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href={xUrl} target={xUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                {XIcon}
-              </a>
+            <div className="flex justify-between items-center md:block">
+              <div className="flex gap-3">
+                <a href={lineUrl} target={lineUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
+                  {LineIcon}
+                </a>
+                <a href={instagramUrl} target={instagramUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                  <Instagram size={18} />
+                </a>
+                <a href={xUrl} target={xUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                  {XIcon}
+                </a>
+              </div>
+              <p className="text-sm text-white/80 leading-relaxed text-right md:text-left md:mt-5">
+                {t.footer.hours.replace('（', '\n（').split('\n').map((line, i) => (
+                  <span key={i}>{line}{i === 0 && <br />}</span>
+                ))}
+              </p>
             </div>
-            <p className="mt-5 text-sm text-white/80 leading-relaxed">
-              {t.footer.hours.replace('（', '\n（').split('\n').map((line, i) => (
-                <span key={i}>{line}{i === 0 && <br />}</span>
-              ))}
-            </p>
           </div>
 
           <nav className="md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">

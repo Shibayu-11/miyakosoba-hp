@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
@@ -21,7 +21,6 @@ const ITEMS: RecommendItem[] = [
 ];
 
 const COUNT = ITEMS.length;
-// 前後にバッファを持たせて、端まで来たら無音でループ位置に戻す
 const SLIDES = [...ITEMS, ...ITEMS, ...ITEMS];
 
 const AUTO_INTERVAL = 5000;
@@ -31,6 +30,8 @@ export default function Recommend() {
   const { t, lang } = useT();
   const scrollRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(COUNT);
+
+  const [currentIdx, setCurrentIdx] = useState(0);
 
   const dragging = useRef(false);
   const dragStartX = useRef(0);
@@ -45,7 +46,6 @@ export default function Recommend() {
     el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: smooth ? 'smooth' : 'auto' });
   };
 
-  // 中央コピーの範囲に収まるよう、必要なら無音でジャンプする
   const normalize = (index: number) => {
     if (index < COUNT) return index + COUNT;
     if (index >= COUNT * 2) return index - COUNT;
@@ -58,6 +58,7 @@ export default function Recommend() {
       scrollToIndex(norm, false);
     }
     indexRef.current = norm;
+    setCurrentIdx(norm % COUNT);
   };
 
   const syncIndexFromScroll = () => {
@@ -84,7 +85,6 @@ export default function Recommend() {
     };
   }, []);
 
-  // スクロールが落ち着いたタイミングで、無音でループ位置に補正する
   const onScroll = () => {
     if (scrollEndTimer.current) window.clearTimeout(scrollEndTimer.current);
     scrollEndTimer.current = window.setTimeout(() => {
@@ -126,11 +126,25 @@ export default function Recommend() {
     onScroll();
   };
 
+  const goPrev = () => {
+    const prev = indexRef.current - 1;
+    indexRef.current = prev;
+    setCurrentIdx(normalize(prev) % COUNT);
+    scrollToIndex(prev, true);
+  };
+
+  const goNext = () => {
+    const next = indexRef.current + 1;
+    indexRef.current = next;
+    setCurrentIdx(normalize(next) % COUNT);
+    scrollToIndex(next, true);
+  };
+
   return (
-    <section className="bg-cream-100 pt-10 pb-16">
+    <section className="bg-cream-100 pt-10 pb-4 sm:pb-16">
       <div className="max-w-7xl mx-auto px-6">
-        {/* のれん竿（木の棒＋金具） */}
-        <div className="relative mb-10">
+        {/* PC のみ全幅の棒 */}
+        <div className="hidden sm:block relative mb-10">
           <div className="h-3 rounded-full bg-gradient-to-b from-[#b08763] via-[#7a5236] to-[#4f3220] shadow-md" />
           <div className="absolute inset-x-2 top-0 flex justify-between">
             {Array.from({ length: 9 }).map((_, i) => (
@@ -139,18 +153,23 @@ export default function Recommend() {
           </div>
         </div>
 
+        {/* モバイルのみ：見出しスタイル */}
+        <div className="sm:hidden text-center mb-8">
+          <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.recommend.label}</p>
+          <h2 className="font-serif text-3xl font-bold text-soba-ink">{t.recommend.heading}</h2>
+        </div>
+
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
-          {/* のれん風ラベル */}
-          <div className="shrink-0 sm:self-start">
-            <div className="animate-noren-sway relative bg-[#283c4c] text-cream-50 rounded-t-sm shadow-lg px-4 sm:px-5 pt-5 pb-1.5 flex sm:block items-center">
+          {/* のれん風ラベル（PC のみ） */}
+          <div className="hidden sm:block shrink-0 sm:self-start">
+            <div className="animate-noren-sway relative bg-[#283c4c] text-cream-50 rounded-t-sm shadow-lg px-5 pt-5 pb-1.5">
               <span
                 className="font-serif font-black leading-snug"
                 style={{ writingMode: 'vertical-rl', fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', letterSpacing: '0.2em' }}
               >
                 {t.recommend.label}
               </span>
-              {/* のれんの裾（フリンジ） */}
-              <div className="hidden sm:flex justify-center gap-1 mt-3">
+              <div className="flex justify-center gap-1 mt-3">
                 {Array.from({ length: 4 }).map((_, i) => (
                   <span key={i} className="w-2 h-3 bg-[#283c4c]" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%)' }} />
                 ))}
@@ -192,6 +211,27 @@ export default function Recommend() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* モバイルのみ：ナビゲーション */}
+        <div className="sm:hidden flex items-center justify-center gap-6 mt-6">
+          <button
+            onClick={goPrev}
+            className="w-12 h-12 rounded-full border border-soba-ink/20 bg-cream-50 flex items-center justify-center text-soba-ink hover:bg-cream-200 transition-colors"
+            aria-label="前へ"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <span className="font-serif text-sm text-soba-ink/60 w-12 text-center">
+            {currentIdx + 1} / {COUNT}
+          </span>
+          <button
+            onClick={goNext}
+            className="w-12 h-12 rounded-full border border-soba-ink/20 bg-cream-50 flex items-center justify-center text-soba-ink hover:bg-cream-200 transition-colors"
+            aria-label="次へ"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
 
         <div className="flex justify-end mt-4">

@@ -23,6 +23,7 @@ export type Dict = {
   };
   recommend: {
     label: string;
+    heading: string;
   };
   menu: {
     label: string;
@@ -174,6 +175,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recommend: {
       label: 'お知らせ',
+      heading: '最新情報をお届けします。',
     },
     menu: {
       label: '人気メニュー',
@@ -347,6 +349,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recommend: {
       label: 'NEWS',
+      heading: 'Latest Updates.',
     },
     menu: {
       label: 'POPULAR ITEMS',
@@ -520,6 +523,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recommend: {
       label: '最新消息',
+      heading: '为您带来最新资讯。',
     },
     menu: {
       label: '人气菜单',
@@ -693,6 +697,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recommend: {
       label: '공지사항',
+      heading: '최신 소식을 전해드립니다.',
     },
     menu: {
       label: '인기 메뉴',
