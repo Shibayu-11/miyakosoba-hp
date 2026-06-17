@@ -174,7 +174,6 @@ export default function LocationsPage() {
             {/* マップ（PC では右側に固定表示） */}
             <div className="order-1 lg:order-2 lg:col-span-5 lg:sticky lg:top-24">
               <StoreMap visible={visible} zoom={9} />
-              <p className="text-xs text-soba-ink/60 mt-3 text-center">{t.locations.pinHint}</p>
             </div>
           </div>
         </div>

@@ -54,7 +54,11 @@ export default function Footer() {
                 {XIcon}
               </a>
             </div>
-            <p className="mt-5 text-xs text-white/60">{t.footer.hours}</p>
+            <p className="mt-5 text-sm text-white/80 leading-relaxed">
+              {t.footer.hours.replace('（', '\n（').split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
+            </p>
           </div>
 
           <nav className="md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">

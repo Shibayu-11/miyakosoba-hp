@@ -38,9 +38,7 @@ export default function Locations() {
                 <span><span className="font-serif font-bold text-soba-ink">{counts.hyogo}</span> {t.locations.summaryHyogo}</span>
               </div>
 
-              <p className="text-xs text-soba-ink/60 leading-relaxed mb-7">
-                {t.locations.pinHint}
-              </p>
+
               <Link
                 to="/locations"
                 className="inline-flex items-center gap-3 bg-soba-red hover:bg-soba-red-dark text-white px-8 py-3 font-bold transition-colors"
