@@ -58,11 +58,11 @@ export default function SocialFollow() {
   const xLabel = X_LABEL[lang];
 
   return (
-    <section className="bg-cream-100 py-20 px-6">
+    <section className="bg-cream-100 py-16 md:py-20 px-6">
       <div className="max-w-2xl mx-auto text-center">
         {/* 見出し */}
         <p className="text-xs font-bold tracking-[0.25em] text-soba-ink/50 mb-2 uppercase">Follow Us</p>
-        <h2 className="font-serif text-4xl font-black text-soba-ink mb-1">{HEADING[lang]}</h2>
+        <h2 className="font-serif text-3xl sm:text-4xl font-black text-soba-ink mb-1">{HEADING[lang]}</h2>
         <p className="text-sm text-soba-ink/60 mb-10">{label}</p>
 
         {/* カード */}

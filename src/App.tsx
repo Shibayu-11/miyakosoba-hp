@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="min-h-screen bg-white md:flex">
       <Header />
       {/* デスクトップ: サイドバー分のオフセット */}
       <div className="flex-1 md:ml-56">

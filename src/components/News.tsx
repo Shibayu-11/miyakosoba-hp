@@ -8,7 +8,7 @@ export default function News() {
   const latest = CAMPAIGN_IDS.map(id => news.find(n => n.id === id)).filter(Boolean) as typeof news;
 
   return (
-    <section id="news" className="py-24 bg-cream-50">
+    <section id="news" className="py-16 md:py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-10">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">

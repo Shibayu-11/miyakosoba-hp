@@ -50,7 +50,7 @@ function MenuFuda({ item }: { item: MenuItem }) {
 
       {/* 丸い写真 */}
       <div className="mt-3 mb-5">
-        <div className="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-[5px] border-white shadow-md">
+        <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-[5px] border-white shadow-md">
           <img
             src={item.image}
             alt={item.name[lang]}
@@ -230,7 +230,7 @@ export default function MenuPage() {
       <section className="bg-soba-ink text-white py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-soba-red text-xs font-bold tracking-[0.4em] mb-4">{t.menu.label}</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold leading-snug mb-5">{t.menu.pageHeading}</h1>
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-snug mb-5">{t.menu.pageHeading}</h1>
           <p className="text-cream-100/80 max-w-2xl leading-loose">{t.menu.pageIntro}</p>
         </div>
       </section>

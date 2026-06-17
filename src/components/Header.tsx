@@ -2,10 +2,20 @@ import { useState, useEffect } from 'react';
 import { MapPin, Menu as MenuIcon, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
+import type { Lang } from '../i18n/translations';
 import LanguageToggle from './LanguageToggle';
+import MobileTabBar from './MobileTabBar';
+
+// モバイルヘッダー用のタグライン（丸亀製麺の「ここのうどんは、生きている。」を参考）
+const TAGLINE: Record<Lang, string> = {
+  ja: '創業1962年・日本初の立ち食いそば',
+  en: "Japan's first stand-up soba, est. 1962",
+  zh: '1962年创业·日本首家站立式荞麦面',
+  ko: '1962년 창업·일본 최초 스탠딩 소바',
+};
 
 export default function Header() {
-  const { t } = useT();
+  const { t, lang } = useT();
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -74,9 +84,12 @@ export default function Header() {
 
       {/* ── モバイル：トップバー ── */}
       <header className="md:hidden sticky top-0 z-40 bg-cream-50/95 backdrop-blur border-b border-cream-200">
-        <div className="px-5 py-3 flex items-center">
-          <Link to="/" className="flex items-center gap-1.5">
-            <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-8 w-auto" />
+        <div className="px-5 py-2.5 flex items-center">
+          <Link to="/" className="flex flex-col gap-0.5 min-w-0">
+            <span className="hidden min-[360px]:block text-[9px] font-bold text-soba-ink/55 tracking-wide leading-none truncate">
+              {TAGLINE[lang]}
+            </span>
+            <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-7 w-auto" />
           </Link>
           <div className="ml-auto flex items-center gap-3">
             <LanguageToggle />
@@ -98,7 +111,7 @@ export default function Header() {
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col px-6 py-8 gap-1">
+            <nav className="flex flex-col px-6 pt-8 pb-28 gap-1">
               {navLinks.map((l) =>
                 l.to ? (
                   <Link key={l.label} to={l.to} className="font-serif text-2xl font-bold text-soba-ink py-4 border-b border-cream-200 hover:text-soba-red transition-colors">
@@ -121,6 +134,9 @@ export default function Header() {
           </div>
         )}
       </header>
+
+      {/* ── モバイル：下部固定タブバー ── */}
+      <MobileTabBar />
     </>
   );
 }

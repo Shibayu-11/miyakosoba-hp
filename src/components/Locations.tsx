@@ -15,7 +15,7 @@ export default function Locations() {
   }), []);
 
   return (
-    <section id="locations" className="py-20 bg-cream-100">
+    <section id="locations" className="py-16 md:py-20 bg-cream-100">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div className="flex gap-6">

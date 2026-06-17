@@ -42,14 +42,14 @@ export default function Features() {
   return (
     <section
       id="about"
-      className="relative py-24 bg-cream-50"
+      className="relative py-16 md:py-24 bg-cream-50"
       style={{
         backgroundImage:
           'radial-gradient(circle at 12% 20%, rgba(164,35,31,0.06) 0, transparent 18%), radial-gradient(circle at 88% 75%, rgba(164,35,31,0.05) 0, transparent 22%)',
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.features.label}</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
             {t.features.heading}

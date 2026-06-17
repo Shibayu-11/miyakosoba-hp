@@ -55,4 +55,13 @@
     color: #1a1614;
     -webkit-font-smoothing: antialiased;
   }
+  /* モバイルのみ（PC表示は変更しない）:
+     - 意図しない横スクロールを防ぐ（clip は sticky を壊さない）
+     - 下部固定タブバー分の余白を確保（iPhone のホームインジケータ含む） */
+  @media (max-width: 767px) {
+    body {
+      overflow-x: clip;
+      padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+    }
+  }
 }

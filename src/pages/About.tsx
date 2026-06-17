@@ -21,7 +21,7 @@ export default function About() {
       <section className="bg-soba-ink text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-soba-red text-xs font-bold tracking-[0.4em] mb-4">{t.about.headerLabel}</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold leading-snug mb-6">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-snug mb-6">
             {t.about.headerTitle1}<br />
             {t.about.headerTitle2}
           </h1>
