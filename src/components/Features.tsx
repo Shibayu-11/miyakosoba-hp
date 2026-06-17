@@ -51,8 +51,8 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-10 md:mb-16">
           <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.features.label}</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink whitespace-nowrap md:whitespace-normal">
-            {t.features.heading}
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
+            一杯に込めた、<br />３つのこだわり。
           </h2>
         </div>
 
