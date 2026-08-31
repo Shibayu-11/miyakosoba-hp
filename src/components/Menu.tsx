@@ -11,12 +11,12 @@ type Card = {
 const TOP_CARDS: Card[] = [
   {
     label: { ja: '全て', en: 'All' },
-    image: '/images/menu-kitsune.jpg',
+    image: '/images/menu-benishoga-new.jpg',
     to: '/menu',
   },
   {
     label: { ja: '麺類', en: 'Noodles' },
-    image: '/images/menu-tsukimi.jpg',
+    image: '/images/menu-tsukimi-new.jpg',
     to: '/menu?type=noodle',
   },
 ];

@@ -11,8 +11,8 @@ type Filter = 'all' | 'noodle' | 'donburi' | 'set' | 'takeout';
 const FILTERS: Filter[] = ['all', 'noodle', 'donburi', 'set', 'takeout'];
 
 const CATEGORY_IMAGES: Record<Filter, string> = {
-  all: '/images/menu-kitsune.jpg',
-  noodle: '/images/menu-tsukimi.jpg',
+  all: '/images/menu-benishoga-new.jpg',
+  noodle: '/images/menu-tsukimi-new.jpg',
   donburi: '/images/menu-asa.jpg',
   set: '/images/menu-tempura.jpg',
   takeout: '/images/feature-shop.jpg',
@@ -54,7 +54,9 @@ function MenuFuda({ item }: { item: MenuItem }) {
           <img
             src={item.image}
             alt={item.name[lang]}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className={`w-full h-full bg-white transition-transform duration-500 group-hover:scale-110 ${
+              item.imageFit === 'contain' ? 'object-contain' : 'object-cover'
+            }`}
           />
         </div>
       </div>
