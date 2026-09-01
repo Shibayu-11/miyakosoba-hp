@@ -11,12 +11,12 @@ type Card = {
 const TOP_CARDS: Card[] = [
   {
     label: { ja: '全て', en: 'All' },
-    image: '/images/menu-benishoga-new.jpg',
+    image: '/images/menu-category-all.jpg',
     to: '/menu',
   },
   {
     label: { ja: '麺類', en: 'Noodles' },
-    image: '/images/menu-tsukimi-new.jpg',
+    image: '/images/menu-kakiage-new.jpg',
     to: '/menu?type=noodle',
   },
 ];
@@ -24,17 +24,17 @@ const TOP_CARDS: Card[] = [
 const BOTTOM_CARDS: Card[] = [
   {
     label: { ja: '丼物', en: 'Rice Bowls' },
-    image: '/images/menu-asa.jpg',
+    image: '/images/menu-jotendon-new.jpg',
     to: '/menu?type=donburi',
   },
   {
     label: { ja: 'お得なセット', en: 'Value Sets' },
-    image: '/images/menu-tempura.jpg',
+    image: '/images/menu-category-set.jpg',
     to: '/menu?type=set',
   },
   {
     label: { ja: 'お持ち帰り', en: 'Takeout' },
-    image: '/images/feature-soba.jpg',
+    image: '/images/menu-takeout-noodles-new.jpg',
     to: '/menu?type=takeout',
   },
 ];
