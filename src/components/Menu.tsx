@@ -39,7 +39,7 @@ function CategoryCard({ card, lang, large }: { card: Card; lang: 'ja' | 'en'; la
     <Link
       to={card.to}
       className={`relative overflow-hidden rounded-2xl group block transition-transform duration-300 ease-out hover:scale-[1.04] hover:z-10 ${
-        large ? 'aspect-[4/3] sm:aspect-[16/9]' : 'aspect-[4/3]'
+        large ? 'aspect-[4/3] sm:aspect-[16/7]' : 'aspect-[4/3] sm:aspect-[16/7]'
       }`}
     >
       {/* 背景写真 */}
@@ -90,14 +90,14 @@ export default function Menu() {
         </div>
 
         {/* 上段: 大きいカード2枚 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 max-w-5xl mx-auto">
           {TOP_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} large />
           ))}
         </div>
 
         {/* 下段: 小さいカード2枚 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-5xl mx-auto">
           {BOTTOM_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} />
           ))}
