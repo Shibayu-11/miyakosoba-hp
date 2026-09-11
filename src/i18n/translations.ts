@@ -16,6 +16,7 @@ export type Dict = {
   features: {
     label: string;
     heading: string;
+    mobileTitle: string;
     dashi: { title: string; desc: string };
     soba: { title: string; desc: string };
     speed: { title: string; desc: string };
@@ -41,6 +42,7 @@ export type Dict = {
     };
     priceNote: string;
     photoNote: string;
+    takeoutNote: string;
     setComingSoon: string;
   };
   allergenTable: {
@@ -77,6 +79,8 @@ export type Dict = {
     showing: (n: number, total: number) => string;
     unverified: string;
     openInMaps: string;
+    activateMap: string;
+    deactivateMap: string;
     apiKeyMissing: string;
     searchPlaceholder: string;
     searchNoResults: string;
@@ -168,6 +172,7 @@ export const translations: Record<Lang, Dict> = {
     features: {
       label: 'こだわり',
       heading: '一杯に込めた、3つのこだわり。',
+      mobileTitle: '都そばのこだわり',
       dashi: { title: 'だし', desc: '厳選した鰹節と昆布から丁寧にとる風味豊かな関西だし。' },
       soba: { title: 'そば', desc: 'のどごしと香りを大切にした、毎日食べたくなるそば。' },
       speed: { title: 'はやさと気軽さ', desc: '立ち食いだからこその心地よい速さと、いつでも気軽に立ち寄れる安心感。' },
@@ -193,6 +198,7 @@ export const translations: Record<Lang, Dict> = {
       },
       priceNote: '※店舗により価格が異なります。表示は参考価格（税込）です。',
       photoNote: '※メニュー写真と実物の商品では、見た目や内容が異なる場合がございます。',
+      takeoutNote: '全品お持ち帰りいただけます',
       setComingSoon: '近日公開予定です。お楽しみに。',
     },
     allergenTable: {
@@ -220,6 +226,8 @@ export const translations: Record<Lang, Dict> = {
       showing: (n, total) => `表示中 ${n} / 全 ${total} 店舗`,
       unverified: '※営業状況は要確認',
       openInMaps: 'Google Mapsで開く',
+      activateMap: '地図を操作する',
+      deactivateMap: '地図の操作を終了',
       apiKeyMissing: 'Google Maps API キーが未設定です。.env に VITE_GOOGLE_MAPS_API_KEY を設定してください。',
       searchPlaceholder: '店舗名・住所で検索',
       searchNoResults: '該当する店舗が見つかりませんでした。',
@@ -342,6 +350,7 @@ export const translations: Record<Lang, Dict> = {
     features: {
       label: 'OUR CRAFT',
       heading: 'Three things in every bowl.',
+      mobileTitle: 'The Miyako Soba Craft',
       dashi: { title: 'Dashi', desc: 'Kansai-style broth, carefully drawn each day from selected katsuobushi and kombu.' },
       soba: { title: 'Soba', desc: 'Buckwheat noodles you’ll want every day — fragrant, with a clean bite.' },
       speed: { title: 'Quick & Easy', desc: 'The pleasant rhythm only stand-up shops can offer — drop in anytime.' },
@@ -367,6 +376,7 @@ export const translations: Record<Lang, Dict> = {
       },
       priceNote: '※Prices vary by location. Prices shown are reference prices (tax included).',
       photoNote: '※Actual products may differ in appearance and content from the menu photos.',
+      takeoutNote: 'All items are available for takeout',
       setComingSoon: 'Coming soon. Stay tuned.',
     },
     allergenTable: {
@@ -394,6 +404,8 @@ export const translations: Record<Lang, Dict> = {
       showing: (n, total) => `Showing ${n} of ${total} stores`,
       unverified: '※Operating status to be confirmed',
       openInMaps: 'Open in Google Maps',
+      activateMap: 'Use interactive map',
+      deactivateMap: 'Stop using map',
       apiKeyMissing: 'Google Maps API key is not set. Add VITE_GOOGLE_MAPS_API_KEY to .env.',
       searchPlaceholder: 'Search by store name or address',
       searchNoResults: 'No stores matched your search.',
@@ -516,6 +528,7 @@ export const translations: Record<Lang, Dict> = {
     features: {
       label: '匠心',
       heading: '一碗荞麦面里的三大坚持。',
+      mobileTitle: '都荞麦的匠心',
       dashi: { title: '高汤', desc: '精选鲣鱼干与昆布，每日精心熬制的浓郁关西风味高汤。' },
       soba: { title: '荞麦面', desc: '注重顺滑口感与香气，让人每天都想吃的荞麦面。' },
       speed: { title: '快捷与轻松', desc: '站立式用餐带来的舒适速度，随时都能轻松光顾。' },
@@ -541,6 +554,7 @@ export const translations: Record<Lang, Dict> = {
       },
       priceNote: '※价格可能因门店而异。所示为参考价格（含税）。',
       photoNote: '※实际商品的外观和内容可能与菜单图片有所不同。',
+      takeoutNote: '所有商品均可外带',
       setComingSoon: '即将公开，敬请期待。',
     },
     allergenTable: {
@@ -568,6 +582,8 @@ export const translations: Record<Lang, Dict> = {
       showing: (n, total) => `显示 ${n} / 共 ${total} 家门店`,
       unverified: '※营业状态请另行确认',
       openInMaps: '在Google地图中打开',
+      activateMap: '操作地图',
+      deactivateMap: '结束地图操作',
       apiKeyMissing: '尚未设置Google Maps API密钥。请在.env中设置VITE_GOOGLE_MAPS_API_KEY。',
       searchPlaceholder: '按门店名称或地址搜索',
       searchNoResults: '未找到符合条件的门店。',
@@ -690,6 +706,7 @@ export const translations: Record<Lang, Dict> = {
     features: {
       label: '고집',
       heading: '한 그릇에 담은 세 가지 고집.',
+      mobileTitle: '미야코소바의 고집',
       dashi: { title: '육수', desc: '엄선한 가다랑어포와 다시마로 정성껏 우려낸 풍미 가득한 간사이식 육수.' },
       soba: { title: '소바', desc: '목넘김과 향을 중요하게 여긴, 매일 먹고 싶어지는 소바.' },
       speed: { title: '빠르고 편안함', desc: '서서 먹는 스타일이기에 가능한 쾌적한 속도와, 언제든 부담 없이 들를 수 있는 편안함.' },
@@ -715,6 +732,7 @@ export const translations: Record<Lang, Dict> = {
       },
       priceNote: '※가격은 매장에 따라 다를 수 있습니다. 표시 가격은 참고용(세금 포함)입니다.',
       photoNote: '※실제 상품은 메뉴 사진과 외관 및 내용이 다를 수 있습니다.',
+      takeoutNote: '모든 메뉴 포장 가능합니다',
       setComingSoon: '곧 공개 예정입니다. 기대해 주세요.',
     },
     allergenTable: {
@@ -742,6 +760,8 @@ export const translations: Record<Lang, Dict> = {
       showing: (n, total) => `${total}개 매장 중 ${n}개 표시`,
       unverified: '※영업 상황은 별도 확인 필요',
       openInMaps: '구글 지도에서 열기',
+      activateMap: '지도 조작하기',
+      deactivateMap: '지도 조작 종료',
       apiKeyMissing: 'Google Maps API 키가 설정되어 있지 않습니다. .env에 VITE_GOOGLE_MAPS_API_KEY를 설정해 주세요.',
       searchPlaceholder: '매장명・주소로 검색',
       searchNoResults: '해당하는 매장을 찾을 수 없습니다.',

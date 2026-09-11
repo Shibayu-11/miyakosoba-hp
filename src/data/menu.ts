@@ -1,4 +1,4 @@
-export type ItemType = 'soba' | 'udon' | 'both' | 'donburi' | 'other' | 'takeout';
+export type ItemType = 'soba' | 'udon' | 'both' | 'donburi' | 'other';
 
 export type Allergen =
   | '小麦' | 'そば' | '卵' | '乳' | 'えび' | 'かに' | '落花生' | 'くるみ'
@@ -96,6 +96,24 @@ export const menu: MenuItem[] = [
     price: 560,
     image: '/images/menu-kakiage-new.jpg',
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
+  },
+  {
+    id: 'ontama-kakiage',
+    type: 'both',
+    name: { ja: '温玉かき揚げそば／うどん', en: 'Soft Egg Kakiage Soba/Udon', zh: '温泉蛋炸什锦天妇罗荞麦面／乌冬面', ko: '온천달걀 카키아게소바／우동' },
+    description: { ja: '香ばしいかき揚げに、まろやかな温玉を添えた満足の一杯。', en: 'Fragrant kakiage topped with a mellow soft-cooked egg.', zh: '香脆炸什锦天妇罗配上醇厚温泉蛋，满足感十足。', ko: '고소한 카키아게에 부드러운 온천달걀을 곁들인 든든한 한 그릇.' },
+    price: 670,
+    image: '/images/menu-ontama-kakiage.png',
+    allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
+  },
+  {
+    id: 'ontama-yamakake',
+    type: 'both',
+    name: { ja: '温玉山かけそば／うどん', en: 'Soft Egg Yamakake Soba/Udon', zh: '温泉蛋山药泥荞麦面／乌冬面', ko: '온천달걀 야마카케소바／우동' },
+    description: { ja: 'とろろと温玉がだしに溶け合う、なめらかで滋味深い一杯。', en: 'Grated yam and a soft-cooked egg melt into the dashi.', zh: '山药泥与温泉蛋融入高汤，口感顺滑、滋味醇厚。', ko: '참마와 온천달걀이 육수에 어우러지는 부드럽고 깊은 맛.' },
+    price: 690,
+    image: '/images/menu-ontama-yamakake.png',
+    allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
     id: 'shoga-ten',
@@ -209,28 +227,6 @@ export const menu: MenuItem[] = [
     allergens: ['小麦', '大豆'],
   },
 
-  // ── その他 ──
-  {
-    id: 'reimen',
-    type: 'other',
-    name: { ja: '冷麺', en: 'Cold Noodles', zh: '冷面', ko: '냉면' },
-    description: { ja: 'さっぱりとした冷たいスープでいただく、冷麺。', en: 'Refreshing chilled noodles in a cold savory broth.', zh: '清爽冷汤享用的冷面。', ko: '시원한 냉국물로 즐기는 냉면.' },
-    price: 650,
-    image: '/images/feature-dashi.jpg',
-    allergens: ['小麦', '卵', '大豆', 'ごま'],
-  },
-
-  // ── お持ち帰り ──
-  {
-    id: 'takeout-soba',
-    type: 'takeout',
-    name: { ja: '生そば・うどん（お持ち帰り）', en: 'Takeout Raw Soba / Udon', zh: '生荞麦面・乌冬面（外带）', ko: '생소바・우동(포장)' },
-    description: { ja: 'お店の生麺をご自宅で。茹で時間の目安付き。', en: 'Our raw noodles to enjoy at home, with cooking instructions.', zh: '将店内生面带回家享用，附煮制时间说明。', ko: '매장의 생면을 집에서. 삶는 시간 안내 포함.' },
-    price: 350,
-    image: '/images/menu-takeout-noodles-new.jpg',
-    imageFit: 'contain',
-    allergens: ['そば', '小麦', '大豆'],
-  },
 ];
 
 export function getPopular(): MenuItem[] {
