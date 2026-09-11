@@ -12,6 +12,7 @@ export type MenuItem = {
   price: number;
   image: string;
   imageFit?: 'cover' | 'contain';
+  imageInset?: boolean;
   badge?: { ja: string; en: string; zh: string; ko: string };
   allergens: Allergen[];
   popular?: boolean;
@@ -29,6 +30,7 @@ export const menu: MenuItem[] = [
     price: 400,
     image: '/images/menu-kake.png',
     imageFit: 'contain',
+    imageInset: true,
     allergens: ['そば', '小麦', '大豆'],
     popular: true,
   },
@@ -106,6 +108,7 @@ export const menu: MenuItem[] = [
     price: 670,
     image: '/images/menu-ontama-kakiage.png',
     imageFit: 'contain',
+    imageInset: true,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
