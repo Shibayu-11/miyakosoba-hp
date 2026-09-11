@@ -27,7 +27,7 @@ export const menu: MenuItem[] = [
     name: { ja: 'かけそば／うどん', en: 'Kake Soba/Udon', zh: '清汤荞麦面／乌冬面', ko: '가케소바／우동' },
     description: { ja: 'だしの旨みをそのまま味わえる、原点の一杯。', en: 'A pure bowl that lets the dashi speak for itself.', zh: '原汁原味享受高汤鲜美的基础一碗。', ko: '육수의 깊은 맛을 그대로 느낄 수 있는 기본 한 그릇.' },
     price: 400,
-    image: '/images/feature-soba.jpg',
+    image: '/images/menu-kake.png',
     allergens: ['そば', '小麦', '大豆'],
     popular: true,
   },
@@ -181,18 +181,6 @@ export const menu: MenuItem[] = [
     image: '/images/menu-nishin-new.jpg',
     badge: { ja: '京都名物', en: 'Kyoto Classic', zh: '京都名物', ko: '교토 명물' },
     allergens: ['そば', '小麦', 'さば', '大豆'],
-  },
-
-  // ── そばのみ ──
-  {
-    id: 'chuka-soba',
-    type: 'soba',
-    name: { ja: '中華そば', en: 'Chuka Soba', zh: '中华荞麦面', ko: '중화소바' },
-    description: { ja: '自家製の中華そばを使ったこだわりの醤油スープ。', en: 'House-made Chinese noodles in our signature soy broth.', zh: '使用自家制中华面条的讲究酱油汤底。', ko: '수제 중화면을 사용한 깊은 맛의 간장 국물.' },
-    price: 600,
-    image: '/images/menu-chukasoba.jpg',
-    badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
-    allergens: ['そば', '小麦', '鶏肉', '大豆'],
   },
 
   // ── どんぶり ──
