@@ -32,11 +32,6 @@ const BOTTOM_CARDS: Card[] = [
     image: '/images/menu-category-set.jpg',
     to: '/menu?type=set',
   },
-  {
-    label: { ja: 'お持ち帰り', en: 'Takeout' },
-    image: '/images/menu-takeout-noodles-new.jpg',
-    to: '/menu?type=takeout',
-  },
 ];
 
 function CategoryCard({ card, lang, large }: { card: Card; lang: 'ja' | 'en'; large?: boolean }) {
@@ -101,8 +96,8 @@ export default function Menu() {
           ))}
         </div>
 
-        {/* 下段: 小さいカード3枚 */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        {/* 下段: 小さいカード2枚 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {BOTTOM_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} />
           ))}
