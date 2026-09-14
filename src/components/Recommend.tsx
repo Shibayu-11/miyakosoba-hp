@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
@@ -14,131 +13,10 @@ const ITEMS: RecommendItem[] = [
   { id: 'item-2', image: '/images/news-soba-udon-zoryo.jpg', title: { ja: 'そば・うどん 増量無料キャンペーン', en: 'Free Size Upgrade Campaign' } },
   { id: 'item-3', image: '/images/news-kinoko-tamago-ankake.jpg', title: { ja: '秋の限定 きのこたまごあんかけ', en: 'Autumn Limited: Mushroom & Egg Ankake' } },
   { id: 'item-4', image: '/images/menu-tempura.jpg', title: { ja: '大えび天そば、新登場', en: 'New: Large Shrimp Tempura Soba' } },
-  { id: 'item-5', image: '/images/menu-tsukimi.jpg', title: { ja: '月見うどん、お得なセット販売中', en: 'Tsukimi Udon Value Set' } },
-  { id: 'item-6', image: '/images/menu-asa.jpg', title: { ja: '上天丼、数量限定で登場', en: 'Premium Tempura Bowl, Limited Stock' } },
-  { id: 'item-7', image: '/images/feature-dashi.jpg', title: { ja: '京都名物 にしんそば、期間限定', en: 'Kyoto Classic: Nishin Soba, Limited Time' } },
-  { id: 'item-8', image: '/images/menu-kitsune.jpg', title: { ja: 'きつねそば、お持ち帰りも好評', en: 'Kitsune Soba, Now Available for Takeout' } },
 ];
-
-const COUNT = ITEMS.length;
-const SLIDES = [...ITEMS, ...ITEMS, ...ITEMS];
-
-const AUTO_INTERVAL = 5000;
-const SCROLL_END_DELAY = 120;
 
 export default function Recommend() {
   const { t, lang } = useT();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const indexRef = useRef(COUNT);
-
-  const [currentIdx, setCurrentIdx] = useState(0);
-
-  const dragging = useRef(false);
-  const dragStartX = useRef(0);
-  const dragStartScroll = useRef(0);
-  const scrollEndTimer = useRef<number>();
-
-  const scrollToIndex = (index: number, smooth = true) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const card = el.children[index] as HTMLElement | undefined;
-    if (!card) return;
-    el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: smooth ? 'smooth' : 'auto' });
-  };
-
-  const normalize = (index: number) => {
-    if (index < COUNT) return index + COUNT;
-    if (index >= COUNT * 2) return index - COUNT;
-    return index;
-  };
-
-  const settleIndex = (index: number) => {
-    const norm = normalize(index);
-    if (norm !== index) {
-      scrollToIndex(norm, false);
-    }
-    indexRef.current = norm;
-    setCurrentIdx(norm % COUNT);
-  };
-
-  const syncIndexFromScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return indexRef.current;
-    let closest = 0;
-    let minDiff = Infinity;
-    Array.from(el.children).forEach((child, i) => {
-      const c = child as HTMLElement;
-      const diff = Math.abs(c.offsetLeft - el.offsetLeft - el.scrollLeft);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closest = i;
-      }
-    });
-    return closest;
-  };
-
-  useEffect(() => {
-    scrollToIndex(COUNT, false);
-    indexRef.current = COUNT;
-    return () => {
-      if (scrollEndTimer.current) window.clearTimeout(scrollEndTimer.current);
-    };
-  }, []);
-
-  const onScroll = () => {
-    if (scrollEndTimer.current) window.clearTimeout(scrollEndTimer.current);
-    scrollEndTimer.current = window.setTimeout(() => {
-      if (dragging.current) return;
-      settleIndex(syncIndexFromScroll());
-    }, SCROLL_END_DELAY);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const next = indexRef.current + 2;
-      indexRef.current = next;
-      scrollToIndex(next, true);
-    }, AUTO_INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    dragging.current = true;
-    dragStartX.current = e.clientX;
-    dragStartScroll.current = el.scrollLeft;
-    el.setPointerCapture(e.pointerId);
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragging.current) return;
-    const el = scrollRef.current;
-    if (!el) return;
-    const dx = e.clientX - dragStartX.current;
-    el.scrollLeft = dragStartScroll.current - dx;
-  };
-
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragging.current) return;
-    dragging.current = false;
-    scrollRef.current?.releasePointerCapture(e.pointerId);
-    onScroll();
-  };
-
-  const goPrev = () => {
-    const prev = indexRef.current - 1;
-    indexRef.current = prev;
-    setCurrentIdx(normalize(prev) % COUNT);
-    scrollToIndex(prev, true);
-  };
-
-  const goNext = () => {
-    const next = indexRef.current + 1;
-    indexRef.current = next;
-    setCurrentIdx(normalize(next) % COUNT);
-    scrollToIndex(next, true);
-  };
 
   return (
     <section className="bg-cream-100 pt-10 pb-4 sm:pb-16">
@@ -177,18 +55,10 @@ export default function Recommend() {
             </div>
           </div>
 
-          {/* カード横スワイプ（自動スライド + 手動ドラッグ対応・無限ループ） */}
-          <div
-            ref={scrollRef}
-            className="flex-1 min-w-0 flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2 -mx-1 px-1 snap-x snap-mandatory touch-pan-x cursor-grab active:cursor-grabbing select-none"
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
-            onScroll={onScroll}
-          >
-            {SLIDES.map((item, i) => (
-              <div key={`${item.id}-${i}`} className="shrink-0 w-[68%] sm:w-64 snap-start">
+          {/* お知らせカード4枚 */}
+          <div className="flex-1 min-w-0 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {ITEMS.map((item) => (
+              <div key={item.id}>
                 {/* のれん布（写真＋裾フリンジ） */}
                 <div className="animate-noren-sway bg-[#283c4c] rounded-t-sm shadow-lg p-2 pb-0">
                   <div className="aspect-[4/5] rounded-sm overflow-hidden border border-cream-50/15">
@@ -211,27 +81,6 @@ export default function Recommend() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* モバイルのみ：ナビゲーション */}
-        <div className="sm:hidden flex items-center justify-center gap-6 mt-6">
-          <button
-            onClick={goPrev}
-            className="w-12 h-12 rounded-full border border-soba-ink/20 bg-cream-50 flex items-center justify-center text-soba-ink hover:bg-cream-200 transition-colors"
-            aria-label="前へ"
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <span className="font-serif text-sm text-soba-ink/60 w-12 text-center">
-            {currentIdx + 1} / {COUNT}
-          </span>
-          <button
-            onClick={goNext}
-            className="w-12 h-12 rounded-full border border-soba-ink/20 bg-cream-50 flex items-center justify-center text-soba-ink hover:bg-cream-200 transition-colors"
-            aria-label="次へ"
-          >
-            <ChevronRight size={18} />
-          </button>
         </div>
 
         <div className="flex justify-end mt-4">
