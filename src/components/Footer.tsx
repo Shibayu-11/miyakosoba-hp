@@ -1,6 +1,7 @@
 import { ChevronRight, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
+import { socialLinks } from '../config/socialLinks';
 
 const CONTACT_URL = (import.meta.env.VITE_CONTACT_URL as string | undefined) ?? '/contact';
 const PARENT_COMPANY_URL = (import.meta.env.VITE_PARENT_COMPANY_URL as string | undefined) ?? '#';
@@ -30,10 +31,6 @@ export default function Footer() {
     { label: t.recruit.label, href: '/#recruit', isRoute: false },
   ];
 
-  const lineUrl = (import.meta.env.VITE_LINE_URL as string | undefined) ?? 'https://page.line.me/857fmrkz?openQrModal=true';
-  const instagramUrl = (import.meta.env.VITE_INSTAGRAM_URL as string | undefined) ?? 'https://www.instagram.com/miyakosobamiyakomiyako/';
-  const xUrl = (import.meta.env.VITE_X_URL as string | undefined) ?? 'https://x.com/miyakosoba385';
-
   return (
     <footer className="bg-soba-ink text-white">
       <div className="max-w-7xl mx-auto px-6 py-14">
@@ -45,13 +42,13 @@ export default function Footer() {
             </div>
             <div className="flex justify-between items-center md:block">
               <div className="flex gap-3">
-                <a href={lineUrl} target={lineUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
+                <a href={socialLinks.line} target="_blank" rel="noreferrer" aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
                   {LineIcon}
                 </a>
-                <a href={instagramUrl} target={instagramUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <a href={socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                   <Instagram size={18} />
                 </a>
-                <a href={xUrl} target={xUrl === '#' ? undefined : '_blank'} rel="noreferrer" aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <a href={socialLinks.x} target="_blank" rel="noreferrer" aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                   {XIcon}
                 </a>
               </div>

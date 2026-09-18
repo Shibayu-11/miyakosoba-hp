@@ -1,5 +1,6 @@
 import { useT } from '../i18n/LanguageContext';
 import type { Lang } from '../i18n/translations';
+import { socialLinks } from '../config/socialLinks';
 
 const HEADING: Record<Lang, string> = {
   ja: '都そばを、もっと近くに。',
@@ -44,14 +45,6 @@ const InstagramGradient = () => (
 export default function SocialFollow() {
   const { lang } = useT();
 
-  const instagramUrl =
-    (import.meta.env.VITE_INSTAGRAM_URL as string | undefined) ??
-    'https://www.instagram.com/miyakosobamiyakomiyako/';
-  const lineUrl =
-    (import.meta.env.VITE_LINE_URL as string | undefined) ??
-    'https://page.line.me/857fmrkz?openQrModal=true';
-  const xUrl = (import.meta.env.VITE_X_URL as string | undefined) ?? 'https://x.com/miyakosoba385';
-
   const label = LABEL[lang];
   const igLabel = IG_LABEL[lang];
   const lineLabel = LINE_LABEL[lang];
@@ -69,7 +62,7 @@ export default function SocialFollow() {
         <div className="bg-white rounded-2xl shadow-sm px-6 sm:px-10 py-10 flex flex-wrap items-center justify-center gap-10 sm:gap-14 mx-auto w-full max-w-md sm:max-w-none">
           {/* LINE */}
           <a
-            href={lineUrl}
+            href={socialLinks.line}
             target="_blank"
             rel="noreferrer"
             aria-label="LINE"
@@ -85,7 +78,7 @@ export default function SocialFollow() {
 
           {/* Instagram */}
           <a
-            href={instagramUrl}
+            href={socialLinks.instagram}
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram"
@@ -101,8 +94,8 @@ export default function SocialFollow() {
 
           {/* X */}
           <a
-            href={xUrl}
-            target={xUrl === '#' ? undefined : '_blank'}
+            href={socialLinks.x}
+            target="_blank"
             rel="noreferrer"
             aria-label="X"
             className="flex flex-col items-center gap-3 group"
