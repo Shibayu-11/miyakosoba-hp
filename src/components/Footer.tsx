@@ -42,13 +42,13 @@ export default function Footer() {
             </div>
             <div className="flex justify-between items-center md:block">
               <div className="flex gap-3">
-                <a href={socialLinks.line} target="_blank" rel="noreferrer" aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
+                <a href={socialLinks.line} aria-label="LINE" className="w-9 h-9 rounded-full bg-[#06c755] hover:opacity-80 flex items-center justify-center transition-opacity">
                   {LineIcon}
                 </a>
-                <a href={socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <a href={socialLinks.instagram} aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                   <Instagram size={18} />
                 </a>
-                <a href={socialLinks.x} target="_blank" rel="noreferrer" aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <a href={socialLinks.x} aria-label="X" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                   {XIcon}
                 </a>
               </div>

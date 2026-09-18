@@ -63,8 +63,6 @@ export default function SocialFollow() {
           {/* LINE */}
           <a
             href={socialLinks.line}
-            target="_blank"
-            rel="noreferrer"
             aria-label="LINE"
             className="flex flex-col items-center gap-3 group"
           >
@@ -79,8 +77,6 @@ export default function SocialFollow() {
           {/* Instagram */}
           <a
             href={socialLinks.instagram}
-            target="_blank"
-            rel="noreferrer"
             aria-label="Instagram"
             className="flex flex-col items-center gap-3 group"
           >
@@ -95,8 +91,6 @@ export default function SocialFollow() {
           {/* X */}
           <a
             href={socialLinks.x}
-            target="_blank"
-            rel="noreferrer"
             aria-label="X"
             className="flex flex-col items-center gap-3 group"
           >
