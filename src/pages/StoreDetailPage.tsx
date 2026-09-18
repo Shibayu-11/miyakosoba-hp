@@ -1,17 +1,10 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ChevronLeft, MapPin, ExternalLink, Clock, CalendarX, Phone, Train } from 'lucide-react';
-import {
-  APIProvider,
-  Map,
-  Marker,
-} from '@vis.gl/react-google-maps';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { stores } from '../data/stores';
 import { useT } from '../i18n/LanguageContext';
 import type { Lang } from '../i18n/translations';
-
-const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 
 const STORE_DETAIL_TEXT: Record<Lang, {
   address: string;
@@ -75,6 +68,7 @@ export default function StoreDetailPage() {
   const dt = STORE_DETAIL_TEXT[lang];
   const sameArea = stores.filter((s) => s.prefecture === store.prefecture && s.id !== store.id).slice(0, 6);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.prefecture + store.address)}`;
+  const embedUrl = `https://www.google.com/maps?q=${encodeURIComponent(store.name + ' ' + store.prefecture + store.address)}&output=embed`;
 
   return (
     <div className="min-h-screen bg-cream-50 md:ml-56">
@@ -162,23 +156,23 @@ export default function StoreDetailPage() {
             </a>
           </div>
 
-          <div className="aspect-[4/3] bg-cream-100 rounded-sm overflow-hidden">
-            {apiKey ? (
-              <APIProvider apiKey={apiKey}>
-                <Map
-                  defaultCenter={store.position}
-                  defaultZoom={15}
-                  gestureHandling="greedy"
-                  clickableIcons={false}
-                >
-                  <Marker position={store.position} />
-                </Map>
-              </APIProvider>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center p-6 text-center text-sm text-soba-ink/60">
-                {t.locations.apiKeyMissing}
-              </div>
-            )}
+          <div className="relative aspect-[4/3] bg-cream-100 rounded-sm overflow-hidden">
+            <iframe
+              src={embedUrl}
+              title={`${store.name} Google Maps`}
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-sm bg-white px-3 py-2 text-xs font-bold text-[#1a73e8] shadow-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a73e8]"
+            >
+              {t.locations.openInMaps}
+              <ExternalLink size={13} />
+            </a>
           </div>
         </div>
       </article>

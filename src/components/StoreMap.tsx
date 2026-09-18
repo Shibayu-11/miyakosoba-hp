@@ -1,75 +1,39 @@
-import { useState } from 'react';
-import { MapPin, ExternalLink } from 'lucide-react';
-import {
-  APIProvider,
-  Map,
-  Marker,
-  InfoWindow,
-} from '@vis.gl/react-google-maps';
-import { KANSAI_CENTER, type Store } from '../data/stores';
+import { ExternalLink } from 'lucide-react';
+import type { Store } from '../data/stores';
 import { useT } from '../i18n/LanguageContext';
-
-const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 
 type Props = {
   visible: Store[];
   zoom?: number;
 };
 
-export default function StoreMap({ visible, zoom = 9 }: Props) {
+export default function StoreMap({ visible }: Props) {
   const { t } = useT();
-  const [active, setActive] = useState<Store | null>(null);
-
-  if (!apiKey) {
-    return (
-      <div className="aspect-[4/3] bg-cream-50 border border-cream-200 rounded-sm flex items-center justify-center text-center p-6">
-        <p className="max-w-xs text-sm text-soba-ink/70 leading-relaxed">{t.locations.apiKeyMissing}</p>
-      </div>
-    );
-  }
+  const query = visible.length === 1
+    ? `${visible[0].name} ${visible[0].prefecture}${visible[0].address}`
+    : '都そば';
+  const encodedQuery = encodeURIComponent(query);
+  const embedUrl = `https://www.google.com/maps?q=${encodedQuery}&output=embed`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
 
   return (
-    <APIProvider apiKey={apiKey}>
-      <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-sm">
-        <Map
-          defaultCenter={KANSAI_CENTER}
-          defaultZoom={zoom}
-          gestureHandling="greedy"
-          clickableIcons={false}
-        >
-          {visible.map((s) => (
-            <Marker key={s.id} position={s.position} onClick={() => setActive(s)} />
-          ))}
-
-          {active && (
-            <InfoWindow
-              position={active.position}
-              onCloseClick={() => setActive(null)}
-              pixelOffset={[0, -36]}
-            >
-              <div className="min-w-[200px]">
-                <h3 className="font-bold text-soba-ink text-sm mb-1.5">{active.name}</h3>
-                <p className="text-xs text-soba-ink/80 mb-2 flex items-start gap-1">
-                  <MapPin size={12} className="mt-0.5 shrink-0 text-soba-red" />
-                  {active.prefecture}{active.address}
-                </p>
-                {active.status === 'unverified' && (
-                  <p className="text-[10px] text-soba-ink/50 mb-2">{t.locations.unverified}</p>
-                )}
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(active.prefecture + active.address)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-soba-red hover:underline"
-                >
-                  {t.locations.openInMaps}
-                  <ExternalLink size={11} />
-                </a>
-              </div>
-            </InfoWindow>
-          )}
-        </Map>
-      </div>
-    </APIProvider>
+    <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-cream-100 shadow-sm">
+      <iframe
+        src={embedUrl}
+        title={t.locations.headingPage}
+        className="h-full w-full border-0"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-sm bg-white px-3 py-2 text-xs font-bold text-[#1a73e8] shadow-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a73e8]"
+      >
+        {t.locations.openInMaps}
+        <ExternalLink size={13} />
+      </a>
+    </div>
   );
 }

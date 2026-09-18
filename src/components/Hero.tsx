@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
 const RamenIcon = () => (
-  <svg viewBox="0 0 48 48" className="w-7 h-7 sm:w-10 sm:h-10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <path d="M17 18 Q19 13 17 9M24 16 Q26 11 24 7M31 18 Q33 13 31 9" />
     <path d="M11 26 Q14 21 18 26 Q22 31 26 26 Q30 21 34 26" />
     <path d="M9 30 Q9 44 24 44 Q39 44 39 30" />
@@ -13,7 +13,7 @@ const RamenIcon = () => (
 );
 
 const StoreIcon = () => (
-  <svg viewBox="0 0 48 48" className="w-7 h-7 sm:w-10 sm:h-10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <path d="M4 22 L24 6 L44 22" />
     <rect x="8" y="22" width="32" height="22" />
     <rect x="19" y="32" width="10" height="12" />
@@ -40,20 +40,26 @@ export default function Hero() {
             </p>
 
             {/* PC のみ表示 */}
-            <div className="hidden sm:flex gap-5 animate-hero-text [animation-delay:700ms]">
+            <div className="hidden max-w-sm grid-cols-2 gap-3 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
               <a
                 href="#menu"
-                className="w-32 h-32 rounded-full bg-soba-red hover:bg-soba-red-dark text-white flex flex-col items-center justify-center gap-2 shadow-lg transition-colors"
+                className="group flex min-h-20 items-center gap-3 border border-soba-red bg-soba-red px-4 py-3 text-white shadow-[0_10px_28px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c13a34] hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <RamenIcon />
-                <span className="font-bold text-sm tracking-wide leading-tight text-center">{t.hero.viewMenu}</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center border border-white/30 bg-white/5">
+                  <RamenIcon />
+                </span>
+                <span className="min-w-0 flex-1 font-serif text-sm font-bold leading-snug tracking-[0.08em]">{t.hero.viewMenu}</span>
+                <span className="text-lg transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
               </a>
               <Link
                 to="/locations"
-                className="w-32 h-32 rounded-full bg-cream-100 hover:bg-cream-200 text-soba-ink flex flex-col items-center justify-center gap-2 shadow-lg transition-colors"
+                className="group flex min-h-20 items-center gap-3 border border-cream-100/35 bg-white/[0.04] px-4 py-3 text-cream-100 transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-cream-100 hover:text-soba-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <StoreIcon />
-                <span className="font-bold text-sm tracking-wide leading-tight text-center">{t.hero.viewLocations}</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center border border-current/30">
+                  <StoreIcon />
+                </span>
+                <span className="min-w-0 flex-1 font-serif text-sm font-bold leading-snug tracking-[0.08em]">{t.hero.viewLocations}</span>
+                <span className="text-lg transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
               </Link>
             </div>
           </div>
@@ -69,20 +75,26 @@ export default function Hero() {
           {/* モバイル：写真上部グラデーション */}
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-soba-ink to-transparent md:hidden" />
           {/* モバイルのみ：ボタンをグラデーション上に表示 */}
-          <div className="md:hidden absolute top-4 left-10 flex gap-4 z-10">
+          <div className="absolute left-4 right-4 top-4 z-10 grid grid-cols-2 gap-2 md:hidden">
             <Link
               to="/menu"
-              className="w-20 h-20 rounded-full bg-soba-red hover:bg-soba-red-dark text-white flex flex-col items-center justify-center gap-1 shadow-lg transition-colors"
+              className="group flex min-h-16 items-center gap-2 border border-soba-red bg-soba-red/95 px-3 py-2 text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] backdrop-blur-sm transition-colors hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <RamenIcon />
-              <span className="font-bold text-xs tracking-wide leading-tight text-center">{t.nav.menu}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center border border-white/30">
+                <RamenIcon />
+              </span>
+              <span className="min-w-0 flex-1 font-serif text-xs font-bold leading-tight tracking-wide">{t.nav.menu}</span>
+              <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
             </Link>
             <Link
               to="/locations"
-              className="w-20 h-20 rounded-full bg-cream-100 hover:bg-cream-200 text-soba-ink flex flex-col items-center justify-center gap-1 shadow-lg transition-colors"
+              className="group flex min-h-16 items-center gap-2 border border-cream-100/70 bg-cream-100/95 px-3 py-2 text-soba-ink shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors hover:bg-cream-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <StoreIcon />
-              <span className="font-bold text-xs tracking-wide leading-tight text-center">{t.hero.viewLocations}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center border border-soba-ink/25">
+                <StoreIcon />
+              </span>
+              <span className="min-w-0 flex-1 font-serif text-xs font-bold leading-tight tracking-wide">{t.hero.viewLocations}</span>
+              <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
             </Link>
           </div>
           {/* モバイルのみ：ロゴマーク＋縦書きブランド名 */}
