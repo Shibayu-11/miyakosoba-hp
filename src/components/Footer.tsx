@@ -5,8 +5,6 @@ import { socialLinks } from '../config/socialLinks';
 
 const CONTACT_URL = (import.meta.env.VITE_CONTACT_URL as string | undefined) ?? '/contact';
 const PARENT_COMPANY_URL = (import.meta.env.VITE_PARENT_COMPANY_URL as string | undefined) ?? '#';
-const PARENT_COMPANY_PROFILE_URL = (import.meta.env.VITE_PARENT_COMPANY_PROFILE_URL as string | undefined) ?? '#';
-const PARENT_COMPANY_MESSAGE_URL = (import.meta.env.VITE_PARENT_COMPANY_MESSAGE_URL as string | undefined) ?? '#';
 
 export default function Footer() {
   const { t } = useT();
@@ -106,21 +104,6 @@ export default function Footer() {
             className="hover:text-white hover:underline underline-offset-4 transition-colors"
           >
             {t.parentCompany.name}
-          </a>
-          <span className="opacity-40">|</span>
-          <a
-            href={PARENT_COMPANY_PROFILE_URL}
-            {...(PARENT_COMPANY_PROFILE_URL === '#' ? {} : { target: '_blank', rel: 'noreferrer' })}
-            className="hover:text-white hover:underline underline-offset-4 transition-colors"
-          >
-            {t.parentCompany.profile}
-          </a>
-          <a
-            href={PARENT_COMPANY_MESSAGE_URL}
-            {...(PARENT_COMPANY_MESSAGE_URL === '#' ? {} : { target: '_blank', rel: 'noreferrer' })}
-            className="hover:text-white hover:underline underline-offset-4 transition-colors"
-          >
-            {t.parentCompany.message}
           </a>
         </div>
 
