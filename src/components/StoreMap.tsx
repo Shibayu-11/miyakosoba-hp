@@ -43,9 +43,13 @@ function ViewportController({ visible, zoom }: Props) {
 
 export default function StoreMap({ visible, zoom = 9 }: Props) {
   const { t } = useT();
-  const mapsUrl = visible.length === 1
-    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${visible[0].name} ${visible[0].prefecture}${visible[0].address}`)}`
-    : 'https://www.google.com/maps';
+  const visiblePrefectures = [...new Set(visible.map((store) => store.prefecture))];
+  const mapsQuery = visible.length === 1
+    ? `${visible[0].name} ${visible[0].prefecture}${visible[0].address}`
+    : visiblePrefectures.length === 1
+      ? `都そば ${visiblePrefectures[0]}`
+      : '都そば 関西';
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
 
   return (
     <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-cream-100 shadow-sm">
