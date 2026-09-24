@@ -13,7 +13,7 @@ const FILTERS: Filter[] = ['all', 'noodle', 'donburi'];
 const CATEGORY_IMAGES: Record<Filter, string> = {
   all: '/images/menu-category-all.jpg',
   noodle: '/images/menu-kakiage-new.jpg',
-  donburi: '/images/menu-jotendon-new.jpg',
+  donburi: '/images/menu-katsudon-new.jpg',
 };
 
 const TAX_LABEL: Record<Lang, string> = { ja: '税込', en: 'incl. tax', zh: '含税', ko: '세금 포함' };

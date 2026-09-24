@@ -21,7 +21,7 @@ const TOP_CARDS: Card[] = [
   },
   {
     label: { ja: '丼物', en: 'Rice Bowls' },
-    image: '/images/menu-jotendon-new.jpg',
+    image: '/images/menu-katsudon-new.jpg',
     to: '/menu?type=donburi',
   },
 ];
