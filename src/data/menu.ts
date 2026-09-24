@@ -14,6 +14,7 @@ export type MenuItem = {
   imageFit?: 'cover' | 'contain';
   imageInset?: boolean;
   imageBalanced?: boolean;
+  imageLarge?: boolean;
   badge?: { ja: string; en: string; zh: string; ko: string };
   allergens: Allergen[];
   popular?: boolean;
@@ -118,7 +119,7 @@ export const menu: MenuItem[] = [
     price: 670,
     image: '/images/menu-ontama-kakiage.png',
     imageFit: 'contain',
-    imageBalanced: true,
+    imageLarge: true,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -129,7 +130,7 @@ export const menu: MenuItem[] = [
     price: 690,
     image: '/images/menu-ontama-yamakake.png',
     imageFit: 'contain',
-    imageBalanced: true,
+    imageLarge: true,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
