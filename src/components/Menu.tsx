@@ -19,18 +19,10 @@ const TOP_CARDS: Card[] = [
     image: '/images/menu-kakiage-new.jpg',
     to: '/menu?type=noodle',
   },
-];
-
-const BOTTOM_CARDS: Card[] = [
   {
     label: { ja: '丼物', en: 'Rice Bowls' },
     image: '/images/menu-jotendon-new.jpg',
     to: '/menu?type=donburi',
-  },
-  {
-    label: { ja: 'お得なセット', en: 'Value Sets' },
-    image: '/images/menu-category-set.jpg',
-    to: '/menu?type=set',
   },
 ];
 
@@ -87,17 +79,10 @@ export default function Menu() {
           </h2>
         </div>
 
-        {/* 上段: 大きいカード2枚 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 max-w-5xl mx-auto">
+        {/* カテゴリカード */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-6xl mx-auto">
           {TOP_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} large />
-          ))}
-        </div>
-
-        {/* 下段: 小さいカード2枚 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-5xl mx-auto">
-          {BOTTOM_CARDS.map((card) => (
-            <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} />
           ))}
         </div>
 

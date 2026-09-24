@@ -7,14 +7,13 @@ import { menu, type Allergen, type MenuItem } from '../data/menu';
 import { useT } from '../i18n/LanguageContext';
 import type { Dict, Lang } from '../i18n/translations';
 
-type Filter = 'all' | 'noodle' | 'donburi' | 'set';
-const FILTERS: Filter[] = ['all', 'noodle', 'donburi', 'set'];
+type Filter = 'all' | 'noodle' | 'donburi';
+const FILTERS: Filter[] = ['all', 'noodle', 'donburi'];
 
 const CATEGORY_IMAGES: Record<Filter, string> = {
   all: '/images/menu-category-all.jpg',
   noodle: '/images/menu-kakiage-new.jpg',
   donburi: '/images/menu-jotendon-new.jpg',
-  set: '/images/menu-category-set.jpg',
 };
 
 const TAX_LABEL: Record<Lang, string> = { ja: '税込', en: 'incl. tax', zh: '含税', ko: '세금 포함' };
@@ -221,7 +220,6 @@ export default function MenuPage() {
   const visible = useMemo(() => {
     if (filter === 'all') return menu;
     if (filter === 'noodle') return menu.filter((m) => m.type === 'soba' || m.type === 'udon' || m.type === 'both' || m.type === 'other');
-    if (filter === 'set') return menu.filter((m) => m.set);
     return menu.filter((m) => m.type === 'donburi');
   }, [filter]);
 
@@ -240,11 +238,10 @@ export default function MenuPage() {
       <section className="py-12 md:py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-6">
 
-          <div className="mb-6 grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3 max-w-2xl">
+          <div className="mb-6 grid grid-cols-3 gap-2 md:gap-3 max-w-xl">
             <CategoryCard filter="all" active={filter === 'all'} onClick={() => setFilter('all')} className="aspect-square" />
             <CategoryCard filter="noodle" active={filter === 'noodle'} onClick={() => setFilter('noodle')} className="aspect-square" />
             <CategoryCard filter="donburi" active={filter === 'donburi'} onClick={() => setFilter('donburi')} className="aspect-square" />
-            <CategoryCard filter="set" active={filter === 'set'} onClick={() => setFilter('set')} className="aspect-square" />
           </div>
 
           <p className="inline-flex items-center rounded-full bg-soba-red px-4 py-2 mb-4 text-sm font-bold tracking-wide text-white">
