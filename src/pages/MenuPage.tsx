@@ -54,7 +54,7 @@ function MenuFuda({ item }: { item: MenuItem }) {
             src={item.image}
             alt={item.name[lang]}
             className={`w-full h-full bg-white transition-transform duration-500 ${
-              item.imageInset ? 'scale-[0.85] group-hover:scale-[0.92]' : 'group-hover:scale-110'
+              item.imageBalanced ? 'scale-[1.18] group-hover:scale-[1.24]' : item.imageInset ? 'scale-[0.85] group-hover:scale-[0.92]' : 'group-hover:scale-110'
             } ${
               item.imageFit === 'contain' ? 'object-contain' : 'object-cover'
             }`}
