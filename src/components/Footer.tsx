@@ -4,7 +4,6 @@ import { useT } from '../i18n/LanguageContext';
 import { socialLinks } from '../config/socialLinks';
 
 const CONTACT_URL = (import.meta.env.VITE_CONTACT_URL as string | undefined) ?? '/contact';
-const PARENT_COMPANY_URL = (import.meta.env.VITE_PARENT_COMPANY_URL as string | undefined) ?? '#';
 
 export default function Footer() {
   const { t } = useT();
@@ -98,13 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-bold text-white/70">
-          <a
-            href={PARENT_COMPANY_URL}
-            {...(PARENT_COMPANY_URL === '#' ? {} : { target: '_blank', rel: 'noreferrer' })}
-            className="hover:text-white hover:underline underline-offset-4 transition-colors"
-          >
-            {t.parentCompany.name}
-          </a>
+          <span>{t.parentCompany.name}</span>
         </div>
 
         <div className="mt-6 pt-6 border-t border-white/10 text-center text-xs text-white/50">

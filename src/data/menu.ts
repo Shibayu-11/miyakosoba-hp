@@ -29,8 +29,6 @@ export const menu: MenuItem[] = [
     description: { ja: 'だしの旨みをそのまま味わえる、原点の一杯。', en: 'A pure bowl that lets the dashi speak for itself.', zh: '原汁原味享受高汤鲜美的基础一碗。', ko: '육수의 깊은 맛을 그대로 느낄 수 있는 기본 한 그릇.' },
     price: 400,
     image: '/images/menu-kake.png',
-    imageFit: 'contain',
-    imageInset: true,
     allergens: ['そば', '小麦', '大豆'],
     popular: true,
   },
@@ -116,8 +114,6 @@ export const menu: MenuItem[] = [
     description: { ja: '香ばしいかき揚げに、まろやかな温玉を添えた満足の一杯。', en: 'Fragrant kakiage topped with a mellow soft-cooked egg.', zh: '香脆炸什锦天妇罗配上醇厚温泉蛋，满足感十足。', ko: '고소한 카키아게에 부드러운 온천달걀을 곁들인 든든한 한 그릇.' },
     price: 670,
     image: '/images/menu-ontama-kakiage.png',
-    imageFit: 'contain',
-    imageInset: true,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -127,7 +123,6 @@ export const menu: MenuItem[] = [
     description: { ja: 'とろろと温玉がだしに溶け合う、なめらかで滋味深い一杯。', en: 'Grated yam and a soft-cooked egg melt into the dashi.', zh: '山药泥与温泉蛋融入高汤，口感顺滑、滋味醇厚。', ko: '참마와 온천달걀이 육수에 어우러지는 부드럽고 깊은 맛.' },
     price: 690,
     image: '/images/menu-ontama-yamakake.png',
-    imageFit: 'contain',
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
