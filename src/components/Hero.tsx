@@ -40,53 +40,27 @@ export default function Hero() {
             </p>
 
             {/* PC のみ表示 */}
-            <div className="hidden max-w-[440px] grid-cols-2 gap-4 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
+            <div className="hidden max-w-md grid-cols-2 gap-3 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
               <Link
                 to="/menu"
-                className="group relative min-h-36 overflow-hidden rounded-sm border border-white/10 bg-soba-red text-white shadow-[0_18px_34px_rgba(0,0,0,0.32)] transition-all duration-300 hover:-translate-y-1 hover:border-cream-100/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
+                className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-soba-red bg-soba-red px-5 py-4 text-white shadow-[0_12px_28px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <span
-                  className="absolute inset-0 bg-cover bg-center opacity-55 transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: 'url(/images/menu-kakiage-new.jpg)' }}
-                  aria-hidden
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-soba-red-dark via-soba-red/80 to-soba-red/30" aria-hidden />
-                <span className="relative flex min-h-36 flex-col justify-between p-4">
-                  <span className="grid h-11 w-11 place-items-center border border-white/35 bg-white/10 backdrop-blur-sm">
-                    <RamenIcon />
-                  </span>
-                  <span className="flex items-end justify-between gap-3">
-                    <span className="font-serif text-lg font-bold leading-snug tracking-[0.12em]">
-                      {t.hero.viewMenu}
-                    </span>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-soba-red transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
-                      →
-                    </span>
-                  </span>
+                <span className="font-serif text-base font-bold leading-snug tracking-[0.12em]">
+                  {t.hero.viewMenu}
+                </span>
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
+                  →
                 </span>
               </Link>
               <Link
                 to="/locations"
-                className="group relative min-h-36 overflow-hidden rounded-sm border border-cream-100/25 bg-cream-100 text-soba-ink shadow-[0_18px_34px_rgba(0,0,0,0.26)] transition-all duration-300 hover:-translate-y-1 hover:border-cream-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
+                className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-cream-100/45 bg-white/[0.04] px-5 py-4 text-cream-100 shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-cream-100 hover:text-soba-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <span
-                  className="absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: 'url(/images/feature-shop.jpg)' }}
-                  aria-hidden
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/90 to-cream-100/45" aria-hidden />
-                <span className="relative flex min-h-36 flex-col justify-between p-4">
-                  <span className="grid h-11 w-11 place-items-center border border-soba-ink/25 bg-white/55 backdrop-blur-sm">
-                    <StoreIcon />
-                  </span>
-                  <span className="flex items-end justify-between gap-3">
-                    <span className="font-serif text-lg font-bold leading-snug tracking-[0.12em]">
-                      {t.hero.viewLocations}
-                    </span>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-soba-ink text-cream-100 transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
-                      →
-                    </span>
-                  </span>
+                <span className="font-serif text-base font-bold leading-snug tracking-[0.12em]">
+                  {t.hero.viewLocations}
+                </span>
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
+                  →
                 </span>
               </Link>
             </div>
