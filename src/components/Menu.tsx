@@ -30,7 +30,7 @@ function CategoryCard({ card, lang, large }: { card: Card; lang: 'ja' | 'en'; la
   return (
     <Link
       to={card.to}
-      className="relative overflow-hidden rounded-2xl group block aspect-[4/3] sm:aspect-auto sm:h-52 lg:h-56 transition-transform duration-300 ease-out hover:scale-[1.04] hover:z-10"
+      className="relative overflow-hidden rounded-2xl group block aspect-[4/3] sm:aspect-auto sm:h-60 lg:h-64 transition-transform duration-300 ease-out hover:scale-[1.04] hover:z-10"
     >
       {/* 背景写真 */}
       <img
@@ -80,7 +80,7 @@ export default function Menu() {
         </div>
 
         {/* カテゴリカード */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-7 max-w-7xl mx-auto">
           {TOP_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} large />
           ))}
