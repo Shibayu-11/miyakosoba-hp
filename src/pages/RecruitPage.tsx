@@ -1,4 +1,4 @@
-import { ChevronRight, Clock, MapPin, Phone, Soup, Users } from 'lucide-react';
+import { ChevronRight, Clock, MapPin, Phone, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -14,11 +14,6 @@ const POINTS = [
     icon: Clock,
     title: '働く時間は相談OK',
     body: '朝・昼・夕方以降など、店舗の募集状況に合わせてご相談ください。',
-  },
-  {
-    icon: Soup,
-    title: 'まかない・食事補助あり',
-    body: '都そばの味を身近に感じながら、無理なく働ける環境を目指しています。',
   },
   {
     icon: MapPin,
@@ -74,7 +69,7 @@ export default function RecruitPage() {
             <h2 className="font-serif text-2xl md:text-4xl font-bold text-soba-ink">働きやすいポイント</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-5xl mx-auto">
             {POINTS.map((point) => {
               const Icon = point.icon;
               return (
