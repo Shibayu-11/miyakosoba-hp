@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
 export default function Recruit() {
@@ -14,13 +15,13 @@ export default function Recruit() {
           <p className="text-sm md:text-base text-cream-100/80 leading-loose mb-8">
             {t.recruit.body}
           </p>
-          <a
-            href="#"
+          <Link
+            to="/recruit"
             className="inline-flex items-center gap-2 bg-cream-50 hover:bg-white text-soba-ink px-8 py-3.5 font-bold transition-colors shadow-md"
           >
             <span>{t.recruit.cta}</span>
             <ChevronRight size={18} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

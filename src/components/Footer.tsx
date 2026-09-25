@@ -13,7 +13,7 @@ export default function Footer() {
     { label: t.nav.kodawari, href: '/about', isRoute: true },
     { label: t.nav.campaign, href: '/#news', isRoute: false },
     { label: t.nav.locations, href: '/locations', isRoute: true },
-    { label: t.recruit.label, href: '/#recruit', isRoute: false },
+    { label: t.recruit.label, href: '/recruit', isRoute: true },
   ];
 
   return (
