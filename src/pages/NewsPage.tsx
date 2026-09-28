@@ -7,13 +7,18 @@ import { useT } from '../i18n/LanguageContext';
 
 const FILTERS = ['all', 'newMenu', 'campaign', 'store', 'notice'] as const;
 type Filter = (typeof FILTERS)[number];
+const PINNED_NEWS_ID = 'miyakosoba-no-hi-202606';
 
 export default function NewsPage() {
   const { t } = useT();
   const [filter, setFilter] = useState<Filter>('all');
 
   const sorted = useMemo(
-    () => [...news].sort((a, b) => b.date.localeCompare(a.date)),
+    () => [...news].sort((a, b) => {
+      if (a.id === PINNED_NEWS_ID) return -1;
+      if (b.id === PINNED_NEWS_ID) return 1;
+      return b.date.localeCompare(a.date);
+    }),
     [],
   );
 
