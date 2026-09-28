@@ -69,7 +69,7 @@ export default function Menu() {
   const { t, lang } = useT();
 
   return (
-    <section id="menu" className="pt-4 pb-16 md:py-20 bg-cream-100">
+    <section id="menu" className="py-10 md:pt-12 md:pb-20 bg-cream-100">
       <div className="max-w-7xl mx-auto px-6">
         {/* 見出し */}
         <div className="text-center mb-12">
