@@ -13,13 +13,15 @@ export default function NewsPage() {
   const { t } = useT();
   const [filter, setFilter] = useState<Filter>('all');
 
+  const visibleNews = useMemo(() => news.filter((n) => !n.hiddenFromList), []);
+
   const sorted = useMemo(
-    () => [...news].sort((a, b) => {
+    () => [...visibleNews].sort((a, b) => {
       if (a.id === PINNED_NEWS_ID) return -1;
       if (b.id === PINNED_NEWS_ID) return 1;
       return b.date.localeCompare(a.date);
     }),
-    [],
+    [visibleNews],
   );
 
   const visible = useMemo(
@@ -29,9 +31,9 @@ export default function NewsPage() {
 
   const counts = useMemo(() => {
     const c = { newMenu: 0, campaign: 0, store: 0, notice: 0 } as Record<NewsCategory, number>;
-    for (const n of news) c[n.category]++;
+    for (const n of visibleNews) c[n.category]++;
     return c;
-  }, []);
+  }, [visibleNews]);
 
   const labelFor = (k: Filter) => (k === 'all' ? t.news.filterAll : t.news.categories[k]);
 

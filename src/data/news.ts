@@ -8,10 +8,111 @@ export type NewsItem = {
   excerpt: { ja: string; en: string; zh: string; ko: string };
   image: string;
   body?: { ja: string; en: string; zh: string; ko: string };
+  hiddenFromList?: boolean;
 };
 
 // 仮データ。後日 microCMS / Supabase 等のCMSに差し替える前提。
 export const news: NewsItem[] = [
+  {
+    id: 'katsudon-mini-set-202601',
+    category: 'campaign',
+    date: '2026-01-07',
+    title: {
+      ja: 'かつ丼ミニ麺セット、期間限定で復活',
+      en: 'Katsudon Mini-Noodle Set Returns for a Limited Time',
+      zh: '猪排盖饭迷你面套餐限时回归',
+      ko: '가츠동 미니면 세트 기간 한정 부활',
+    },
+    excerpt: {
+      ja: '都そば人気No.1のかつ丼に、ミニそばまたはミニうどんがついたお得なセットが期間限定で復活。',
+      en: 'A limited-time value set featuring our popular katsudon with mini soba or mini udon.',
+      zh: '都荞麦人气猪排盖饭搭配迷你荞麦面或迷你乌冬面的超值套餐限时回归。',
+      ko: '인기 가츠동에 미니 소바 또는 미니 우동이 포함된 실속 세트가 기간 한정으로 돌아왔습니다.',
+    },
+    image: '/images/news-katsudon-mini-set.jpg',
+    body: {
+      ja: '都そば人気No.1のかつ丼に、ミニそばまたはミニうどんがついたお得なセットが期間限定で復活しました。\n\n満足感のあるかつ丼と、都そばらしい一杯を一緒に楽しめる人気の組み合わせです。\n\n※店舗により販売状況・価格が異なる場合がございます。',
+      en: 'Our popular katsudon mini-noodle set is back for a limited time.\n\nEnjoy hearty katsudon together with mini soba or mini udon.\n\n*Availability and prices may vary by store.',
+      zh: '人气猪排盖饭迷你面套餐限时回归。\n\n可同时享用满足感十足的猪排盖饭与都荞麦风味的一碗面。\n\n※销售情况与价格可能因门店而异。',
+      ko: '인기 가츠동 미니면 세트가 기간 한정으로 돌아왔습니다.\n\n든든한 가츠동과 미니 소바 또는 미니 우동을 함께 즐겨보세요.\n\n※판매 여부와 가격은 점포에 따라 다를 수 있습니다.',
+    },
+    hiddenFromList: true,
+  },
+  {
+    id: 'soba-udon-zoryo-202601',
+    category: 'campaign',
+    date: '2026-01-07',
+    title: {
+      ja: 'そば・うどん 増量無料キャンペーン',
+      en: 'Free Soba & Udon Size Upgrade Campaign',
+      zh: '荞麦面・乌冬面免费增量活动',
+      ko: '소바・우동 무료 증량 캠페인',
+    },
+    excerpt: {
+      ja: '対象期間中、大盛り料金が無料に。新年からお得に食べられるキャンペーンです。',
+      en: 'During the campaign period, large-size upgrades are free.',
+      zh: '活动期间，大份加量费用免费。',
+      ko: '행사 기간 동안 곱빼기 요금이 무료입니다.',
+    },
+    image: '/images/news-soba-udon-zoryo.jpg',
+    body: {
+      ja: 'そば・うどんの増量無料キャンペーンを実施します。\n\n対象期間中は、大盛り料金が無料。いつもの一杯をさらに満足感たっぷりにお楽しみいただけます。\n\n※対象商品・実施店舗は店頭にてご確認ください。',
+      en: 'We are running a free size-up campaign for soba and udon.\n\nDuring the campaign, large-size upgrades are free.\n\n*Please check in store for eligible items and participating locations.',
+      zh: '我们将举办荞麦面・乌冬面免费增量活动。\n\n活动期间，大份加量费用免费。\n\n※适用商品与实施门店请于店内确认。',
+      ko: '소바・우동 무료 증량 캠페인을 실시합니다.\n\n행사 기간 동안 곱빼기 요금이 무료입니다.\n\n※대상 상품 및 실시 점포는 매장에서 확인해 주세요.',
+    },
+    hiddenFromList: true,
+  },
+  {
+    id: 'kinoko-tamago-ankake-202511',
+    category: 'newMenu',
+    date: '2025-11-06',
+    title: {
+      ja: '秋の限定 きのこたまごあんかけ',
+      en: 'Autumn Limited: Mushroom & Egg Ankake',
+      zh: '秋季限定 蘑菇鸡蛋芡汁面',
+      ko: '가을 한정 버섯 계란 앙카케',
+    },
+    excerpt: {
+      ja: '旨み広がる、ほっとする一杯。秋限定のきのこたまごあんかけです。',
+      en: 'A warm autumn bowl with mushrooms and egg ankake.',
+      zh: '鲜味满满、温暖身心的秋季限定一碗。',
+      ko: '버섯과 계란의 감칠맛이 퍼지는 가을 한정 메뉴입니다.',
+    },
+    image: '/images/news-kinoko-tamago-ankake.jpg',
+    body: {
+      ja: '秋限定メニューとして、きのこたまごあんかけが登場しました。\n\nきのこの旨みとたまごのやさしさを、あんかけでほっと温まる一杯に仕上げています。\n\n※販売状況は店舗により異なる場合がございます。',
+      en: 'Our autumn limited mushroom and egg ankake is now available.\n\nA comforting bowl with mushroom umami and gentle egg flavor.\n\n*Availability may vary by store.',
+      zh: '秋季限定的蘑菇鸡蛋芡汁面登场。\n\n蘑菇的鲜味与鸡蛋的温和口感，带来温暖的一碗。\n\n※销售情况可能因门店而异。',
+      ko: '가을 한정 버섯 계란 앙카케가 출시되었습니다.\n\n버섯의 감칠맛과 계란의 부드러움을 따뜻한 앙카케로 즐겨보세요.\n\n※판매 여부는 점포에 따라 다를 수 있습니다.',
+    },
+    hiddenFromList: true,
+  },
+  {
+    id: 'oebi-tempura-soba',
+    category: 'newMenu',
+    date: '2025-10-01',
+    title: {
+      ja: '大えび天そば、新登場',
+      en: 'New: Large Shrimp Tempura Soba',
+      zh: '大虾天妇罗荞麦面新登场',
+      ko: '대새우 튀김 소바 신등장',
+    },
+    excerpt: {
+      ja: '食べ応えのある大えび天をのせた、新しい一杯です。',
+      en: 'A new bowl topped with satisfying large shrimp tempura.',
+      zh: '搭配大虾天妇罗的全新一碗。',
+      ko: '먹음직한 대새우 튀김을 올린 새로운 한 그릇입니다.',
+    },
+    image: '/images/menu-tempura.jpg',
+    body: {
+      ja: '大えび天そばが新登場しました。\n\n食べ応えのある大えび天と、都そばのだしがよく合う一杯です。\n\n※店舗により販売状況・価格が異なる場合がございます。',
+      en: 'Large shrimp tempura soba is now available.\n\nEnjoy satisfying shrimp tempura with Miyako Soba broth.\n\n*Availability and prices may vary by store.',
+      zh: '大虾天妇罗荞麦面新登场。\n\n大虾天妇罗与都荞麦汤底相得益彰。\n\n※销售情况与价格可能因门店而异。',
+      ko: '대새우 튀김 소바가 새롭게 등장했습니다.\n\n먹음직한 대새우 튀김과 미야코소바의 국물이 잘 어울리는 한 그릇입니다.\n\n※판매 여부와 가격은 점포에 따라 다를 수 있습니다.',
+    },
+    hiddenFromList: true,
+  },
   {
     id: 'miyakosoba-no-hi-202606',
     category: 'campaign',
