@@ -86,7 +86,6 @@ export const news: NewsItem[] = [
       zh: '秋季限定的蘑菇鸡蛋芡汁面登场。\n\n蘑菇的鲜味与鸡蛋的温和口感，带来温暖的一碗。\n\n※销售情况可能因门店而异。',
       ko: '가을 한정 버섯 계란 앙카케가 출시되었습니다.\n\n버섯의 감칠맛과 계란의 부드러움을 따뜻한 앙카케로 즐겨보세요.\n\n※판매 여부는 점포에 따라 다를 수 있습니다.',
     },
-    hiddenFromList: true,
   },
   {
     id: 'oebi-tempura-soba',
@@ -111,6 +110,30 @@ export const news: NewsItem[] = [
       zh: '大虾天妇罗荞麦面新登场。\n\n大虾天妇罗与都荞麦汤底相得益彰。\n\n※销售情况与价格可能因门店而异。',
       ko: '대새우 튀김 소바가 새롭게 등장했습니다.\n\n먹음직한 대새우 튀김과 미야코소바의 국물이 잘 어울리는 한 그릇입니다.\n\n※판매 여부와 가격은 점포에 따라 다를 수 있습니다.',
     },
+  },
+  {
+    id: 'newyear-2026',
+    category: 'notice',
+    date: '2026-01-01',
+    title: {
+      ja: '謹賀新年 2026',
+      en: 'Happy New Year 2026',
+      zh: '恭贺新年 2026',
+      ko: '근하신년 2026',
+    },
+    excerpt: {
+      ja: '2026年も都そばをよろしくお願いいたします。',
+      en: 'Thank you for your continued support of Miyako Soba in 2026.',
+      zh: '2026年也请继续支持都荞麦。',
+      ko: '2026년에도 미야코소바를 잘 부탁드립니다.',
+    },
+    image: '/images/news-newyear-2026.jpg',
+    body: {
+      ja: '謹賀新年。\n\n2026年も都そばをよろしくお願いいたします。\n\nいつもの一杯を、今年も気軽にお楽しみいただけるよう努めてまいります。\n皆様のご来店を心よりお待ちしております。',
+      en: 'Happy New Year.\n\nThank you for your continued support of Miyako Soba in 2026.\n\nWe look forward to serving you your familiar bowl again this year.',
+      zh: '恭贺新年。\n\n2026年也请继续支持都荞麦。\n\n我们将继续努力，让大家轻松享用熟悉的一碗。',
+      ko: '새해 복 많이 받으세요.\n\n2026년에도 미야코소바를 잘 부탁드립니다.\n\n올해도 언제나처럼 편하게 즐길 수 있는 한 그릇을 준비하겠습니다.',
+    },
     hiddenFromList: true,
   },
   {
@@ -129,7 +152,7 @@ export const news: NewsItem[] = [
       zh: '荞麦面・乌冬面全品适用（拉面除外），「荞麦面・乌冬面」部分半价！',
       ko: '소바・우동 전 메뉴 대상（라멘 제외）, "소바・우동" 부분이 반값!',
     },
-    image: '/images/campaign-miyakosoba-day.jpg',
+    image: '/images/news-miyakosoba-day-half.jpg',
     body: {
       ja: '毎月8日は「都そばの日」！\nということで、そば・うどんが200円引きで食べられちゃいます。\n\n今回はざるそば・ざるうどんも対象ですので、暑い日にもピッタリです。\n\n■ 対象：そば・うどん全品（※ラーメンは対象外です）\n■ 内容：「そば・うどん」の部分が半額に\n\n【一例】\n・かけ　通常400円 → 200円\n・かき揚げ　通常560円 → 360円\n・スタミナ　通常640円 → 440円\n・大人気のかつ丼セット　通常1,050円 → 850円\n・ざるそば・ざるうどん　通常490円 → 290円\n・温玉かき揚げぶっかけ（冷たい麺も対象！）　通常670円 → 470円\n\n都そばの日に都そばを食べると2度美味しい。\n皆様のご来店を心よりお待ちしております！\n\n※その他の注意事項は店頭のポスターに記載しております。詳しくはポスターをご確認ください。',
       en: 'The 8th of every month is "Miyako Soba Day"!\nOn this day, soba and udon are 200 yen off.\n\nThis time, zaru soba and zaru udon are included too, so it\'s perfect for a hot day.\n\n■ Eligible: All soba & udon items (ramen is excluded)\n■ Offer: The soba/udon portion of your order is half price\n\n[Examples]\n・Kake: regularly 400 yen → 200 yen\n・Kakiage: regularly 560 yen → 360 yen\n・Stamina: regularly 640 yen → 440 yen\n・Popular Katsudon Set: regularly 1,050 yen → 850 yen\n・Zaru Soba / Zaru Udon: regularly 490 yen → 290 yen\n・Onsen-egg Kakiage Bukkake (cold noodles included!): regularly 670 yen → 470 yen\n\nEating Miyako Soba on Miyako Soba Day is doubly delicious.\nWe look forward to your visit!\n\n* For other terms and conditions, please see the poster displayed in-store.',
