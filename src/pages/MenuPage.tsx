@@ -32,10 +32,11 @@ function splitName(item: MenuItem, lang: Lang) {
 function MenuFuda({ item }: { item: MenuItem }) {
   const { lang } = useT();
   const name = splitName(item, lang);
+  const isTopping = item.type === 'topping';
 
   return (
     <article
-      className="group flex flex-col items-center rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+      className={`group flex flex-col items-center rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 ${isTopping ? 'pt-10' : ''}`}
       style={{ background: 'linear-gradient(170deg, #fdf7ec 0%, #f5e9ce 100%)' }}
     >
       {/* バッジ */}
@@ -61,19 +62,13 @@ function MenuFuda({ item }: { item: MenuItem }) {
             />
           </div>
         </div>
-      ) : (
-        <div className="mt-3 mb-5">
-          <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-[5px] border-white shadow-md bg-white/65 flex items-center justify-center">
-            <span className="font-serif font-black text-soba-red text-lg md:text-xl tracking-[0.2em]">追加</span>
-          </div>
-        </div>
-      )}
+      ) : null}
 
       {/* 区切り */}
-      <div className="w-12 h-px bg-soba-ink/20 mb-5" />
+      <div className={`w-12 h-px bg-soba-ink/20 ${isTopping ? 'mb-8' : 'mb-5'}`} />
 
       {/* 縦書き品名 */}
-      <div className="flex-1 flex flex-col items-center justify-center gap-2 px-4 py-2">
+      <div className={`flex-1 flex flex-col items-center justify-center gap-2 px-4 py-2 ${isTopping ? 'min-h-52' : ''}`}>
         <span
           className="font-serif font-black text-soba-ink leading-tight"
           style={{ writingMode: 'vertical-rl', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', letterSpacing: '0.08em' }}
