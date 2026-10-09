@@ -8,6 +8,7 @@ import News from './components/News';
 import Recruit from './components/Recruit';
 import SocialFollow from './components/SocialFollow';
 import Footer from './components/Footer';
+import CustomerPromise from './components/CustomerPromise';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Recommend />
         <Menu />
         <Features />
+        <CustomerPromise />
         <News />
         <Locations />
         <Recruit />
