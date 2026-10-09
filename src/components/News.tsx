@@ -19,7 +19,7 @@ export default function News() {
           <h3 className="font-serif text-2xl md:text-3xl font-black text-soba-ink text-center mb-8">
             {t.news.categories.campaign}
           </h3>
-          <div className="mx-auto grid max-w-3xl gap-5 md:gap-6">
+          <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 md:gap-6">
             {homeCampaigns.map((campaign) => {
               const className =
                 'block overflow-hidden rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300';

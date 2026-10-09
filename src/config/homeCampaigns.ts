@@ -15,16 +15,17 @@ export type HomeCampaign = {
   image: string;
 };
 
+// 配列の順がそのまま左から右への並び順になる。
 export const homeCampaigns: HomeCampaign[] = [
+  {
+    to: '/news/miyakosoba-no-hi-202606',
+    label: '毎月8日は都そばの日 そば・うどんの麺の部分が半額',
+    image: '/images/campaign-miyakosoba-day-v1.jpg',
+  },
   {
     // バナー自体が友だち追加の導線なので、記事ではなくLINEを直接開く。
     to: socialLinks.line,
     label: 'LINE友だち追加で50円OFFクーポンプレゼント',
     image: '/images/campaign-line-coupon-v1.jpg',
-  },
-  {
-    to: '/news/miyakosoba-no-hi-202606',
-    label: '毎月8日は都そばの日 そば・うどんの麺の部分が半額',
-    image: '/images/campaign-miyakosoba-day-v1.jpg',
   },
 ];
