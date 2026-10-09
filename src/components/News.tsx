@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
-import { news } from '../data/news';
+import { homeCampaigns } from '../config/homeCampaigns';
 
 export default function News() {
-  const { t, lang } = useT();
-  const CAMPAIGN_IDS = ['miyakosoba-no-hi-202606'];
-  const latest = CAMPAIGN_IDS.map(id => news.find(n => n.id === id)).filter(Boolean) as typeof news;
+  const { t } = useT();
 
   return (
     <section id="news" className="pt-8 pb-16 md:py-24 bg-cream-50">
@@ -21,22 +19,31 @@ export default function News() {
           <h3 className="font-serif text-2xl md:text-3xl font-black text-soba-ink text-center mb-8">
             {t.news.categories.campaign}
           </h3>
-          <div className="grid justify-center gap-4 md:gap-6 max-w-2xl mx-auto sm:grid-cols-[repeat(auto-fit,minmax(280px,360px))]">
-            {latest.map((item) => (
-              <Link
-                key={item.id}
-                to={`/news/${item.id}`}
-                className="block overflow-hidden rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
-              >
-                <div className="aspect-[3/2] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title[lang]}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </Link>
-            ))}
+          <div className="mx-auto grid max-w-3xl gap-5 md:gap-6">
+            {homeCampaigns.map((campaign) => {
+              const className =
+                'block overflow-hidden rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300';
+              // バナーは全て同じ比率なので、切り抜かずそのまま並べる。
+              const banner = (
+                <img src={campaign.image} alt={campaign.label} className="block h-auto w-full" />
+              );
+
+              return /^https?:\/\//i.test(campaign.to) ? (
+                <a
+                  key={campaign.to}
+                  href={campaign.to}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={className}
+                >
+                  {banner}
+                </a>
+              ) : (
+                <Link key={campaign.to} to={campaign.to} className={className}>
+                  {banner}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
