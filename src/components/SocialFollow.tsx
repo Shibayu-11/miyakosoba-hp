@@ -30,17 +30,17 @@ export default function SocialFollow() {
         <p className="text-sm text-soba-ink/60 mb-10">{label}</p>
 
         {/* カード */}
-        <div className="bg-white rounded-2xl shadow-sm px-6 sm:px-10 py-10 flex flex-wrap items-center justify-center gap-10 sm:gap-14 mx-auto w-full max-w-md sm:max-w-none">
+        <div className="bg-white rounded-2xl shadow-sm px-4 sm:px-10 py-8 sm:py-10 grid grid-cols-3 items-start gap-3 sm:gap-14 mx-auto w-full max-w-md sm:max-w-none">
           {/* LINE */}
           <a
             href={socialLinks.line}
             aria-label="LINE"
-            className="flex flex-col items-center gap-3 group"
+            className="flex min-w-0 flex-col items-center gap-2 sm:gap-3 group"
           >
-            <div className="w-16 h-16 flex items-center justify-center transition-transform group-hover:scale-105">
-              <img src="/images/social-line.png" alt="" className="w-16 h-16 object-contain" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform group-hover:scale-105">
+              <img src="/images/social-line.png" alt="" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
             </div>
-            <span className="text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors">
+            <span className="text-[10px] sm:text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors whitespace-nowrap">
               {lineLabel}
             </span>
           </a>
@@ -49,12 +49,12 @@ export default function SocialFollow() {
           <a
             href={socialLinks.instagram}
             aria-label="Instagram"
-            className="flex flex-col items-center gap-3 group"
+            className="flex min-w-0 flex-col items-center gap-2 sm:gap-3 group"
           >
-            <div className="w-16 h-16 flex items-center justify-center transition-transform group-hover:scale-105">
-              <img src="/images/social-instagram.png" alt="" className="w-14 h-14 object-contain" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform group-hover:scale-105">
+              <img src="/images/social-instagram.png" alt="" className="w-11 h-11 sm:w-14 sm:h-14 object-contain" />
             </div>
-            <span className="text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors">
+            <span className="text-[10px] sm:text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors whitespace-nowrap">
               {igLabel}
             </span>
           </a>
@@ -63,12 +63,12 @@ export default function SocialFollow() {
           <a
             href={socialLinks.x}
             aria-label="X"
-            className="flex flex-col items-center gap-3 group"
+            className="flex min-w-0 flex-col items-center gap-2 sm:gap-3 group"
           >
-            <div className="w-16 h-16 flex items-center justify-center transition-transform group-hover:scale-105">
-              <img src="/images/social-x-black.svg" alt="" className="w-11 h-11 object-contain" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform group-hover:scale-105">
+              <img src="/images/social-x-black.svg" alt="" className="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
             </div>
-            <span className="text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors">
+            <span className="text-[10px] sm:text-xs font-medium text-soba-ink/70 group-hover:text-soba-ink transition-colors whitespace-nowrap">
               {xLabel}
             </span>
           </a>

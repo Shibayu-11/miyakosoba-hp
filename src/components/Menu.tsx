@@ -76,28 +76,17 @@ export default function Menu() {
   return (
     <section id="menu" className="py-10 md:pt-12 md:pb-20 bg-cream-100">
       <div className="max-w-7xl mx-auto px-6">
-        <Link
-          to="/menu"
-          className="group relative block overflow-hidden rounded-2xl shadow-md md:hidden aspect-[16/10]"
-        >
-          <img
-            src="/images/menu-miyakospecial-new.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-soba-ink/85 via-soba-ink/40 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
-            <p className="text-xs font-bold tracking-[0.3em] text-cream-100">{t.menu.label}</p>
-            <div>
-              <h2 className="font-serif text-3xl font-bold leading-snug">{t.menu.pageHeading}</h2>
-              <p className="mt-2 max-w-[85%] text-sm leading-relaxed text-white/85">{t.menu.pageIntro}</p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold">
-                {t.menu.cta}
-                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </div>
+        <div className="md:hidden">
+          <div className="text-center mb-7">
+            <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.menu.label}</p>
+            <h2 className="font-serif text-3xl font-bold text-soba-ink">{t.menu.heading}</h2>
           </div>
-        </Link>
+          <div className="grid grid-cols-1 gap-4">
+            {TOP_CARDS.map((card) => (
+              <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} />
+            ))}
+          </div>
+        </div>
 
         <div className="hidden md:block">
         {/* 見出し */}

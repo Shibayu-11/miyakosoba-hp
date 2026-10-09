@@ -9,7 +9,7 @@ export default function Recruit() {
       <div className="min-h-[360px] flex items-center justify-center px-6 py-16 text-center">
         <div className="max-w-xl">
           <p className="text-cream-100 text-xs font-bold tracking-[0.4em] mb-4">{t.recruit.label}</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold leading-snug mb-5">
+          <h2 className="font-serif text-[1.72rem] sm:text-3xl md:text-4xl font-bold leading-snug mb-5 whitespace-nowrap">
             {t.recruit.heading}
           </h2>
           <p className="text-sm md:text-base text-cream-100/80 leading-loose mb-8">

@@ -1,28 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
 
-const RamenIcon = () => (
-  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M17 18 Q19 13 17 9M24 16 Q26 11 24 7M31 18 Q33 13 31 9" />
-    <path d="M11 26 Q14 21 18 26 Q22 31 26 26 Q30 21 34 26" />
-    <path d="M9 30 Q9 44 24 44 Q39 44 39 30" />
-    <line x1="9" y1="30" x2="39" y2="30" />
-    <line x1="20" y1="19" x2="30" y2="30" />
-    <line x1="24" y1="17" x2="34" y2="28" />
-  </svg>
-);
-
-const StoreIcon = () => (
-  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M4 22 L24 6 L44 22" />
-    <rect x="8" y="22" width="32" height="22" />
-    <rect x="19" y="32" width="10" height="12" />
-    <rect x="10" y="25" width="8" height="7" rx="1" />
-    <rect x="30" y="25" width="8" height="7" rx="1" />
-    <path d="M18 6 Q20 2 18 0M24 4 Q26 0 24-2M30 6 Q32 2 30 0" />
-  </svg>
-);
-
 export default function Hero() {
   const { t } = useT();
   return (
@@ -80,23 +58,17 @@ export default function Hero() {
           <div className="absolute left-4 right-4 top-4 z-10 grid grid-cols-2 gap-2 md:hidden">
             <Link
               to="/menu"
-              className="group flex min-h-16 items-center gap-2 border border-soba-red bg-soba-red/95 px-3 py-2 text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] backdrop-blur-sm transition-colors hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="group flex min-h-16 items-center justify-between gap-3 border border-soba-red bg-soba-red/95 px-5 py-2 text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] backdrop-blur-sm transition-colors hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center border border-white/30">
-                <RamenIcon />
-              </span>
-              <span className="min-w-0 flex-1 font-serif text-xs font-bold leading-tight tracking-wide">{t.nav.menu}</span>
-              <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
+              <span className="min-w-0 font-serif text-base font-bold leading-tight tracking-wide">{t.nav.menu}</span>
+              <span className="text-xl transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
             </Link>
             <Link
               to="/locations"
-              className="group flex min-h-16 items-center gap-2 border border-cream-100/70 bg-cream-100/95 px-3 py-2 text-soba-ink shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors hover:bg-cream-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="group flex min-h-16 items-center justify-between gap-3 border border-cream-100/70 bg-cream-100/95 px-5 py-2 text-soba-ink shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors hover:bg-cream-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center border border-soba-ink/25">
-                <StoreIcon />
-              </span>
-              <span className="min-w-0 flex-1 font-serif text-xs font-bold leading-tight tracking-wide">{t.hero.viewLocations}</span>
-              <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
+              <span className="min-w-0 font-serif text-base font-bold leading-tight tracking-wide">{t.hero.viewLocations}</span>
+              <span className="text-xl transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
             </Link>
           </div>
           {/* モバイルのみ：ロゴマーク＋縦書きブランド名 */}

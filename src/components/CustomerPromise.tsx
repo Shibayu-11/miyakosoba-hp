@@ -101,7 +101,7 @@ export default function CustomerPromise() {
             })}
           </div>
 
-          <p className="mt-7 text-center font-serif text-lg font-black tracking-wide text-soba-ink">
+          <p className="mt-7 whitespace-nowrap text-center font-serif text-[0.95rem] font-black tracking-tight text-soba-ink sm:text-lg sm:tracking-wide">
             {copy.closing}
           </p>
         </div>
