@@ -29,7 +29,7 @@ export const news: NewsItem[] = [
       zh: '松软薯块，天妇罗鲜香四溢。新招牌「炸薯天荞麦面」520日元（含税），10月13日开售。',
       ko: '포근한 감자와 촉촉하게 퍼지는 튀김의 감칠맛. 새 명물 「포테텐 소바」 520엔(세금 포함), 10월 13일 출시.',
     },
-    image: '/images/news-potaten-soba.jpg',
+    image: '/images/news-potaten-soba-v2.jpg',
     body: {
       ja: '【都そばの新名物完成!!👏🎊🎉】\n10月13日発売開始！！\nこの度都そばの新名物「ぽて天」誕生！！\n\n細かい味の調整にこだわりまくって完成した新商品です✨\n美味しいほくほくのポテトが天ぷらになりました！！\n\n腹持ちバツグンなのに単品なんと「120円」👀⁉\n都そばこだわりのそばつゆがしみるとさらに美味しい🤤\n\n多くのお客様にお召し上がりいただきたいので\n【本日からミニぽて天サンプルを無料でお付けしちゃいます！！】\n\n何度も試作を重ねてどのトッピングとも合うお味に仕上がりましたのでぜひご賞味ください🥰✨✨\n\n【発売日】令和8年10月13日（火）\n【サンプル配布期間】令和8年10月15日（木）まで\n※各店1日あたりのサンプル配布上限数がございますのでご了承ください。\n※一部店舗ではお取り扱いがございません。',
       en: '【Our new Miyako Soba signature is here!!👏🎊🎉】\nOn sale from October 13!!\nIntroducing "Potaten" — the new signature of Miyako Soba!!\n\nWe fine-tuned the flavor again and again to complete this new item✨\nDelicious, fluffy potato, turned into tempura!!\n\nSo filling, yet a single piece is just ¥120👀⁉\nEven better once it soaks up our signature soba broth🤤\n\nWe want as many customers as possible to try it, so\n【starting today, a free Mini Potaten sample comes with your order!!】\n\nAfter many trial batches, it now pairs with any topping — please give it a try🥰✨✨\n\n[On sale] Tuesday, October 13, 2026\n[Sample giveaway] Until Thursday, October 15, 2026\n*Each store has a daily limit on samples. Thank you for your understanding.\n*Not available at some stores.',

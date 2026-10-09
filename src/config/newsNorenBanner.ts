@@ -8,6 +8,10 @@ export type NewsNorenBannerLink = {
    * ポスターの差し替えはこのパスを変えるだけで済む（バナー画像の再合成は不要）。
    * 枠の比率は className のコメント参照（概ね 0.69〜0.71）。
    * これに近い縦長画像を用意すると、object-cover のトリミングが最小になる。
+   *
+   * 差し替えるときは必ず新しいファイル名にすること（例: -v2 → -v3）。
+   * netlify.toml で /images/* は7日間キャッシュされるため、同名で上書きすると
+   * 一度サイトを見た人には最大7日間、古いポスターが表示されたままになる。
    */
   poster?: string;
 };
@@ -27,7 +31,7 @@ export const newsNorenBanner = {
       label: '都そばの新名物「ぽて天」10月13日発売',
       // 背景バナー上の掛け軸の実寸（1748x900 中の x362-671 / y239-687）。枠の比率は 309:448。
       className: 'left-[20.709%] top-[26.556%] h-[49.778%] w-[17.677%]',
-      poster: '/images/news-potaten-soba.jpg',
+      poster: '/images/news-potaten-soba-v2.jpg',
     },
     {
       to: '/news/miyakosoba-no-hi-202606',
