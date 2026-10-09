@@ -63,7 +63,6 @@ export default function StoreMap({ visible, zoom = 9 }: Props) {
         doubleClickZoom={!L.Browser.mobile}
         boxZoom={!L.Browser.mobile}
         keyboard={!L.Browser.mobile}
-        tap={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
