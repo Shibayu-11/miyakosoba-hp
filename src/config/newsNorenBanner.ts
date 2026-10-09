@@ -1,4 +1,7 @@
+import { socialLinks } from './socialLinks';
+
 export type NewsNorenBannerLink = {
+  /** サイト内パス、または http(s):// で始まる外部URL（別タブで開く）。 */
   to: string;
   label: string;
   className: string;
@@ -45,14 +48,19 @@ export const newsNorenBanner = {
       poster: '/images/news-miyakosoba-day-202610.jpg',
     },
     {
-      to: '/news/soba-udon-zoryo-202601',
-      label: 'そば・うどん 増量無料キャンペーン',
-      className: 'left-[59.2%] top-[26%] h-[51%] w-[18.2%]',
+      // ポスター自体が友だち追加の導線なので、記事ではなくLINEを直接開く。
+      to: socialLinks.line,
+      label: 'LINE友だち追加で50円OFFクーポンプレゼント',
+      // 背景バナー上の掛け軸の実寸（1748x900 中の x1060-1379 / y240-712）。枠の比率は 320:473。
+      className: 'left-[60.641%] top-[26.667%] h-[52.556%] w-[18.307%]',
+      poster: '/images/news-line-coupon-v1.jpg',
     },
     {
       to: '/news/newyear-2026',
       label: '謹賀新年 2026',
-      className: 'left-[78.7%] top-[26%] h-[51%] w-[18.2%]',
+      // 背景バナー上の掛け軸の実寸（1748x900 中の x1400-1709 / y240-708）。枠の比率は 310:469。
+      // 旧値は左に寄りすぎて隣の掛け軸に4px重なり、LINEポスターの右端がこちらのリンクになっていた。
+      className: 'left-[80.092%] top-[26.667%] h-[52.111%] w-[17.735%]',
     },
   ] satisfies NewsNorenBannerLink[],
 };

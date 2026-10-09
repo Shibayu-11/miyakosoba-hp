@@ -17,23 +17,34 @@ export default function Recommend() {
               className="block h-auto w-full select-none"
               draggable={false}
             />
-            {newsNorenBanner.links.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                aria-label={link.label}
-                className={`absolute block overflow-hidden rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soba-red ${link.className}`}
-              >
-                {link.poster && (
-                  <img
-                    src={link.poster}
-                    alt=""
-                    className="block h-full w-full object-cover"
-                    draggable={false}
-                  />
-                )}
-              </Link>
-            ))}
+            {newsNorenBanner.links.map((link) => {
+              const className = `absolute block overflow-hidden rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soba-red ${link.className}`;
+              const poster = link.poster && (
+                <img
+                  src={link.poster}
+                  alt=""
+                  className="block h-full w-full object-cover"
+                  draggable={false}
+                />
+              );
+
+              return /^https?:\/\//i.test(link.to) ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={link.label}
+                  className={className}
+                >
+                  {poster}
+                </a>
+              ) : (
+                <Link key={link.to} to={link.to} aria-label={link.label} className={className}>
+                  {poster}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
