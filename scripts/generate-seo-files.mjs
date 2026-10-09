@@ -1,9 +1,9 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const root = process.cwd();
 const outputDir = process.argv[2] ? resolve(root, process.argv[2]) : resolve(root, 'public');
-const fallbackSiteUrl = 'https://miyakosoba.example.com';
+const productionSiteUrl = 'https://miyakosoba.com';
 
 function loadEnvFile(path) {
   try {
@@ -25,7 +25,15 @@ function loadEnvFile(path) {
 loadEnvFile(resolve(root, '.env'));
 loadEnvFile(resolve(root, '.env.local'));
 
-const siteUrl = (process.env.VITE_SITE_URL ?? process.env.URL ?? fallbackSiteUrl).replace(/\/+$/, '');
+const firstNonEmpty = (...values) =>
+  values.find((value) => typeof value === 'string' && value.trim().length > 0)?.trim();
+
+const siteUrl = firstNonEmpty(
+  process.env.VITE_SITE_URL,
+  process.env.CF_PAGES_URL,
+  process.env.URL,
+  productionSiteUrl,
+).replace(/\/+$/, '');
 const today = new Date().toISOString().slice(0, 10);
 
 const storesSource = readFileSync(resolve(root, 'src/data/stores.ts'), 'utf8');
@@ -92,13 +100,12 @@ Allow: /
 Sitemap: ${siteUrl}/sitemap.xml
 `;
 
+mkdirSync(outputDir, { recursive: true });
 writeFileSync(resolve(outputDir, 'sitemap.xml'), sitemap);
 writeFileSync(resolve(outputDir, 'robots.txt'), robots);
 
-if (siteUrl === fallbackSiteUrl) {
-  console.warn(
-    `[seo] VITE_SITE_URL is not set. Generated sitemap with fallback URL: ${fallbackSiteUrl}`,
-  );
+if (siteUrl === productionSiteUrl) {
+  console.log(`[seo] Generated sitemap.xml and robots.txt for production URL: ${productionSiteUrl}`);
 } else {
   console.log(`[seo] Generated sitemap.xml and robots.txt for ${siteUrl}`);
 }
