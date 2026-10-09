@@ -24,6 +24,11 @@ const TOP_CARDS: Card[] = [
     image: '/images/menu-katsudon-new.jpg',
     to: '/menu?type=donburi',
   },
+  {
+    label: { ja: 'トッピング', en: 'Toppings' },
+    image: '/images/menu-miyakospecial-new.jpg',
+    to: '/menu?type=topping',
+  },
 ];
 
 function CategoryCard({ card, lang, large }: { card: Card; lang: 'ja' | 'en'; large?: boolean }) {
@@ -71,6 +76,30 @@ export default function Menu() {
   return (
     <section id="menu" className="py-10 md:pt-12 md:pb-20 bg-cream-100">
       <div className="max-w-7xl mx-auto px-6">
+        <Link
+          to="/menu"
+          className="group relative block overflow-hidden rounded-2xl shadow-md md:hidden aspect-[16/10]"
+        >
+          <img
+            src="/images/menu-miyakospecial-new.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-soba-ink/85 via-soba-ink/40 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
+            <p className="text-xs font-bold tracking-[0.3em] text-cream-100">{t.menu.label}</p>
+            <div>
+              <h2 className="font-serif text-3xl font-bold leading-snug">{t.menu.pageHeading}</h2>
+              <p className="mt-2 max-w-[85%] text-sm leading-relaxed text-white/85">{t.menu.pageIntro}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold">
+                {t.menu.cta}
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        <div className="hidden md:block">
         {/* 見出し */}
         <div className="text-center mb-12">
           <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.menu.label}</p>
@@ -80,7 +109,7 @@ export default function Menu() {
         </div>
 
         {/* カテゴリカード */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-7 mb-8 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-7 mb-8 max-w-[1440px] mx-auto">
           {TOP_CARDS.map((card) => (
             <CategoryCard key={card.to} card={card} lang={lang as 'ja' | 'en'} large />
           ))}
@@ -99,6 +128,7 @@ export default function Menu() {
             <span>{t.menu.cta}</span>
             <ArrowRight size={18} />
           </Link>
+        </div>
         </div>
       </div>
     </section>

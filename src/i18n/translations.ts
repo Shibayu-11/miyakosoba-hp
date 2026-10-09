@@ -37,6 +37,7 @@ export type Dict = {
       all: string;
       noodle: string;
       donburi: string;
+      topping: string;
       takeout: string;
       set: string;
     };
@@ -193,6 +194,7 @@ export const translations: Record<Lang, Dict> = {
         all: '全て',
         noodle: '麺類',
         donburi: '丼物',
+        topping: 'トッピング',
         takeout: 'お持ち帰り',
         set: 'お得なセット',
       },
@@ -371,6 +373,7 @@ export const translations: Record<Lang, Dict> = {
         all: 'All',
         noodle: 'Noodles',
         donburi: 'Rice Bowls',
+        topping: 'Toppings',
         takeout: 'Takeout',
         set: 'Value Sets',
       },
@@ -549,6 +552,7 @@ export const translations: Record<Lang, Dict> = {
         all: '全部',
         noodle: '面类',
         donburi: '盖饭',
+        topping: '加料',
         takeout: '外带',
         set: '超值套餐',
       },
@@ -727,6 +731,7 @@ export const translations: Record<Lang, Dict> = {
         all: '전체',
         noodle: '면류',
         donburi: '덮밥',
+        topping: '토핑',
         takeout: '포장',
         set: '알뜰 세트',
       },
