@@ -451,6 +451,22 @@ export const menu: MenuItem[] = [
 
   // ── トッピング ──
   {
+    id: 'topping-noodle-large',
+    type: 'topping',
+    name: { ja: '麺大盛り1.5倍', en: 'Extra Noodles 1.5x', zh: '面量加大1.5倍', ko: '면 곱빼기 1.5배' },
+    description: { ja: 'お好みの一杯に追加できるトッピングです。', en: 'A topping you can add to your favorite bowl.', zh: '可追加到喜欢菜单中的配料。', ko: '원하는 메뉴에 추가할 수 있는 토핑입니다.' },
+    price: 200,
+    allergens: ['そば', '小麦'],
+  },
+  {
+    id: 'topping-super-dry',
+    type: 'topping',
+    name: { ja: 'スーパードライ', en: 'Super Dry', zh: 'Super Dry啤酒', ko: '슈퍼드라이' },
+    description: { ja: 'お食事と一緒に楽しめるドリンクです。', en: 'A drink to enjoy with your meal.', zh: '可搭配餐点享用的饮品。', ko: '식사와 함께 즐길 수 있는 음료입니다.' },
+    price: 400,
+    allergens: [],
+  },
+  {
     id: 'topping-chikuwa-ten',
     type: 'topping',
     name: { ja: 'ちくわ天', en: 'Chikuwa Tempura', zh: '竹轮天妇罗', ko: '치쿠와 튀김' },
