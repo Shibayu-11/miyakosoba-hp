@@ -42,21 +42,44 @@ export default function Features() {
   return (
     <section
       id="about"
-      className="relative py-16 md:py-24 bg-cream-50"
+      className="relative py-10 md:py-24 bg-cream-50"
       style={{
         backgroundImage:
           'radial-gradient(circle at 12% 20%, rgba(164,35,31,0.06) 0, transparent 18%), radial-gradient(circle at 88% 75%, rgba(164,35,31,0.05) 0, transparent 22%)',
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10 md:mb-16">
+        <Link
+          to="/about#commitments"
+          className="group relative block overflow-hidden rounded-2xl shadow-md md:hidden aspect-[16/10]"
+        >
+          <img
+            src="/images/feature-dashi.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-soba-ink/85 via-soba-ink/45 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
+            <p className="text-xs font-bold tracking-[0.3em] text-cream-100">{t.features.label}</p>
+            <div>
+              <h2 className="font-serif text-3xl font-bold leading-snug">{t.features.mobileTitle}</h2>
+              <p className="mt-2 text-sm text-white/85">{t.features.heading}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold">
+                {t.features.cta}
+                <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        <div className="hidden text-center mb-16 md:block">
           <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.features.label}</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink">
             一杯に込めた、<br />３つのこだわり。
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
+        <div className="hidden md:grid md:grid-cols-3 gap-10">
           {features.map((f, i) => (
             <article key={i} className="flex flex-col">
               <div className="flex items-start gap-5 px-2 mb-5">
@@ -74,7 +97,7 @@ export default function Features() {
           ))}
         </div>
 
-        <div className="text-center mt-14">
+        <div className="hidden text-center mt-14 md:block">
           <Link
             to="/about"
             className="inline-flex items-center gap-2 border border-soba-ink text-soba-ink hover:bg-soba-ink hover:text-white px-10 py-3 font-bold transition-all duration-300 hover:scale-105"

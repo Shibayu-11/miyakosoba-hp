@@ -64,7 +64,7 @@ export default function About() {
       </section>
 
       {/* 3つのこだわり詳細 */}
-      <section className="py-20 md:py-24 bg-white">
+      <section id="commitments" className="scroll-mt-16 py-20 md:scroll-mt-0 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.about.commitmentsLabel}</p>

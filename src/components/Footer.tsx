@@ -18,8 +18,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-soba-ink text-white">
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid md:grid-cols-12 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 md:py-12">
+        <div className="grid md:grid-cols-12 gap-8">
           <div className="md:col-span-3">
             <div className="flex items-center gap-3 mb-5">
               <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav className="md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">
+          <nav className="md:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">
             {navItems.map((item) =>
               item.isRoute ? (
                 <Link
@@ -69,18 +69,12 @@ export default function Footer() {
             )}
           </nav>
 
-          <div className="md:col-span-3 flex flex-col gap-3 md:items-end">
-            <Link to="/privacy" className="border border-white/40 hover:bg-white hover:text-soba-ink text-white text-xs font-medium px-5 py-2.5 transition-colors w-full md:w-auto text-center">
-              {t.footer.privacy}
-            </Link>
-            <Link to="/tokutei" className="border border-white/40 hover:bg-white hover:text-soba-ink text-white text-xs font-medium px-5 py-2.5 transition-colors w-full md:w-auto text-center">
-              {t.footer.tokutei}
-            </Link>
+        </div>
+
+        <div className="border-t border-white/10 mt-8 pt-5 text-xs font-bold text-white/70">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
             {CONTACT_URL.startsWith('/') ? (
-              <Link
-                to={CONTACT_URL}
-                className="border border-white/40 hover:bg-white hover:text-soba-ink text-white text-xs font-medium px-5 py-2.5 transition-colors w-full md:w-auto text-center"
-              >
+              <Link to={CONTACT_URL} className="hover:text-white hover:underline underline-offset-4 transition-colors">
                 {t.footer.contact}
               </Link>
             ) : (
@@ -88,19 +82,27 @@ export default function Footer() {
                 href={CONTACT_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-white/40 hover:bg-white hover:text-soba-ink text-white text-xs font-medium px-5 py-2.5 transition-colors w-full md:w-auto text-center"
+                className="hover:text-white hover:underline underline-offset-4 transition-colors"
               >
                 {t.footer.contact}
               </a>
             )}
+            <span className="opacity-40">|</span>
+            <Link to="/tokutei" className="hover:text-white hover:underline underline-offset-4 transition-colors">
+              {t.footer.tokutei}
+            </Link>
+            <span className="opacity-40">|</span>
+            <Link to="/privacy" className="hover:text-white hover:underline underline-offset-4 transition-colors">
+              {t.footer.privacy}
+            </Link>
+          </div>
+
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-white/60">
+            <span>{t.parentCompany.name}</span>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-bold text-white/70">
-          <span>{t.parentCompany.name}</span>
-        </div>
-
-        <div className="mt-6 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+        <div className="mt-5 pt-5 border-t border-white/10 text-center text-xs text-white/50">
           {t.footer.copy}
         </div>
       </div>
