@@ -18,10 +18,10 @@ export const news: NewsItem[] = [
     category: 'newMenu',
     date: '2026-10-09',
     title: {
-      ja: '都そばの新名物「ぽて天そば」10月13日発売',
-      en: 'New Signature "Potaten Soba" Launches October 13',
-      zh: '都荞麦新招牌「炸薯天荞麦面」10月13日开售',
-      ko: '미야코소바의 새 명물 「포테텐 소바」 10월 13일 출시',
+      ja: '都そばの新名物「ぽて天」10月13日発売',
+      en: 'New Signature "Potaten" Launches October 13',
+      zh: '都荞麦新招牌「炸薯天」10月13日开售',
+      ko: '미야코소바의 새 명물 「포테텐」 10월 13일 출시',
     },
     excerpt: {
       ja: 'ほくほく、じゅわっと広がる天のうまみ。新名物「ぽて天そば」520円（税込）を10月13日より発売します。',

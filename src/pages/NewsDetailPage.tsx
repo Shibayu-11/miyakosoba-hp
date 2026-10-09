@@ -51,7 +51,8 @@ export default function NewsDetailPage() {
           <span className="text-xs text-soba-ink/60">{dateStr}</span>
         </div>
 
-        <h1 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink leading-snug mb-8">
+        {/* text-balance: 折り返す幅でも「売」1文字だけが行に残るのを防ぐ */}
+        <h1 className="font-serif text-3xl md:text-4xl font-bold text-soba-ink leading-snug text-balance mb-8">
           {item.title[lang]}
         </h1>
 
