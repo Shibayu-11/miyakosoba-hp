@@ -64,14 +64,7 @@ export default function CustomerPromise() {
   const copy = PROMISES[lang];
 
   return (
-    <section
-      className="relative overflow-hidden bg-cream-100 py-14 md:py-24"
-      style={{
-        backgroundImage:
-          'linear-gradient(90deg, rgba(164,35,31,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(164,35,31,0.04) 1px, transparent 1px)',
-        backgroundSize: '28px 28px',
-      }}
-    >
+    <section className="relative overflow-hidden bg-cream-100 py-14 md:py-24">
       <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-soba-red/10 blur-3xl" />
       <div className="absolute -right-28 bottom-10 h-72 w-72 rounded-full bg-[#d4b06a]/20 blur-3xl" />
 
