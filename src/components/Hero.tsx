@@ -18,12 +18,12 @@ export default function Hero() {
             </p>
 
             {/* PC のみ表示 */}
-            <div className="hidden max-w-md grid-cols-2 gap-3 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
+            <div className="hidden max-w-lg grid-cols-2 gap-3 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
               <Link
                 to="/menu"
                 className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-soba-red bg-soba-red px-5 py-4 text-white shadow-[0_12px_28px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <span className="font-serif text-base font-bold leading-snug tracking-[0.12em]">
+                <span className="whitespace-nowrap font-serif text-base font-bold leading-snug tracking-[0.08em]">
                   {t.hero.viewMenu}
                 </span>
                 <span className="text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
@@ -34,7 +34,7 @@ export default function Hero() {
                 to="/locations"
                 className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-cream-100/45 bg-white/[0.04] px-5 py-4 text-cream-100 shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-cream-100 hover:text-soba-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
-                <span className="font-serif text-base font-bold leading-snug tracking-[0.12em]">
+                <span className="whitespace-nowrap font-serif text-base font-bold leading-snug tracking-[0.08em]">
                   {t.hero.viewLocations}
                 </span>
                 <span className="text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
