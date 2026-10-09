@@ -80,7 +80,7 @@ export const menu: MenuItem[] = [
     name: { ja: 'おぼろそば／うどん', en: 'Oboro Soba/Udon', zh: '朧昆布荞麦面／乌冬面', ko: '오보로소바(다시마)／우동' },
     description: { ja: 'とろとろのおぼろ昆布がだしに溶け込む関西の味。', en: 'Silky oboro kombu melted into Kansai-style dashi.', zh: '入口即化的朧昆布融入高汤，关西风味十足。', ko: '부드럽게 녹는 오보로 다시마가 어우러진 간사이의 맛.' },
     price: 510,
-    image: '/images/menu-oboro-new.jpg',
+    image: '/images/menu-oboro-v2.jpg',
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -95,8 +95,8 @@ export const menu: MenuItem[] = [
   {
     id: 'tempura',
     type: 'both',
-    name: { ja: '天ぷらそば／うどん', en: 'Tempura Soba/Udon', zh: '天妇罗荞麦面／乌冬面', ko: '튀김소바／우동' },
-    description: { ja: 'サクサクの天ぷらをのせた、不動の人気メニュー。', en: 'Crispy tempura on a hot bowl — our signature.', zh: '酥脆天妇罗满载，长盛不衰的人气菜单。', ko: '바삭한 튀김을 올린, 변함없는 인기 메뉴.' },
+    name: { ja: 'ちくわ天そば／うどん', en: 'Chikuwa Tempura Soba/Udon', zh: '竹轮天妇罗荞麦面／乌冬面', ko: '치쿠와 튀김소바／우동' },
+    description: { ja: 'サクサクのちくわ天をのせた、不動の人気メニュー。', en: 'Crispy chikuwa tempura on a hot bowl — our signature.', zh: '酥脆竹轮天妇罗满载，长盛不衰的人气菜单。', ko: '바삭한 치쿠와 튀김을 올린, 변함없는 인기 메뉴.' },
     price: 530,
     image: '/images/menu-tempura-new.jpg',
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
