@@ -26,7 +26,7 @@ export default function SocialFollow() {
       <div className="max-w-2xl mx-auto text-center">
         {/* 見出し */}
         <p className="text-xs font-bold tracking-[0.25em] text-soba-ink/50 mb-2 uppercase">Follow Us</p>
-        <h2 className="font-serif text-3xl sm:text-4xl font-black text-soba-ink mb-1">{HEADING[lang]}</h2>
+        <h2 className="font-serif text-[1.65rem] sm:text-4xl font-black text-soba-ink mb-1 whitespace-nowrap">{HEADING[lang]}</h2>
         <p className="text-sm text-soba-ink/60 mb-10">{label}</p>
 
         {/* カード */}
