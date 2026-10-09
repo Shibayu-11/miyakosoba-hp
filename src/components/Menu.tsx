@@ -11,22 +11,22 @@ type Card = {
 const TOP_CARDS: Card[] = [
   {
     label: { ja: '全て', en: 'All' },
-    image: '/images/menu-category-all.jpg',
+    image: '/images/menu-category-all-new.png',
     to: '/menu',
   },
   {
     label: { ja: '麺類', en: 'Noodles' },
-    image: '/images/menu-kakiage-new.jpg',
+    image: '/images/menu-category-noodle-new.png',
     to: '/menu?type=noodle',
   },
   {
     label: { ja: '丼物', en: 'Rice Bowls' },
-    image: '/images/menu-katsudon-new.jpg',
+    image: '/images/menu-category-donburi-new.png',
     to: '/menu?type=donburi',
   },
   {
     label: { ja: 'トッピング', en: 'Toppings' },
-    image: '/images/menu-miyakospecial-new.jpg',
+    image: '/images/menu-category-topping-new.png',
     to: '/menu?type=topping',
   },
 ];
