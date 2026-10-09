@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { menu, type Allergen, type MenuItem } from '../data/menu';
+import { menu, type MenuItem } from '../data/menu';
 import { useT } from '../i18n/LanguageContext';
-import type { Dict, Lang } from '../i18n/translations';
+import type { Lang } from '../i18n/translations';
 
 type Filter = 'all' | 'noodle' | 'donburi' | 'topping';
 const FILTERS: Filter[] = ['all', 'noodle', 'donburi', 'topping'];
@@ -108,70 +108,6 @@ function MenuFuda({ item }: { item: MenuItem }) {
   );
 }
 
-const ALLERGEN_COLUMNS: { key: Allergen; labelKey: keyof Dict['allergenTable']['labels'] }[] = [
-  { key: 'そば', labelKey: 'soba' },
-  { key: '小麦', labelKey: 'wheat' },
-  { key: '卵', labelKey: 'egg' },
-  { key: '乳', labelKey: 'milk' },
-  { key: 'えび', labelKey: 'shrimp' },
-  { key: 'かに', labelKey: 'crab' },
-  { key: '落花生', labelKey: 'peanut' },
-  { key: 'くるみ', labelKey: 'walnut' },
-];
-
-function AllergenTable() {
-  const { t, lang } = useT();
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="mt-14">
-      <h2 className="font-serif text-xl md:text-2xl font-bold text-soba-ink mb-4">{t.allergenTable.heading}</h2>
-
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="text-sm font-bold px-6 py-2.5 border border-soba-ink text-soba-ink hover:bg-soba-ink hover:text-white transition-colors"
-      >
-        {open ? t.allergenTable.toggleHide : t.allergenTable.toggleShow}
-      </button>
-
-      {open && (
-        <div className="mt-4">
-          <div className="overflow-x-auto border border-cream-200 rounded-sm bg-white">
-            <table className="w-full text-sm whitespace-nowrap">
-              <thead>
-                <tr className="bg-soba-ink text-white">
-                  <th className="text-left font-bold px-4 py-3 sticky left-0 bg-soba-ink">{t.allergenTable.itemHeader}</th>
-                  {ALLERGEN_COLUMNS.map((col) => (
-                    <th key={col.key} className="font-bold px-3 py-3 text-center">
-                      {t.allergenTable.labels[col.labelKey]}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {menu.map((item, i) => (
-                  <tr key={item.id} className={i % 2 === 0 ? 'bg-cream-50' : 'bg-white'}>
-                    <th className="text-left font-bold text-soba-ink px-4 py-2.5 sticky left-0 bg-inherit">
-                      {item.name[lang]}
-                    </th>
-                    {ALLERGEN_COLUMNS.map((col) => (
-                      <td key={col.key} className="px-3 py-2.5 text-center text-soba-ink/80">
-                        {item.allergens.includes(col.key) ? '●' : '－'}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-soba-ink/60 leading-relaxed mt-4">{t.allergenTable.note}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
 function CategoryCard({
   filter,
   active,
@@ -266,8 +202,6 @@ export default function MenuPage() {
               {t.menu.setComingSoon}
             </div>
           )}
-
-          <AllergenTable />
         </div>
       </section>
 
