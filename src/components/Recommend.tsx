@@ -22,8 +22,17 @@ export default function Recommend() {
                 key={link.to}
                 to={link.to}
                 aria-label={link.label}
-                className={`absolute block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soba-red ${link.className}`}
-              />
+                className={`absolute block overflow-hidden rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soba-red ${link.className}`}
+              >
+                {link.poster && (
+                  <img
+                    src={link.poster}
+                    alt=""
+                    className="block h-full w-full object-cover"
+                    draggable={false}
+                  />
+                )}
+              </Link>
             ))}
           </div>
         </div>

@@ -2,6 +2,13 @@ export type NewsNorenBannerLink = {
   to: string;
   label: string;
   className: string;
+  /**
+   * 掛け軸の枠にそのまま重ねるポスター画像。
+   * 指定した枠は背景バナー（news-noren-banner.png）に焼き込まれた絵を覆い隠すため、
+   * ポスターの差し替えはこのパスを変えるだけで済む（バナー画像の再合成は不要）。
+   * 枠の比率は 331:469。これに近い縦長画像を用意すると、object-cover のトリミングが最小になる。
+   */
+  poster?: string;
 };
 
 export const newsNorenBanner = {
@@ -20,9 +27,11 @@ export const newsNorenBanner = {
       className: 'left-[19.5%] top-[26%] h-[51%] w-[18.2%]',
     },
     {
-      to: '/news/katsudon-mini-set-202601',
-      label: 'かつ丼ミニ麺セット、期間限定で復活',
-      className: 'left-[39.1%] top-[26%] h-[51%] w-[18.2%]',
+      to: '/news/potaten-soba-202610',
+      label: '都そばの新名物「ぽて天そば」10月13日発売',
+      // 背景バナー上の掛け軸の実寸（1748x900 中の x699-1030 / y239-708）に合わせている。
+      className: 'left-[39.989%] top-[26.556%] h-[52.111%] w-[18.936%]',
+      poster: '/images/news-potaten-soba.jpg',
     },
     {
       to: '/news/soba-udon-zoryo-202601',

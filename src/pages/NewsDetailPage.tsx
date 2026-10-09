@@ -55,9 +55,11 @@ export default function NewsDetailPage() {
           {item.title[lang]}
         </h1>
 
-        <div
-          className="aspect-[16/9] bg-cover bg-center bg-cream-100 rounded-sm mb-10"
-          style={{ backgroundImage: `url(${item.image})` }}
+        {/* ポスター画像は縦横比がまちまちなので、切り抜かずに全体を見せる */}
+        <img
+          src={item.image}
+          alt={item.title[lang]}
+          className="mx-auto mb-10 block max-h-[75vh] w-auto max-w-full rounded-sm"
         />
 
         {item.body ? (
