@@ -47,8 +47,10 @@ export default function Hero() {
 
         <div className="md:col-span-7 relative overflow-hidden h-80 sm:h-96 md:h-auto">
           <div
-            className="absolute inset-0 bg-cover bg-center animate-hero-image"
-            style={{ backgroundImage: 'url(/images/hero-soba.jpg)' }}
+            // 丼とのれんが写真の右寄りにあるため、中央基準だと枠から切れてしまう。
+            // 右端を基準に合わせると、PC・スマホどちらの枠でも丼が収まる。
+            className="absolute inset-0 bg-cover bg-right animate-hero-image"
+            style={{ backgroundImage: 'url(/images/hero-soba-v2.jpg)' }}
           />
           {/* PC：左からグラデーション */}
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-soba-ink to-transparent hidden md:block" />
