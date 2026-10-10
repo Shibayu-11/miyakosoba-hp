@@ -56,11 +56,12 @@ export const newsNorenBanner = {
       poster: '/images/news-line-coupon-v1.jpg',
     },
     {
-      to: '/news/newyear-2026',
-      label: '謹賀新年 2026',
+      // 商品の紹介なので、記事ではなくお品書きへ。
+      to: '/menu',
+      label: '特製ミニ丼セット そば or うどん付き',
       // 背景バナー上の掛け軸の実寸（1748x900 中の x1400-1709 / y240-708）。枠の比率は 310:469。
-      // 旧値は左に寄りすぎて隣の掛け軸に4px重なり、LINEポスターの右端がこちらのリンクになっていた。
       className: 'left-[80.092%] top-[26.667%] h-[52.111%] w-[17.735%]',
+      poster: '/images/news-minidon-set-v1.jpg',
     },
   ] satisfies NewsNorenBannerLink[],
 };
