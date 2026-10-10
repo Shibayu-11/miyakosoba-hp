@@ -55,6 +55,27 @@
     color: #1a1614;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* 日本語の折り返し。
+     既定では文字単位で折り返すため、「〜です。」の「。」だけ、
+     店名の最後の一文字だけ、といった行が生まれてしまう。
+
+     - word-break: auto-phrase … 文節の切れ目で折り返す（Chrome 119+）
+     - text-wrap: pretty      … 最終行が極端に短くならないようにする
+     - text-wrap: balance     … 見出しは各行の長さを揃える
+
+     いずれも未対応のブラウザでは単に無視され、従来どおりの表示になる。
+     :where() で詰めているので詳細度は 0、個別の指定が常に優先される。 */
+  :where(p, li, dt, dd, figcaption, blockquote, th, td, address, label, summary, a, span, button) {
+    word-break: auto-phrase;
+    text-wrap: pretty;
+  }
+  :where(h1, h2, h3, h4, h5, h6) {
+    word-break: auto-phrase;
+    text-wrap: balance;
+  }
+    /* 縦書きの品名はどれも折り返しが起きない長さなので、この規則の影響を受けない
+       （全123要素で寸法が変わらないことを確認済み）。 */
   /* モバイルのみ（PC表示は変更しない）:
      - 意図しない横スクロールを防ぐ（clip は sticky を壊さない）
      - 下部固定タブバー分の余白を確保（iPhone のホームインジケータ含む） */

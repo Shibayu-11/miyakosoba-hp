@@ -136,7 +136,10 @@ export default function LocationsPage() {
                       <div className="md:col-span-8 space-y-1.5">
                         <p className="text-xs text-soba-ink/70 leading-relaxed flex items-start gap-1.5">
                           <MapPin size={12} className="mt-0.5 shrink-0 text-soba-red" />
-                          <span>{s.prefecture}{s.address}</span>
+                          {/* 住所は丸ごと一つの句と判定されてしまい、auto-phrase だと
+                              末尾の番地しか改行位置が無くなる。通常の折り返しに戻したうえで
+                              行長を均等に割る。 */}
+                          <span className="text-balance [word-break:normal]">{s.prefecture}{s.address}</span>
                         </p>
 
                         <p className="text-xs text-soba-ink/70 leading-relaxed flex items-start gap-1.5">
