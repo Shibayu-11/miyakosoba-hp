@@ -19,10 +19,6 @@ export type MenuItem = {
    * 新しい写真を追加したら、既存と見比べて調整すること。
    */
   imageScale?: number;
-  /** imageScale 未設定の品で使う従来の指定。段階的に imageScale へ置き換える。 */
-  imageInset?: boolean;
-  imageBalanced?: boolean;
-  imageLarge?: boolean;
   badge?: { ja: string; en: string; zh: string; ko: string };
   allergens: Allergen[];
   popular?: boolean;
@@ -450,6 +446,8 @@ export const menu: MenuItem[] = [
     description: { ja: '3Lえびを使った自家製天ぷらをのせた贅沢な丼。', en: 'Premium house-made tempura with 3L shrimp on rice.', zh: '使用3L大虾的自家制天妇罗，奢华的盖饭。', ko: '3L 사이즈 새우를 사용한 수제 튀김을 올린 풍성한 덮밥.' },
     price: 570,
     image: '/images/menu-jotendon-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.97,
     badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['小麦', '卵', 'えび'],
     popular: true,
@@ -462,7 +460,7 @@ export const menu: MenuItem[] = [
     price: 670,
     image: '/images/menu-ebiten-shogaten-tamadon.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.21,
     allergens: ['小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -472,6 +470,8 @@ export const menu: MenuItem[] = [
     description: { ja: '甘辛いカツと玉子のとじ丼。しっかりご飯が進む。', en: 'Crispy pork cutlet and egg on rice.', zh: '甜咸炸猪排与鸡蛋的盖饭，十分下饭。', ko: '달콤짭짤한 돈가스와 달걀이 어우러진 덮밥.' },
     price: 650,
     image: '/images/menu-katsudon-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.94,
     allergens: ['小麦', '卵', '豚肉', '大豆'],
   },
   {
@@ -482,7 +482,7 @@ export const menu: MenuItem[] = [
     price: 700,
     image: '/images/menu-gyu-fuwattama-don.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.13,
     allergens: ['小麦', '卵', '牛肉', '大豆'],
   },
   {
@@ -493,6 +493,7 @@ export const menu: MenuItem[] = [
     price: 150,
     image: '/images/menu-onigiri-new.jpg',
     imageFit: 'contain',
+    imageScale: 1.38,
     allergens: ['小麦', '大豆'],
   },
 
