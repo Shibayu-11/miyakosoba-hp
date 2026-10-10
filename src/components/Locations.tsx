@@ -18,18 +18,21 @@ export default function Locations() {
     <section id="locations" className="py-16 md:py-20 bg-cream-100">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-          <div className="flex gap-6">
+          {/* アイコンは見出しの上に置く。横並びにするとアイコンと余白で88px取られ、
+              2列グリッド＋サイドバーの列幅では見出しが1行に収まらなくなる。 */}
+          <div className="flex flex-col gap-4">
             <div className="shrink-0 w-16 h-16 rounded-full border-2 border-soba-red flex items-center justify-center">
               <MapPin size={26} className="text-soba-red" />
             </div>
             <div>
               <p className="text-soba-red text-xs font-bold tracking-[0.3em] mb-3">{t.locations.label}</p>
-              <h2 className="font-serif text-2xl md:text-3xl font-bold text-soba-ink leading-snug mb-5">
+              {/* 列幅はサイドバーと2列グリッドで決まり、md前後が一番狭い。
+                  どの幅でも1行に収まるよう段階的に上げている。 */}
+              <h2 className="font-serif text-xl sm:text-2xl lg:text-[1.625rem] font-bold text-soba-ink leading-snug mb-5">
                 {t.locations.headingHome}
               </h2>
               <p className="text-sm text-soba-ink/75 leading-relaxed mb-6">
-                {t.locations.subText}<br />
-                {t.locations.foundedNote}
+                {t.locations.subText}
               </p>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-soba-ink/80 mb-7 border-l-2 border-soba-red pl-4">

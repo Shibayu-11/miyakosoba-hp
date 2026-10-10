@@ -69,7 +69,6 @@ export type Dict = {
     headingPage: string;
     pageIntro: string;
     subText: string;
-    foundedNote: string;
     pinHint: string;
     ctaList: string;
     ctaPage: string;
@@ -215,11 +214,10 @@ export const translations: Record<Lang, Dict> = {
     },
     locations: {
       label: '店舗案内',
-      headingHome: '大阪・京都・兵庫を中心に、駅近で気軽に立ち寄れる店舗を展開。',
+      headingHome: 'いつもの街に、いつもの味。',
       headingPage: '店舗一覧',
       pageIntro: 'マップから探す、エリアから探す。あなたの最寄りの都そばを。',
-      subText: '通勤・通学の合間に、旅の途中に。',
-      foundedNote: '1962年創業、日本初の老舗立ち食い蕎麦。大阪の味として、半世紀以上。',
+      subText: '1962年創業。いつでも立ち寄れる、街のそば屋。',
       pinHint: 'マップ上の赤いピンをクリックすると、店舗の詳細・Google Mapsへのリンクが表示されます。',
       ctaList: '全店舗一覧を見る',
       ctaPage: 'お近くの店舗を探す',
@@ -395,11 +393,10 @@ export const translations: Record<Lang, Dict> = {
     },
     locations: {
       label: 'STORES',
-      headingHome: 'Stations across Osaka, Kyoto and Hyogo — drop in any day.',
+      headingHome: 'A familiar street, a familiar bowl.',
       headingPage: 'Our Stores',
       pageIntro: 'Find your nearest Miyako Soba — by map or by area.',
-      subText: 'On the way to work, between classes, on a journey.',
-      foundedNote: 'Since 1962, Japan\'s first standing soba chain. The taste of Osaka, for over half a century.',
+      subText: 'Founded in 1962 — the soba shop on your street, open whenever you need it.',
       pinHint: 'Click any red pin on the map to see store details and a Google Maps link.',
       ctaList: 'See all stores',
       ctaPage: 'Find your nearest store',
@@ -575,11 +572,10 @@ export const translations: Record<Lang, Dict> = {
     },
     locations: {
       label: '门店信息',
-      headingHome: '以大阪、京都、兵库为中心，展开多家邻近车站、便于光顾的门店。',
+      headingHome: '熟悉的街道，熟悉的味道。',
       headingPage: '门店一览',
       pageIntro: '通过地图或地区查找离您最近的都荞麦。',
-      subText: '通勤通学途中，旅行途中，随时光临。',
-      foundedNote: '1962年创立，日本首家老字号站立式荞麦面。作为大阪的味道，已传承半个多世纪。',
+      subText: '1962年创立。随时都能顺道光顾的，街边荞麦面店。',
       pinHint: '点击地图上的红色图钉，即可查看门店详情及Google地图链接。',
       ctaList: '查看全部门店',
       ctaPage: '查找附近门店',
@@ -755,11 +751,10 @@ export const translations: Record<Lang, Dict> = {
     },
     locations: {
       label: '매장 안내',
-      headingHome: '오사카・교토・효고를 중심으로, 역에서 가까워 부담 없이 들를 수 있는 매장을 운영하고 있습니다.',
+      headingHome: '익숙한 거리에, 익숙한 맛.',
       headingPage: '매장 목록',
       pageIntro: '지도에서 찾기, 지역에서 찾기. 가장 가까운 미야코소바를 찾아보세요.',
-      subText: '출퇴근・통학길에, 여행 도중에.',
-      foundedNote: '1962년 창업, 일본 최초의 노포 스탠딩 소바. 오사카의 맛으로 반세기 이상.',
+      subText: '1962년 창업. 언제든 들를 수 있는 동네 소바집.',
       pinHint: '지도 위의 빨간 핀을 클릭하면 매장 상세 정보와 구글 지도 링크가 표시됩니다.',
       ctaList: '전체 매장 목록 보기',
       ctaPage: '가까운 매장 찾기',
