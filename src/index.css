@@ -27,6 +27,19 @@
     to { opacity: 1; transform: scale(1); }
   }
 
+  /* 横スクロールできることを示す、矢印の小さな往復。
+     「動きを減らす」設定の端末では止める。 */
+  .animate-swipe-hint {
+    animation: swipeHint 1.4s ease-in-out infinite;
+  }
+  @keyframes swipeHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-swipe-hint { animation: none; }
+  }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

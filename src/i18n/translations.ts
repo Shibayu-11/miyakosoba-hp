@@ -25,6 +25,8 @@ export type Dict = {
   recommend: {
     label: string;
     heading: string;
+    /** 横スクロールできることを伝えるヒント（スマホのみ表示）。 */
+    swipeHint: string;
   };
   menu: {
     label: string;
@@ -183,6 +185,7 @@ export const translations: Record<Lang, Dict> = {
     recommend: {
       label: 'お知らせ',
       heading: '最新情報をお届けします。',
+      swipeHint: 'スワイプしてすべて見る',
     },
     menu: {
       label: '人気メニュー',
@@ -362,6 +365,7 @@ export const translations: Record<Lang, Dict> = {
     recommend: {
       label: 'NEWS',
       heading: 'Latest Updates.',
+      swipeHint: 'Swipe to see them all',
     },
     menu: {
       label: 'POPULAR ITEMS',
@@ -541,6 +545,7 @@ export const translations: Record<Lang, Dict> = {
     recommend: {
       label: '最新消息',
       heading: '为您带来最新资讯。',
+      swipeHint: '滑动查看全部',
     },
     menu: {
       label: '人气菜单',
@@ -720,6 +725,7 @@ export const translations: Record<Lang, Dict> = {
     recommend: {
       label: '공지사항',
       heading: '최신 소식을 전해드립니다.',
+      swipeHint: '밀어서 전체 보기',
     },
     menu: {
       label: '인기 메뉴',
