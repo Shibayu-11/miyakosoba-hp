@@ -73,20 +73,16 @@ export default function Hero() {
               <span className="text-xl transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
             </Link>
           </div>
-          {/* モバイルのみ：ロゴマーク＋縦書きブランド名 */}
+          {/* モバイルのみ：ロゴマーク＋縦組みのロゴ文字。
+              本文フォントで組むとロゴの字形と別物になるので、ロゴの3文字を
+              切り出して縦に積んだ画像（logo-text-white-vertical.png）を使う。 */}
           <div className="md:hidden absolute left-4 bottom-4 z-10 flex flex-col items-center gap-2">
             <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
-            <span
-              className="font-serif font-black text-white"
-              style={{
-                writingMode: 'vertical-rl',
-                fontSize: '2rem',
-                letterSpacing: '0.18em',
-                textShadow: '0 2px 12px rgba(0,0,0,0.7)',
-              }}
-            >
-              {t.brand.name}
-            </span>
+            <img
+              src="/images/logo-text-white-vertical.png"
+              alt={t.brand.name}
+              className="w-9 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
+            />
           </div>
         </div>
       </div>
