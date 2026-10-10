@@ -13,7 +13,9 @@ export default function Footer() {
     { label: t.nav.kodawari, href: '/about', isRoute: true },
     { label: t.nav.campaign, href: '/#news', isRoute: false },
     { label: t.nav.locations, href: '/locations', isRoute: true },
-    { label: t.recruit.label, href: '/recruit', isRoute: true },
+    // 「パート、アルバイト募集」はスマホの2列だと幅が足りず2行になるため、
+    // 1行に収まるよう横いっぱい（最終行に単独で並ぶ）にする。
+    { label: t.recruit.label, href: '/recruit', isRoute: true, wide: true },
   ];
 
   return (
@@ -25,7 +27,9 @@ export default function Footer() {
               <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
               <img src="/images/logo-text-white.png" alt={t.brand.name} className="h-9 w-auto" />
             </div>
-            <div className="flex justify-between items-center md:block">
+            {/* 幅が足りないときは営業時間を次の行へ送る。横に詰めると
+                「（店舗により異なります）」が2行に割れてしまう。 */}
+            <div className="flex flex-wrap items-center justify-between gap-y-4 md:block">
               <div className="flex gap-3">
                 <a href={socialLinks.line} aria-label="LINE" className="w-9 h-9 hover:opacity-80 flex items-center justify-center transition-opacity">
                   <img src="/images/social-line.png" alt="" className="w-9 h-9 object-contain" />
@@ -37,7 +41,7 @@ export default function Footer() {
                   <img src="/images/social-x-white.svg" alt="" className="w-4 h-4 object-contain" />
                 </a>
               </div>
-              <p className="text-sm text-white/80 leading-relaxed text-right md:text-left md:mt-5">
+              <p className="text-sm text-white/80 leading-relaxed text-right whitespace-nowrap md:text-left md:mt-5">
                 {t.footer.hours.replace('（', '\n（').split('\n').map((line, i) => (
                   <span key={i}>{line}{i === 0 && <br />}</span>
                 ))}
@@ -46,27 +50,27 @@ export default function Footer() {
           </div>
 
           <nav className="md:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">
-            {navItems.map((item) =>
-              item.isRoute ? (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className="flex items-center justify-between text-sm border-b border-white/15 pb-2 hover:text-cream-100 transition-colors"
-                >
-                  <span>{item.label}</span>
-                  <ChevronRight size={14} className="opacity-60" />
+            {navItems.map((item) => {
+              const className = `flex items-center justify-between text-sm border-b border-white/15 pb-2 hover:text-cream-100 transition-colors ${
+                item.wide ? 'col-span-2 sm:col-span-1' : ''
+              }`;
+              const content = (
+                <>
+                  <span className="whitespace-nowrap">{item.label}</span>
+                  <ChevronRight size={14} className="opacity-60 shrink-0" />
+                </>
+              );
+
+              return item.isRoute ? (
+                <Link key={item.label} to={item.href} className={className}>
+                  {content}
                 </Link>
               ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center justify-between text-sm border-b border-white/15 pb-2 hover:text-cream-100 transition-colors"
-                >
-                  <span>{item.label}</span>
-                  <ChevronRight size={14} className="opacity-60" />
+                <a key={item.label} href={item.href} className={className}>
+                  {content}
                 </a>
-              ),
-            )}
+              );
+            })}
           </nav>
 
         </div>
