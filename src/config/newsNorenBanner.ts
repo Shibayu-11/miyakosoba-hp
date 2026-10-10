@@ -56,7 +56,9 @@ export const newsNorenBanner = {
       label: 'LINE友だち追加で50円OFFクーポンプレゼント',
       // 背景バナー上の掛け軸の実寸（1748x900 中の x1060-1379 / y240-712）。枠の比率は 320:473。
       className: 'left-[60.641%] top-[26.667%] h-[52.556%] w-[18.307%]',
-      poster: '/images/news-line-coupon-v1.jpg',
+      // 元画像の上端にも木の棒と吊り紐が描かれていたので、背景バナーの棒と
+      // 二重にならないよう42px分を落としてある。
+      poster: '/images/news-line-coupon-v2.jpg',
     },
     {
       // 商品の紹介なので、記事ではなくお品書きへ。
