@@ -26,7 +26,10 @@ export type NewsNorenBannerLink = {
 export const newsNorenBanner = {
   image: '/images/news-noren-banner.png',
   alt: 'お知らせ',
-  minWidthClass: 'min-w-[760px]',
+  // 横スクロールで見せる都合上、画面幅より広く描く。
+  // スマホは 760px だと掛け軸1枚が140px幅までしか出ずポスターの文字が読めないため、
+  // 一回り大きくしている（スクロール量は増えるが読めることを優先）。
+  minWidthClass: 'min-w-[1040px] sm:min-w-[760px]',
   links: [
     {
       to: '/news',
