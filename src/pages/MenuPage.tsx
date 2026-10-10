@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, type CSSProperties } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
@@ -29,6 +29,15 @@ function splitName(item: MenuItem, lang: Lang) {
   return { base: name, soba: null, udon: null };
 }
 
+/** 丸枠の中での画像の拡大率。imageScale があればそれ、無ければ従来のフラグ。 */
+function fudaScale(item: MenuItem) {
+  if (item.imageScale !== undefined) return item.imageScale;
+  if (item.imageLarge) return 1.42;
+  if (item.imageBalanced) return 1.18;
+  if (item.imageInset) return 0.85;
+  return 1;
+}
+
 function MenuFuda({ item }: { item: MenuItem }) {
   const { lang } = useT();
   const name = splitName(item, lang);
@@ -54,9 +63,11 @@ function MenuFuda({ item }: { item: MenuItem }) {
             <img
               src={item.image}
               alt={item.name[lang]}
-              className={`w-full h-full bg-white transition-transform duration-500 ${
-                item.imageLarge ? 'scale-[1.42] group-hover:scale-[1.48]' : item.imageBalanced ? 'scale-[1.18] group-hover:scale-[1.24]' : item.imageInset ? 'scale-[0.85] group-hover:scale-[0.92]' : 'group-hover:scale-110'
-              } ${
+              // 倍率は品ごとに異なるので、CSS変数経由で渡す。
+              // Tailwind は実行時に組み立てたクラス名を拾えないため、scale-[1.42] のような
+              // 直書きではこの指定ができない。
+              style={{ '--fuda-scale': String(fudaScale(item)) } as CSSProperties}
+              className={`w-full h-full bg-white transition-transform duration-500 scale-[var(--fuda-scale)] group-hover:scale-[calc(var(--fuda-scale)*1.06)] ${
                 item.imageFit === 'contain' ? 'object-contain' : 'object-cover'
               }`}
             />

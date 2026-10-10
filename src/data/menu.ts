@@ -12,6 +12,14 @@ export type MenuItem = {
   price: number;
   image?: string;
   imageFit?: 'cover' | 'contain';
+  /**
+   * 丸い枠の中で器がどれくらいの大きさに見えるかを揃えるための倍率。
+   * 写真ごとに器の写り込み方（余白の量）が違うため、画像の実寸から
+   * 「器が枠の 92% を占める」よう逆算した値を入れている。
+   * 新しい写真を追加したら、既存と見比べて調整すること。
+   */
+  imageScale?: number;
+  /** imageScale 未設定の品で使う従来の指定。段階的に imageScale へ置き換える。 */
   imageInset?: boolean;
   imageBalanced?: boolean;
   imageLarge?: boolean;
@@ -32,7 +40,7 @@ export const menu: MenuItem[] = [
     price: 400,
     image: '/images/menu-kake.png',
     imageFit: 'contain',
-    imageBalanced: true,
+    imageScale: 1.29,
     allergens: ['そば', '小麦', '大豆'],
     popular: true,
   },
@@ -43,6 +51,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'のどごしのよい冷たい麺を、香り豊かなつゆで。', en: 'Chilled soba or udon served with a fragrant dipping sauce.', zh: '爽滑冰凉的荞麦面或乌冬面，搭配香气浓郁的蘸汁。', ko: '목넘김 좋은 차가운 소바 또는 우동을 향긋한 장국과 함께.' },
     price: 490,
     image: '/images/menu-zaru-soba.png',
+    imageFit: 'contain',
+    imageScale: 0.95,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -52,6 +62,8 @@ export const menu: MenuItem[] = [
     description: { ja: '甘辛いお揚げがじゅわっとしみた、やさしい味わい。', en: 'Sweet-savory fried tofu soaked through — gentle and warming.', zh: '甜咸入味的炸豆皮，温润可口。', ko: '달콤짭짤하게 배어든 유부가 부드럽고 포근한 맛.' },
     price: 510,
     image: '/images/menu-kitsune-new.jpg',
+    imageFit: 'contain',
+    imageScale: 1.05,
     allergens: ['そば', '小麦', '大豆'],
     popular: true,
   },
@@ -62,6 +74,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'まろやかな卵がだしに溶け込む、やさしい一杯。', en: 'A rich egg in dashi — comforting and simple.', zh: '浓郁的鸡蛋融入高汤，温和暖心的一碗。', ko: '부드러운 달걀이 육수에 녹아드는 포근한 한 그릇.' },
     price: 510,
     image: '/images/menu-tsukimi-new.jpg',
+    imageFit: 'contain',
+    imageScale: 1.02,
     allergens: ['そば', '小麦', '卵', '大豆'],
     popular: true,
   },
@@ -72,6 +86,8 @@ export const menu: MenuItem[] = [
     description: { ja: '磯の香りとシャキッとした歯ごたえが心地よい。', en: 'The salt-air aroma and crisp bite of wakame.', zh: '海藻的香气与爽脆口感令人愉悦。', ko: '바다 내음과 아삭한 식감이 기분 좋은 한 그릇.' },
     price: 510,
     image: '/images/menu-wakame-new.jpg',
+    imageFit: 'contain',
+    imageScale: 1.0,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -81,6 +97,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'とろとろのおぼろ昆布がだしに溶け込む関西の味。', en: 'Silky oboro kombu melted into Kansai-style dashi.', zh: '入口即化的朧昆布融入高汤，关西风味十足。', ko: '부드럽게 녹는 오보로 다시마가 어우러진 간사이의 맛.' },
     price: 510,
     image: '/images/menu-oboro-v2.jpg',
+    imageFit: 'contain',
+    imageScale: 1.14,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -90,6 +108,8 @@ export const menu: MenuItem[] = [
     description: { ja: '細かく刻んだお揚げが全体に広がる、京風の一杯。', en: 'Finely chopped fried tofu spread throughout — Kyoto style.', zh: '切碎的炸豆皮均匀分布，京都风味的一碗。', ko: '잘게 썬 유부가 골고루 퍼진 교토풍 한 그릇.' },
     price: 510,
     image: '/images/menu-kizami-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.99,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -99,6 +119,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'サクサクのちくわ天をのせた、不動の人気メニュー。', en: 'Crispy chikuwa tempura on a hot bowl — our signature.', zh: '酥脆竹轮天妇罗满载，长盛不衰的人气菜单。', ko: '바삭한 치쿠와 튀김을 올린, 변함없는 인기 메뉴.' },
     price: 530,
     image: '/images/menu-tempura-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.94,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
     popular: true,
   },
@@ -109,6 +131,8 @@ export const menu: MenuItem[] = [
     description: { ja: '玉ねぎと小えびを揚げた、香ばしいかき揚げ。', en: 'A fragrant kakiage of onion and small shrimp.', zh: '洋葱与小虾炸成的香浓天妇罗。', ko: '양파와 작은 새우를 튀긴 고소한 카키아게.' },
     price: 560,
     image: '/images/menu-kakiage-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.99,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -119,7 +143,7 @@ export const menu: MenuItem[] = [
     price: 620,
     image: '/images/menu-kakiage-oroshi.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.5,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -130,7 +154,7 @@ export const menu: MenuItem[] = [
     price: 620,
     image: '/images/menu-ageten.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.44,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -141,7 +165,7 @@ export const menu: MenuItem[] = [
     price: 560,
     image: '/images/menu-poteten.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.41,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -152,7 +176,7 @@ export const menu: MenuItem[] = [
     price: 510,
     image: '/images/menu-ontama.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.49,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -163,6 +187,7 @@ export const menu: MenuItem[] = [
     price: 780,
     image: '/images/menu-ontama-special.png',
     imageFit: 'contain',
+    imageScale: 1.34,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -173,7 +198,7 @@ export const menu: MenuItem[] = [
     price: 670,
     image: '/images/menu-ontama-kakiage.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.28,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -184,7 +209,7 @@ export const menu: MenuItem[] = [
     price: 690,
     image: '/images/menu-ontama-yamakake.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.31,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -195,6 +220,7 @@ export const menu: MenuItem[] = [
     price: 620,
     image: '/images/menu-kitsune-oroshi.png',
     imageFit: 'contain',
+    imageScale: 1.23,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -205,6 +231,7 @@ export const menu: MenuItem[] = [
     price: 620,
     image: '/images/menu-tsukimi-kitsune.png',
     imageFit: 'contain',
+    imageScale: 1.27,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -215,6 +242,7 @@ export const menu: MenuItem[] = [
     price: 620,
     image: '/images/menu-kitsune-oboro.png',
     imageFit: 'contain',
+    imageScale: 1.27,
     allergens: ['そば', '小麦', '大豆'],
   },
   {
@@ -224,6 +252,8 @@ export const menu: MenuItem[] = [
     description: { ja: '紅しょうがの爽やかな辛みと、香ばしい衣がだしに合う一杯。', en: 'Crisp ginger tempura with a bright, spicy kick in savory dashi.', zh: '爽口微辣的红姜天妇罗，与高汤相得益彰。', ko: '상큼하고 알싸한 홍생강 튀김이 육수와 잘 어우러지는 한 그릇.' },
     price: 560,
     image: '/images/menu-shogaten-v2.jpg',
+    imageFit: 'contain',
+    imageScale: 0.96,
     allergens: ['そば', '小麦', '卵', '大豆'],
   },
   {
@@ -233,6 +263,8 @@ export const menu: MenuItem[] = [
     description: { ja: '自家製大えびの天ぷらをどんとのせた、贅沢な一杯。', en: 'Generous house-made large shrimp tempura.', zh: '满满一份自家制大虾天妇罗，奢华的一碗。', ko: '푸짐한 수제 왕새우 튀김을 올린 풍성한 한 그릇.' },
     price: 610,
     image: '/images/menu-oebiten-new.jpg',
+    imageFit: 'contain',
+    imageScale: 1.04,
     badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
@@ -243,6 +275,8 @@ export const menu: MenuItem[] = [
     description: { ja: '天ぷらと卵の組み合わせで、しっかりお腹を満たす。', en: 'Tempura and egg together for a truly filling bowl.', zh: '天妇罗与鸡蛋的组合，让人吃得饱饱的。', ko: '튀김과 달걀의 조합으로 든든하게 채워주는 한 그릇.' },
     price: 640,
     image: '/images/menu-stamina-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.94,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -252,6 +286,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'しっかりと味付けした牛肉がだしに絡む、満足の一杯。', en: 'Richly seasoned beef nestled in dashi.', zh: '入味十足的牛肉与高汤完美融合，满足感十足。', ko: '깊게 양념한 소고기가 육수와 어우러진 든든한 한 그릇.' },
     price: 680,
     image: '/images/menu-niku-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.96,
     allergens: ['そば', '小麦', '牛肉', '大豆'],
   },
   {
@@ -262,7 +298,7 @@ export const menu: MenuItem[] = [
     price: 970,
     image: '/images/menu-ontama-niku-yamakake.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.41,
     allergens: ['そば', '小麦', '卵', '牛肉', '大豆'],
   },
   {
@@ -273,7 +309,7 @@ export const menu: MenuItem[] = [
     price: 790,
     image: '/images/menu-nikutama.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.41,
     allergens: ['そば', '小麦', '卵', '牛肉', '大豆'],
   },
   {
@@ -284,7 +320,7 @@ export const menu: MenuItem[] = [
     price: 920,
     image: '/images/menu-nikutama-tempura.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.4,
     allergens: ['そば', '小麦', '卵', 'えび', '牛肉', '大豆'],
   },
   {
@@ -294,6 +330,8 @@ export const menu: MenuItem[] = [
     description: { ja: '天ぷら・卵・お揚げを全部のせた、都そばの最高傑作。', en: 'Tempura, egg and fried tofu all together — our masterpiece.', zh: '天妇罗、鸡蛋、炸豆皮一应俱全，都荞麦的巅峰之作。', ko: '튀김・달걀・유부를 모두 올린, 미야코소바의 최고 걸작.' },
     price: 830,
     image: '/images/menu-miyakospecial-new.jpg',
+    imageFit: 'contain',
+    imageScale: 1.02,
     badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
     popular: true,
@@ -305,6 +343,8 @@ export const menu: MenuItem[] = [
     description: { ja: 'スパイスの効いたカレーだしが、そばに絡む一杯。', en: 'Spiced curry dashi clinging to every noodle.', zh: '香辛浓郁的咖喱高汤，与荞麦面相得益彰。', ko: '향신료가 살아있는 카레 육수가 면에 어우러진 한 그릇.' },
     price: 790,
     image: '/images/menu-curry-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.93,
     allergens: ['そば', '小麦', '乳', '大豆'],
   },
   {
@@ -315,7 +355,7 @@ export const menu: MenuItem[] = [
     price: 1070,
     image: '/images/menu-niku-curry.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.17,
     allergens: ['そば', '小麦', '乳', '牛肉', '大豆'],
   },
   {
@@ -325,6 +365,8 @@ export const menu: MenuItem[] = [
     description: { ja: '京都名物の甘辛く炊いたにしんをのせた一杯。', en: 'Sweet-soy simmered herring — a Kyoto specialty.', zh: '京都名物，甜咸炖煮的鲱鱼盖在面上的一碗。', ko: '교토 명물, 달콤짭짤하게 조린 청어를 올린 한 그릇.' },
     price: 880,
     image: '/images/menu-nishin-new.jpg',
+    imageFit: 'contain',
+    imageScale: 0.94,
     badge: { ja: '京都名物', en: 'Kyoto Classic', zh: '京都名物', ko: '교토 명물' },
     allergens: ['そば', '小麦', 'さば', '大豆'],
   },
@@ -336,7 +378,7 @@ export const menu: MenuItem[] = [
     price: 600,
     image: '/images/menu-chuka-soba.png',
     imageFit: 'contain',
-    imageLarge: true,
+    imageScale: 1.33,
     allergens: ['小麦', '卵', '豚肉', '大豆'],
   },
   {
@@ -347,6 +389,7 @@ export const menu: MenuItem[] = [
     price: 770,
     image: '/images/menu-mini-tamagodon-set.png',
     imageFit: 'contain',
+    imageScale: 0.96,
     allergens: ['そば', '小麦', '卵', '大豆'],
     set: true,
   },
@@ -358,6 +401,7 @@ export const menu: MenuItem[] = [
     price: 970,
     image: '/images/menu-jotendon-set.png',
     imageFit: 'contain',
+    imageScale: 0.95,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
     set: true,
   },
@@ -369,6 +413,7 @@ export const menu: MenuItem[] = [
     price: 730,
     image: '/images/menu-mini-tororo-don-set.png',
     imageFit: 'contain',
+    imageScale: 0.96,
     allergens: ['そば', '小麦', '大豆'],
     set: true,
   },
@@ -380,6 +425,7 @@ export const menu: MenuItem[] = [
     price: 710,
     image: '/images/menu-mini-kakiage-don-set.png',
     imageFit: 'contain',
+    imageScale: 0.96,
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
     set: true,
   },
@@ -391,6 +437,7 @@ export const menu: MenuItem[] = [
     price: 1050,
     image: '/images/menu-katsudon-set.png',
     imageFit: 'contain',
+    imageScale: 0.95,
     allergens: ['そば', '小麦', '卵', '豚肉', '大豆'],
     set: true,
   },
