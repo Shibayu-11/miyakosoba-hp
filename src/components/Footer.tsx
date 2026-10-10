@@ -13,9 +13,10 @@ export default function Footer() {
     { label: t.nav.kodawari, href: '/about', isRoute: true },
     { label: t.nav.campaign, href: '/#news', isRoute: false },
     { label: t.nav.locations, href: '/locations', isRoute: true },
-    // 「パート、アルバイト募集」はスマホの2列だと幅が足りず2行になるため、
-    // 1行に収まるよう横いっぱい（最終行に単独で並ぶ）にする。
-    { label: t.recruit.label, href: '/recruit', isRoute: true, wide: true },
+    // スマホの2列では「パート、アルバイト募集」が1行に収まらないので、
+    // 狭いときだけ短い表記に差し替える。並び順はそのままなので、
+    // 2列組では「キャンペーン情報」の真下に入る。
+    { label: t.recruit.label, shortLabel: t.recruit.labelShort, href: '/recruit', isRoute: true },
   ];
 
   return (
@@ -51,12 +52,20 @@ export default function Footer() {
 
           <nav className="md:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 content-start">
             {navItems.map((item) => {
-              const className = `flex items-center justify-between text-sm border-b border-white/15 pb-2 hover:text-cream-100 transition-colors ${
-                item.wide ? 'col-span-2 sm:col-span-1' : ''
-              }`;
+              const className =
+                'flex items-center justify-between text-sm border-b border-white/15 pb-2 hover:text-cream-100 transition-colors';
               const content = (
                 <>
-                  <span className="whitespace-nowrap">{item.label}</span>
+                  <span className="whitespace-nowrap">
+                    {item.shortLabel ? (
+                      <>
+                        <span className="sm:hidden">{item.shortLabel}</span>
+                        <span className="hidden sm:inline">{item.label}</span>
+                      </>
+                    ) : (
+                      item.label
+                    )}
+                  </span>
                   <ChevronRight size={14} className="opacity-60 shrink-0" />
                 </>
               );

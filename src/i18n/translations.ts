@@ -123,6 +123,8 @@ export type Dict = {
   };
   recruit: {
     label: string;
+    /** 幅の狭い場所（スマホのフッター）で label の代わりに使う短い表記。 */
+    labelShort: string;
     heading: string;
     body: string;
     cta: string;
@@ -288,6 +290,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recruit: {
       label: 'パート、アルバイト募集',
+      labelShort: 'パート募集',
       heading: '都そばで、働きませんか。',
       body: '関西の各店舗で募集中。立ち食いの粋を、一緒に。',
       cta: '採用情報を見る',
@@ -467,6 +470,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recruit: {
       label: 'Part-time / Hourly Staff Wanted',
+      labelShort: 'Staff Wanted',
       heading: 'Work with us at Miyako Soba.',
       body: 'Hiring crew and staff at stores across Kansai. Carry the spirit of stand-up soba with us.',
       cta: 'See careers',
@@ -646,6 +650,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recruit: {
       label: '招聘兼职・临时工',
+      labelShort: '招聘兼职',
       heading: '要不要来都荞麦工作？',
       body: '关西各门店正在招聘兼职及正式员工。一起感受站立式餐饮的魅力。',
       cta: '查看招聘信息',
@@ -825,6 +830,7 @@ export const translations: Record<Lang, Dict> = {
     },
     recruit: {
       label: '파트타임・아르바이트 모집',
+      labelShort: '파트 모집',
       heading: '미야코소바에서 함께 일해요.',
       body: '아르바이트・정직원 모두 간사이 각 매장에서 모집 중입니다. 스탠딩 소바의 멋을 함께 만들어가요.',
       cta: '채용 정보 보기',
