@@ -102,7 +102,7 @@ export const news: NewsItem[] = [
       zh: '搭配大虾天妇罗的全新一碗。',
       ko: '먹음직한 대새우 튀김을 올린 새로운 한 그릇입니다.',
     },
-    image: '/images/menu-tempura.jpg',
+    image: '/images/menu-oebiten-new.jpg',
     body: {
       ja: '大えび天そばが新登場しました。\n\n食べ応えのある大えび天と、都そばのだしがよく合う一杯です。\n\n※店舗により販売状況・価格が異なる場合がございます。',
       en: 'Large shrimp tempura soba is now available.\n\nEnjoy satisfying shrimp tempura with Miyako Soba broth.\n\n*Availability and prices may vary by store.',
