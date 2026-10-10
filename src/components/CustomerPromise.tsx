@@ -1,4 +1,5 @@
-import { Smile, MessageCircleHeart, Utensils } from 'lucide-react';
+import { useState } from 'react';
+import { ChevronDown, Smile, MessageCircleHeart, Utensils } from 'lucide-react';
 import { useT } from '../i18n/LanguageContext';
 
 const PROMISES = {
@@ -21,6 +22,8 @@ const PROMISES = {
       },
     ],
     closing: '以上、従業員全員お約束いたします。',
+    toggleOpen: '3つの約束を見る',
+    toggleClose: '閉じる',
   },
   en: {
     label: 'OUR PROMISE',
@@ -32,6 +35,8 @@ const PROMISES = {
       { title: 'A comfortable meal', body: 'We do our best so every guest can enjoy their meal comfortably.' },
     ],
     closing: 'Every member of our team promises this.',
+    toggleOpen: 'See our three promises',
+    toggleClose: 'Close',
   },
   zh: {
     label: 'OUR PROMISE',
@@ -43,6 +48,8 @@ const PROMISES = {
       { title: '舒适用餐', body: '我们努力让每位顾客都能安心、愉快地用餐。' },
     ],
     closing: '以上，是我们全体员工的承诺。',
+    toggleOpen: '查看三项承诺',
+    toggleClose: '收起',
   },
   ko: {
     label: 'OUR PROMISE',
@@ -54,6 +61,8 @@ const PROMISES = {
       { title: '기분 좋은 식사', body: '고객님께서 기분 좋게 식사하실 수 있도록 응대에 힘쓰겠습니다.' },
     ],
     closing: '이상, 전 직원이 약속드립니다.',
+    toggleOpen: '세 가지 약속 보기',
+    toggleClose: '닫기',
   },
 };
 
@@ -62,6 +71,9 @@ const ICONS = [Smile, MessageCircleHeart, Utensils];
 export default function CustomerPromise() {
   const { lang } = useT();
   const copy = PROMISES[lang];
+  // スマホでは3つの約束を畳んでおき、タップで開く。
+  // PC（md以上）では open に関係なく常に開いた状態で表示する。
+  const [open, setOpen] = useState(false);
 
   return (
     <section className="relative overflow-hidden bg-cream-100 py-14 md:py-24">
@@ -80,7 +92,24 @@ export default function CustomerPromise() {
         </div>
 
         <div className="rounded-3xl border border-[#d4b06a]/35 bg-white/70 p-5 shadow-sm backdrop-blur md:p-8">
-          <div className="grid gap-4 md:grid-cols-3 md:gap-6">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="customer-promise-items"
+            className="flex w-full items-center justify-center gap-2 font-serif text-base font-black text-soba-ink md:hidden"
+          >
+            {open ? copy.toggleClose : copy.toggleOpen}
+            <ChevronDown
+              size={18}
+              className={`text-soba-red transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+            />
+          </button>
+
+          <div
+            id="customer-promise-items"
+            className={`${open ? 'mt-5' : 'hidden'} grid gap-4 md:mt-0 md:grid md:grid-cols-3 md:gap-6`}
+          >
             {copy.items.map((item, index) => {
               const Icon = ICONS[index];
               return (
@@ -101,7 +130,10 @@ export default function CustomerPromise() {
             })}
           </div>
 
-          <p className="mt-7 whitespace-nowrap text-center font-serif text-[0.95rem] font-black tracking-tight text-soba-ink sm:text-lg sm:tracking-wide">
+          {/* 締めの一文は3つの約束とセットなので、畳んでいる間は出さない。 */}
+          <p
+            className={`${open ? '' : 'hidden'} mt-7 whitespace-nowrap text-center font-serif text-[0.95rem] font-black tracking-tight text-soba-ink sm:text-lg sm:tracking-wide md:block`}
+          >
             {copy.closing}
           </p>
         </div>
