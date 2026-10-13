@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-12 gap-8">
           <div className="md:col-span-3">
             <div className="flex items-center gap-3 mb-5">
-              <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
+              <img src="/images/logo-mark-white-v2.png" alt="" className="w-9 h-9" />
               <img src="/images/logo-text-white.png" alt={t.brand.name} className="h-9 w-auto" />
             </div>
             {/* 幅が足りないときは営業時間を次の行へ送る。横に詰めると

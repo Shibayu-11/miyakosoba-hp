@@ -77,7 +77,7 @@ export default function Hero() {
               本文フォントで組むとロゴの字形と別物になるので、ロゴの3文字を
               切り出して縦に積んだ画像（logo-text-white-vertical.png）を使う。 */}
           <div className="md:hidden absolute left-4 bottom-4 z-10 flex flex-col items-center gap-2">
-            <img src="/images/logo-mark-white.png" alt="" className="w-9 h-9" />
+            <img src="/images/logo-mark-white-v2.png" alt="" className="w-9 h-9" />
             <img
               src="/images/logo-text-white-vertical.png"
               alt={t.brand.name}
