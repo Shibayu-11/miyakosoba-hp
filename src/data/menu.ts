@@ -121,6 +121,17 @@ export const menu: MenuItem[] = [
     popular: true,
   },
   {
+    id: 'tempura-soba',
+    type: 'both',
+    name: { ja: '天ぷらそば／うどん', en: 'Tempura Soba/Udon', zh: '天妇罗荞麦面／乌冬面', ko: '튀김소바／우동' },
+    description: { ja: 'さくっと揚がった天ぷらを、だしにひたして味わう一杯。', en: 'Crisp tempura, soaked in dashi as you eat.', zh: '酥脆天妇罗浸入高汤，别有一番风味。', ko: '바삭하게 튀긴 튀김을 육수에 적셔 즐기는 한 그릇.' },
+    price: 530,
+    image: '/images/menu-tempura-soba-v1.jpg',
+    imageFit: 'contain',
+    imageScale: 1.23,
+    allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
+  },
+  {
     id: 'kakiage',
     type: 'both',
     name: { ja: 'かき揚げそば／うどん', en: 'Kakiage Soba/Udon', zh: '炸什锦天妇罗荞麦面／乌冬面', ko: '카키아게소바(모듬튀김)／우동' },
