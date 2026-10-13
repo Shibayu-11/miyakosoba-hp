@@ -39,17 +39,8 @@ function MenuFuda({ item }: { item: MenuItem }) {
       className={`group flex flex-col items-center rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 ${isTopping ? 'pt-10' : ''}`}
       style={{ background: 'linear-gradient(170deg, #fdf7ec 0%, #f5e9ce 100%)' }}
     >
-      {/* バッジ */}
-      <div className="self-start mt-4 ml-4 h-6 flex items-center">
-        {item.badge && (
-          <span className="bg-soba-red text-white text-[10px] font-bold px-2.5 py-1 rounded-sm tracking-wider">
-            {item.badge[lang]}
-          </span>
-        )}
-      </div>
-
       {item.image ? (
-        <div className="mt-3 mb-5">
+        <div className="mt-7 mb-5">
           <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-[5px] border-white shadow-md">
             <img
               src={item.image}

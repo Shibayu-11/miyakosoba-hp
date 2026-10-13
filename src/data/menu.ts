@@ -19,7 +19,6 @@ export type MenuItem = {
    * 新しい写真を追加したら、既存と見比べて調整すること。
    */
   imageScale?: number;
-  badge?: { ja: string; en: string; zh: string; ko: string };
   allergens: Allergen[];
   popular?: boolean;
   set?: boolean;
@@ -272,7 +271,6 @@ export const menu: MenuItem[] = [
     image: '/images/menu-oebiten-v2.jpg',
     imageFit: 'contain',
     imageScale: 1.23,
-    badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
   },
   {
@@ -339,7 +337,6 @@ export const menu: MenuItem[] = [
     image: '/images/menu-miyako-special-v2.jpg',
     imageFit: 'contain',
     imageScale: 1.12,
-    badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['そば', '小麦', '卵', 'えび', '大豆'],
     popular: true,
   },
@@ -374,7 +371,6 @@ export const menu: MenuItem[] = [
     image: '/images/menu-nishin-new.jpg',
     imageFit: 'contain',
     imageScale: 0.94,
-    badge: { ja: '京都名物', en: 'Kyoto Classic', zh: '京都名物', ko: '교토 명물' },
     allergens: ['そば', '小麦', 'さば', '大豆'],
   },
   {
@@ -459,7 +455,6 @@ export const menu: MenuItem[] = [
     image: '/images/menu-jotendon-new.jpg',
     imageFit: 'contain',
     imageScale: 0.97,
-    badge: { ja: '自家製', en: 'House-made', zh: '自家制', ko: '수제' },
     allergens: ['小麦', '卵', 'えび'],
     popular: true,
   },
