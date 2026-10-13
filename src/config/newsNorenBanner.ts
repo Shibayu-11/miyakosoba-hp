@@ -24,7 +24,9 @@ export type NewsNorenBannerLink = {
 };
 
 export const newsNorenBanner = {
-  image: '/images/news-noren-banner.png',
+  // 背景はセクションの bg-cream-100 (#f6efe0) に合わせてある。
+  // 元画像は rgb(243,233,216) で、わずかに濃く四角い境目が見えていた。
+  image: '/images/news-noren-banner-v2.png',
   alt: 'お知らせ',
   // 横スクロールで見せる都合上、画面幅より広く描く。
   // スマホは 760px だと掛け軸1枚が140px幅までしか出ずポスターの文字が読めないため、
