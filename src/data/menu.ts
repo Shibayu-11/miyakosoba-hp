@@ -566,14 +566,6 @@ export const menu: MenuItem[] = [
     allergens: ['小麦', '卵', 'えび'],
   },
   {
-    id: 'topping-homemade-tempura',
-    type: 'topping',
-    name: { ja: '自家製天ぷら', en: 'House-made Tempura', zh: '自家制天妇罗', ko: '수제 튀김' },
-    description: { ja: 'お好みの一杯に追加できるトッピングです。', en: 'A topping you can add to your favorite bowl.', zh: '可追加到喜欢菜单中的配料。', ko: '원하는 메뉴에 추가할 수 있는 토핑입니다.' },
-    price: 130,
-    allergens: ['小麦', '卵', 'えび'],
-  },
-  {
     id: 'topping-niku',
     type: 'topping',
     name: { ja: '肉', en: 'Beef', zh: '牛肉', ko: '고기' },
