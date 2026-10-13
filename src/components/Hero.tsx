@@ -1,20 +1,5 @@
-import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { useT } from '../i18n/LanguageContext';
-
-/**
- * 筆で塗ったような縁を、マスク画像で切り抜いて作る。
- * 2枚使い分けているのは、同じ形が並ぶと型抜きに見えてしまうため。
- * mask-size を 100% 100% にしているので、ボタンの幅が変わっても形は追従する。
- */
-const brushMask = (file: string): CSSProperties => ({
-  WebkitMaskImage: `url(/images/${file})`,
-  maskImage: `url(/images/${file})`,
-  WebkitMaskSize: '100% 100%',
-  maskSize: '100% 100%',
-  WebkitMaskRepeat: 'no-repeat',
-  maskRepeat: 'no-repeat',
-});
 
 export default function Hero() {
   const { t } = useT();
@@ -36,8 +21,7 @@ export default function Hero() {
             <div className="hidden max-w-lg grid-cols-2 gap-3 border-t border-white/15 pt-6 sm:grid animate-hero-text [animation-delay:700ms]">
               <Link
                 to="/menu"
-                style={brushMask('btn-brush-a.png')}
-                className="group flex min-h-[72px] items-center justify-center gap-4 bg-soba-red px-7 py-4 text-white transition-colors duration-300 hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-[10px] focus-visible:outline-cream-100"
+                className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-soba-red bg-soba-red px-5 py-4 text-white shadow-[0_12px_28px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:border-cream-100 hover:bg-soba-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
                 <span className="whitespace-nowrap font-serif text-base font-bold leading-snug tracking-[0.08em]">
                   {t.hero.viewMenu}
@@ -46,10 +30,10 @@ export default function Hero() {
                   →
                 </span>
               </Link>
+              {/* 塗りはサイトの背景と同じ cream-100。文字は本文と同じ soba-ink。 */}
               <Link
                 to="/locations"
-                style={brushMask('btn-brush-b.png')}
-                className="group flex min-h-[72px] items-center justify-center gap-4 bg-cream-100 px-7 py-4 text-soba-ink transition-colors duration-300 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-[10px] focus-visible:outline-soba-ink"
+                className="group flex min-h-[72px] items-center justify-between gap-4 rounded-sm border border-cream-100 bg-cream-100 px-5 py-4 text-soba-ink shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-100"
               >
                 <span className="whitespace-nowrap font-serif text-base font-bold leading-snug tracking-[0.08em]">
                   {t.hero.viewLocations}
