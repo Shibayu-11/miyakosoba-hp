@@ -13,7 +13,6 @@ const STORE_DETAIL_TEXT: Record<Lang, {
   hours: string;
   closed: string;
   phone: string;
-  phoneBody: string;
   sameArea: (prefecture: string) => string;
 }> = {
   ja: {
@@ -23,7 +22,6 @@ const STORE_DETAIL_TEXT: Record<Lang, {
     hours: '営業時間',
     closed: '定休日',
     phone: '電話番号',
-    phoneBody: '本部に確認のうえ追記',
     sameArea: (prefecture) => `同じエリアの店舗 (${prefecture})`,
   },
   en: {
@@ -33,7 +31,6 @@ const STORE_DETAIL_TEXT: Record<Lang, {
     hours: 'Hours',
     closed: 'Closed',
     phone: 'Phone',
-    phoneBody: 'TBD',
     sameArea: (prefecture) => `Other stores in ${prefecture}`,
   },
   zh: {
@@ -43,7 +40,6 @@ const STORE_DETAIL_TEXT: Record<Lang, {
     hours: '营业时间',
     closed: '休息日',
     phone: '电话号码',
-    phoneBody: '请向总部确认后补充',
     sameArea: (prefecture) => `同地区门店 (${prefecture})`,
   },
   ko: {
@@ -53,7 +49,6 @@ const STORE_DETAIL_TEXT: Record<Lang, {
     hours: '영업시간',
     closed: '정기 휴일',
     phone: '전화번호',
-    phoneBody: '본사 확인 후 추가',
     sameArea: (prefecture) => `같은 지역의 매장 (${prefecture})`,
   },
 };
@@ -139,9 +134,9 @@ export default function StoreDetailPage() {
               <Phone size={18} className="text-soba-red mt-0.5 shrink-0" />
               <div>
                 <p className="text-xs text-soba-ink/60 mb-1">{dt.phone}</p>
-                <p className="text-soba-ink leading-relaxed">
-                  {dt.phoneBody}
-                </p>
+                <a href={`tel:${store.phone.replace(/-/g, '')}`} className="text-soba-ink leading-relaxed hover:text-soba-red transition-colors">
+                  {store.phone}
+                </a>
               </div>
             </div>
 

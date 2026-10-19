@@ -18,8 +18,10 @@ export default function StructuredData() {
         '@type': 'PostalAddress',
         addressCountry: 'JP',
         addressRegion: s.prefecture,
+        postalCode: s.postalCode,
         streetAddress: s.address,
       },
+      telephone: s.phone,
       geo: {
         '@type': 'GeoCoordinates',
         latitude: s.position.lat,
