@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, type CSSProperties } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
@@ -141,13 +141,16 @@ function CategoryCard({
 
 export default function MenuPage() {
   const { t } = useT();
-  const [searchParams] = useSearchParams();
-  const [filter, setFilter] = useState<Filter>('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedFilter = searchParams.get('type') as Filter | null;
+  const filter = requestedFilter && FILTERS.includes(requestedFilter) ? requestedFilter : 'all';
 
-  useEffect(() => {
-    const type = searchParams.get('type') as Filter | null;
-    if (type && FILTERS.includes(type)) setFilter(type);
-  }, [searchParams]);
+  const selectFilter = (nextFilter: Filter) => {
+    const nextParams = new URLSearchParams(searchParams);
+    if (nextFilter === 'all') nextParams.delete('type');
+    else nextParams.set('type', nextFilter);
+    setSearchParams(nextParams, { replace: true });
+  };
 
   const visible = useMemo(() => {
     if (filter === 'all') return menu;
@@ -172,10 +175,10 @@ export default function MenuPage() {
         <div className="max-w-6xl mx-auto px-6">
 
           <div className="mb-6 grid grid-cols-4 gap-2 md:gap-3 max-w-2xl">
-            <CategoryCard filter="all" active={filter === 'all'} onClick={() => setFilter('all')} className="aspect-square" />
-            <CategoryCard filter="noodle" active={filter === 'noodle'} onClick={() => setFilter('noodle')} className="aspect-square" />
-            <CategoryCard filter="donburi" active={filter === 'donburi'} onClick={() => setFilter('donburi')} className="aspect-square" />
-            <CategoryCard filter="topping" active={filter === 'topping'} onClick={() => setFilter('topping')} className="aspect-square" />
+            <CategoryCard filter="all" active={filter === 'all'} onClick={() => selectFilter('all')} className="aspect-square" />
+            <CategoryCard filter="noodle" active={filter === 'noodle'} onClick={() => selectFilter('noodle')} className="aspect-square" />
+            <CategoryCard filter="donburi" active={filter === 'donburi'} onClick={() => selectFilter('donburi')} className="aspect-square" />
+            <CategoryCard filter="topping" active={filter === 'topping'} onClick={() => selectFilter('topping')} className="aspect-square" />
           </div>
 
           <p className="inline-flex items-center rounded-full bg-soba-red px-4 py-2 mb-4 text-sm font-bold tracking-wide text-white">

@@ -7,12 +7,9 @@ import MobileTabBar from './MobileTabBar';
 
 export default function Header() {
   const { t } = useT();
-  const [open, setOpen] = useState(false);
+  const [openPathname, setOpenPathname] = useState<string | null>(null);
   const location = useLocation();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
+  const open = openPathname === location.pathname;
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -89,7 +86,7 @@ export default function Header() {
           <div className="ml-auto flex items-center gap-3">
             <LanguageToggle />
             <button
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpenPathname(open ? null : location.pathname)}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               className="w-10 h-10 flex items-center justify-center text-soba-ink"
@@ -110,7 +107,7 @@ export default function Header() {
           {/* 閉じるボタン */}
           <div className="flex justify-end px-5 py-3">
             <button
-              onClick={() => setOpen(false)}
+              onClick={() => setOpenPathname(null)}
               className="w-10 h-10 flex items-center justify-center text-soba-ink"
               aria-label="Close menu"
             >
@@ -120,7 +117,7 @@ export default function Header() {
 
           {/* ロゴ */}
           <div className="flex flex-col items-center pt-8 pb-8">
-            <Link to="/" onClick={() => setOpen(false)}>
+            <Link to="/" onClick={() => setOpenPathname(null)}>
               <img src="/images/logo-miyakosoba.png" alt={t.brand.name} className="h-16 w-auto" />
             </Link>
           </div>
@@ -132,7 +129,7 @@ export default function Header() {
                 <Link
                   key={l.label}
                   to={l.to}
-                  onClick={() => setOpen(false)}
+                  onClick={() => setOpenPathname(null)}
                   className="flex justify-center pt-10 pb-6 px-5 hover:bg-cream-100 transition-colors"
                 >
                   <span className="font-serif font-bold text-soba-ink" style={{ writingMode: 'vertical-rl', fontSize: '1.3rem', letterSpacing: '0.15em' }}>
@@ -143,7 +140,7 @@ export default function Header() {
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => setOpenPathname(null)}
                   className="flex justify-center pt-10 pb-6 px-5 hover:bg-cream-100 transition-colors"
                 >
                   <span className="font-serif font-bold text-soba-ink" style={{ writingMode: 'vertical-rl', fontSize: '1.3rem', letterSpacing: '0.15em' }}>
