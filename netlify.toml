@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24.22.1"
 
 # SPA fallback (BrowserRouter の /about などを直接叩かれた場合の対策)
 [[redirects]]
